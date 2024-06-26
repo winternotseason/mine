@@ -5,3 +5,14 @@
     justify-content: space-between;
     padding: 1rem;
 }
+
+.header p {
+    display: flex;
+    align-items: center;
+}
+
+.header span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 0.3rem;
+}

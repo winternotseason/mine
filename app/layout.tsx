@@ -1,9 +1,13 @@
 import Header from "@/components/header";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Nanum_Gothic } from "next/font/google";
+
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const nanumGothic = Nanum_Gothic({
+  subsets: ["latin"],
+  weight: ["400","700","800"]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={nanumGothic.className}>
         <Header />
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }
