@@ -1,0 +1,25 @@
+.main {
+  margin-top: 62px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.search input {
+  all: unset;
+  width: 18rem;
+  padding: 0.6rem;
+  border: 1px solid #526dfe;
+  border-radius: 15px;
+}
+
+.ad {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
