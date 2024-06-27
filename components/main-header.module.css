@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  top:0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+  background-color: white;
+    box-shadow: 0 3px 3px -3px rgb(180, 180, 180);
+  
+}
+
+.header p {
+  display: flex;
+  align-items: center;
+}
+
+.header span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: 0.3rem;
+}

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["/main-ad.png", "/main-ad2.png", "/main-ad3.png"];
+  const images = ["/main-ad.jpg", "/main-ad2.jpg", "/main-ad3.jpg"];
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((currentIndex + 1) % images.length);
@@ -15,7 +15,7 @@ const ImageSlider = () => {
   }, [currentIndex, images.length]);
 
   return (
-    <Image width={380} height={247} src={images[currentIndex]} alt="ad image" />
+    <Image fill src={images[currentIndex]} alt="ad image" />
   );
 };
 

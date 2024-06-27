@@ -1,4 +1,5 @@
-import Header from "@/components/header";
+import MainNav from "@/components/main-nav";
+import MainHeader from "@/components/main-header";
 import type { Metadata, Viewport } from "next";
 import { Nanum_Gothic } from "next/font/google";
 
@@ -29,8 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nanumGothic.className}>
-        <Header />
+        <MainHeader />
         {children}
+        <MainNav />
       </body>
     </html>
   );

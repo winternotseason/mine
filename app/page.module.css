@@ -1,7 +1,7 @@
 .main {
-  margin-top: 62px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
-
 .search {
   display: flex;
   justify-content: center;
@@ -16,10 +16,70 @@
 }
 
 .ad {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   width: 100%;
+  aspect-ratio: 2.9 / 1;
   display: flex;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+.today {
+  box-shadow: 0 -3px 3px -3px rgb(180, 180, 180);
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-top: 1.3rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+}
+
+.today p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.goods_grid {
+  margin-top: 1rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.goods_grid p {
+  margin-top: 0.2rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.goods_image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  background-color: #f8f9fd;
+  color: #757575;
+}
+
+.footer div {
+  padding: 16px;
+  border-top: 1px solid rgb(241, 244, 246);
+}
+
+.footer .title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.info p{
+  margin-bottom: 10px;
+  font-weight: 600;
 }
