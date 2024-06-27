@@ -8,7 +8,7 @@ export default async function SearchInputResultPage({
   params: { input: string };
 }) {
   const inputValue = params.input;
-  const response = await fetch("http://localhost:3000/api/search", {
+  const response = await fetch(`${process.env.NEXTAUTH_URL}api/search`, {
     method: "POST",
     body: JSON.stringify(inputValue),
   });
@@ -31,7 +31,9 @@ export default async function SearchInputResultPage({
               className={classes.title}
               dangerouslySetInnerHTML={{ __html: item.title }}
             />
-            <p className={classes.price}><strong>{item.lprice}</strong>원</p>
+            <p className={classes.price}>
+              <strong>{item.lprice}</strong>원
+            </p>
             <p className={classes.category}>
               {item.category1}/{item.category2}/{item.category3}
             </p>
