@@ -17,6 +17,7 @@ export default function SearchInputResultPage({
   const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       const pageStart = +currentPage * 10 - 9;
       const response = await fetch(`${process.env.NEXTAUTH_URL}api/search`, {
@@ -54,10 +55,17 @@ export default function SearchInputResultPage({
           </li>
         ))}
       </ul>
+
       <nav>
         <ul>
           <div className={classes.arrowLeft}>
-            <IoIosArrowBack />
+            <IoIosArrowBack
+              onClick={() => {
+                if (currentPage !== '1') {
+                  setCurrentPage((+currentPage - 1).toString());
+                }
+              }}
+            />
           </div>
           <li
             className={currentPage === "1" ? classes.active : ""}
@@ -100,7 +108,11 @@ export default function SearchInputResultPage({
             5
           </li>
           <div className={classes.arrowRight}>
-            <IoIosArrowForward />
+            <IoIosArrowForward onClick={() => {
+                if (currentPage !== '5') {
+                  setCurrentPage((+currentPage + 1).toString());
+                }
+              }}/>
           </div>
         </ul>
       </nav>
