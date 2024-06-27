@@ -3,8 +3,9 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const input = await req.json();
   // encoding된 input value
+  const inputValue = encodeURIComponent(input)
   const res = await fetch(
-    `https://openapi.naver.com/v1/search/shop.json?query=${input}&display=10`,
+    `https://openapi.naver.com/v1/search/shop.json?query=${inputValue}&display=10`,
     {
       headers: {
         "X-Naver-Client-Id": `${process.env.NAVER_CLIENT_ID}`,
