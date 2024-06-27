@@ -1,6 +1,6 @@
 import classes from "./main-nav.module.css";
 import { BiSolidShoppingBagAlt } from "react-icons/bi";
-import { PiUserSoundThin } from "react-icons/pi";
+import { GoSignIn } from "react-icons/go";
 import { GoPerson } from "react-icons/go";
 
 const MainNav = () => {
@@ -15,8 +15,8 @@ const MainNav = () => {
         <p>쇼핑홈</p>
       </div>
       <div className={classes.nav}>
-        <PiUserSoundThin className={classes.icon}/>
-        <p>고객센터</p>
+        <GoSignIn className={classes.icon}/>
+        <p>로그인</p>
       </div>
     </div>
   );

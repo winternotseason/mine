@@ -2,13 +2,12 @@ import ImageSlider from "@/components/image-slider";
 import Image from "next/image";
 import classes from "./page.module.css";
 import { goods } from "@/lib/goods";
+import SearchInput from "@/components/search-input";
 
 export default function Home() {
   return (
     <main className={classes.main}>
-      <div className={classes.search}>
-        <input placeholder="상품명을 입력해주세요" />
-      </div>
+      <SearchInput />
       <div className={classes.ad}>
         <ImageSlider />
       </div>
@@ -30,10 +29,10 @@ export default function Home() {
         <div>
           <p className={classes.title}>법적고지</p>
           <p>
-            Mine(주)는 통신판매중개자이며, 통신판매의 당사자가 아닙니다.
+            Mine(주)은 통신판매중개자이며, 통신판매의 당사자가 아닙니다.
             통신판매입자 신고, 신원 및 거래조건에 대한 정보 제공, 상품의 주문,
             배송 및 환불 등 거래에 관한 의무와 책임은 각 판매자에게 있고,
-            Mine(주)는 책임을 지지 않습니다.
+            Mine(주)은 책임을 지지 않습니다.
           </p>
         </div>
         <div>
