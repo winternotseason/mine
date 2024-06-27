@@ -9,7 +9,7 @@ const SearchInput = () => {
     <div className={classes.search}>
       <form
         action={() => {
-          redirect(`/search/${inputValue}`);
+          redirect(`${process.env.NEXTAUTH_URL}/search/${inputValue}`);
         }}
       >
         <input
@@ -24,3 +24,4 @@ const SearchInput = () => {
 };
 
 export default SearchInput;
+
