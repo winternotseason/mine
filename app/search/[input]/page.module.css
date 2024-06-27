@@ -1,7 +1,6 @@
 .main {
   margin-top: 60px;
   margin-bottom: 54.59px;
-  padding: 1rem;
 }
 
 .items_grid {
@@ -11,6 +10,7 @@
   grid-template-columns: repeat(2, 1fr);
   row-gap: 30px;
   column-gap: 10px;
+  padding: 1rem;
 }
 
 .item {
@@ -40,6 +40,37 @@
 }
 
 .item .category {
-    font-size: 0.7rem;
-    color:#8e8e8e;
+  font-size: 0.7rem;
+  color: #8e8e8e;
+}
+
+.main nav {
+  margin-top: 1rem;
+  background-color: #e4e4e4;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.main nav ul {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.arrowRight {
+  margin-left: 1rem;
+}
+
+.arrowLeft {
+  margin-right: 1rem;
+}
+
+.active {
+    font-weight: 700;
+    color : #526dfe;
 }
