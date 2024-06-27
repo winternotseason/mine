@@ -10,3 +10,7 @@
   border: 1px solid #526dfe;
   border-radius: 15px;
 }
+
+.inmain input {
+  width: 12.5rem;
+}

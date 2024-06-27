@@ -15,7 +15,6 @@ export default async function SearchInputResultPage({
   const data = await response.json();
 
   const items: Array<Item> = data.items;
-  console.log(items[0]);
   //const items: Array<Item> = data.items;
   //console.log(items)
   return (

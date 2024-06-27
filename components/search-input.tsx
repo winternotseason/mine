@@ -3,10 +3,15 @@
 import classes from "./search-input.module.css";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-const SearchInput = () => {
+
+const SearchInput = ({ isMain }: { isMain: boolean }) => {
   const [inputValue, setInputValue] = useState("");
   return (
-    <div className={classes.search}>
+    <div
+      className={
+        isMain ? classes.search : `${classes.search} ${classes.inmain}`
+      }
+    >
       <form
         action={() => {
           redirect(`${process.env.NEXTAUTH_URL}search/${inputValue}`);
@@ -24,4 +29,3 @@ const SearchInput = () => {
 };
 
 export default SearchInput;
-

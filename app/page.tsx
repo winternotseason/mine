@@ -7,7 +7,7 @@ import SearchInput from "@/components/search-input";
 export default function Home() {
   return (
     <main className={classes.main}>
-      <SearchInput />
+      <SearchInput isMain={true}/>
       <div className={classes.ad}>
         <ImageSlider />
       </div>
