@@ -17,10 +17,12 @@ const MainNav = () => {
           <p>쇼핑홈</p>
         </div>
       </Link>
-      <div className={classes.nav}>
-        <GoSignIn className={classes.icon} />
-        <p>로그인</p>
-      </div>
+      <Link href="/login">
+        <div className={classes.nav}>
+          <GoSignIn className={classes.icon} />
+          <p>로그인</p>
+        </div>
+      </Link>
     </div>
   );
 };
