@@ -9,7 +9,7 @@ const SearchInput = () => {
     <div className={classes.search}>
       <form
         action={() => {
-          redirect(`${process.env.NEXTAUTH_URL}/search/${inputValue}`);
+          redirect(`${process.env.NEXTAUTH_URL}search/${inputValue}`);
         }}
       >
         <input
