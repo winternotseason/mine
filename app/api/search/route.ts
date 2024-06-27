@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const request = await req.json();
-  console.log(request)
-    const {inputValue, start} = request;
-    console.log(inputValue, start)
+
+  const { inputValue, start } = request;
+
   const res = await fetch(
     `https://openapi.naver.com/v1/search/shop.json?query=${inputValue}&display=10&start=${start}`,
     {
@@ -18,4 +18,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json(data);
 }
-

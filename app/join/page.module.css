@@ -24,24 +24,21 @@
   border-right: 1px solid #dadada;
 }
 
-.login {
+.loginbox div:focus-within {
+    border-color: #526dfe;
+    border-bottom: 1px solid #526dfe;
+  }
+
+
+.bordertop {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.login:focus-within {
-  border-color: #526dfe;
-  border-bottom: 1px solid #526dfe;
-}
 
-.password {
+.borderbottom {
   border-bottom: 1px solid #dadada;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-
-.password:focus-within {
-  border-color: #526dfe;
-  border-top: 1px solid #526dfe;
 }
 
 .loginbox input {
@@ -49,32 +46,20 @@
   border: none;
   margin-left: 1rem;
   width: 100%;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
-
 .loginbox .icon {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .loginbox button {
-  font-size: 1.1rem;
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 10px;
   padding: 0.8rem 0;
-
+  font-size: 1.05rem;
   color: white;
   border: none;
   background-color: #526dfe;
   width: 100%;
-}
-
-.join {
-  cursor: pointer;
-  margin-top: 1rem;
-  color: #888888;
-}
-
-.container a {
-  all: unset;
 }
