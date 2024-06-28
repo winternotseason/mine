@@ -4,27 +4,25 @@ import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { GoPerson } from "react-icons/go";
 import Link from "next/link";
-import { verifyAuth } from "@/lib/db";
-import { logout } from "@/actions/logout";
+
 import { useAuthStore } from "@/store/auth-store";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const MainNav = () => {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-  const loginHandler = useAuthStore((state) => state.loginHandler);
-  const logoutHandler = useAuthStore((state) => state.logoutHandler);
+  const { status, data } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
-    const getVerifyAuth = async () => {
-      const res = await verifyAuth();
-      if (res.user) {
-        loginHandler();
-      } else {
-        logoutHandler();
-      }
-    };
-    getVerifyAuth();
-  }, [loginHandler, logoutHandler]);
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [router, status]);
+
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
   return (
     <div className={classes.footer}>
       <div className={classes.nav}>
@@ -37,9 +35,9 @@ const MainNav = () => {
           <p>쇼핑홈</p>
         </div>
       </Link>
-      {isAuthenticated ? (
-        <form action={logout} className={classes.nav}>
-          <button>
+      {status === "authenticated" ? (
+        <form className={classes.nav}>
+          <button onClick={async () => await signOut()}>
             <GoSignOut className={classes.icon} />
             <p>로그아웃</p>
           </button>

@@ -4,7 +4,7 @@ import classes from "./join-form.module.css";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
 import { useFormState } from "react-dom";
-import { signup } from "@/actions/signup";
+import { signup } from "@/actions/user";
 
 const JoinForm = () => {
   const [formState, formAction] = useFormState(signup, { errors: "" });
