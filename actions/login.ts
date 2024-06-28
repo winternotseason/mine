@@ -4,7 +4,7 @@ import { client, createAuthSession } from "@/lib/db";
 import { verifyPassword } from "@/lib/hash";
 import { errorObj } from "@/lib/types";
 import { redirect } from "next/navigation";
-import { ObjectId } from 'mongodb';
+import { ObjectId } from "mongodb";
 
 export async function login(
   prevData: errorObj | undefined | null,
@@ -14,7 +14,7 @@ export async function login(
   const password = formData.get("password") as string;
   const connectedClient = await client.connect();
   const db = connectedClient.db("mine");
-  const user = await db.collection("users").countDocuments({ _id:id });
+  const user = await db.collection("users").countDocuments({ _id: id });
   if (user === 0) {
     return { errors: "존재하지 않는 이메일입니다." };
   }

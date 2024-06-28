@@ -18,7 +18,7 @@ export async function signup(
   const db = connectedClient.db("mine");
   const user = await db
     .collection("users")
-    .countDocuments({ _id: id as unknown });
+    .countDocuments({ _id: id  });
   // 1. 아이디가 데이터베이스에 존재하는 지 확인
   if (user > 0) {
     return { errors: "이미 존재하는 아이디입니다." };
