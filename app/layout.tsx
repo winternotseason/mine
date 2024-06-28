@@ -2,10 +2,7 @@ import MainNav from "@/components/main-nav";
 import MainHeader from "@/components/main-header";
 import type { Metadata, Viewport } from "next";
 
-
 import "./globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",

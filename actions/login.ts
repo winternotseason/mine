@@ -26,6 +26,6 @@ export async function login(
     return { errors: "비밀번호가 맞지 않습니다." };
   }
   await createAuthSession(userData);
-  revalidatePath('/')
+  revalidatePath('/', 'layout')
   redirect("/");
 }
