@@ -14,3 +14,8 @@ export interface Item {
   category3: string;
   category4: string;
 }
+
+export interface errorObj {
+  errors: Object;
+}
+
