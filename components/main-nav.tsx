@@ -4,8 +4,6 @@ import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { GoPerson } from "react-icons/go";
 import Link from "next/link";
-
-import { useAuthStore } from "@/store/auth-store";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
@@ -21,7 +19,6 @@ const MainNav = () => {
     }
   }, [router, status]);
 
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   return (
     <div className={classes.footer}>
