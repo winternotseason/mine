@@ -54,9 +54,11 @@ interface SessionDoc {
   user_id: string;
 }
 
-export async function createAuthSession(userId: any) {
+export async function createAuthSession(userData: any) {
   const lucia = getLuciaInstance();
-  const session = await lucia.createSession(userId, {});
+
+  const session = await lucia.createSession(userData._id, {});
+
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set(
     sessionCookie.name,
@@ -70,6 +72,7 @@ export async function verifyAuth() {
   if (lucia === null || lucia.sessionCookieName === null) {
     return;
   }
+  console.log(lucia.sessionCookieName);
   const sessionCookie = cookies().get(lucia.sessionCookieName);
   if (!sessionCookie) {
     return {
@@ -77,8 +80,8 @@ export async function verifyAuth() {
       session: null,
     };
   }
-  
-  const sessionId = sessionCookie.value;
+
+  const sessionId = sessionCookie.value; // fdox3cwmxlnnt6xjanwyf472rgpaqupq2b7sziri
 
   if (!sessionId) {
     return {
@@ -88,7 +91,7 @@ export async function verifyAuth() {
   }
 
   const result = await lucia.validateSession(sessionId);
-
+  console.log("세션:", result);
   try {
     if (result.session && result.session.fresh) {
       const sessionCookie = lucia.createSessionCookie(result.session.id);
@@ -118,7 +121,6 @@ export async function destroySession() {
       error: "Unauthorized!",
     };
   }
-
   await lucia.invalidateSession(session.id);
 
   const sessionCookie = lucia.createBlankSessionCookie();
