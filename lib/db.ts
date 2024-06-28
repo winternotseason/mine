@@ -54,7 +54,7 @@ interface SessionDoc {
   user_id: string;
 }
 
-export async function createAuthSession(userId: string) {
+export async function createAuthSession(userId: any) {
   const lucia = getLuciaInstance();
   const session = await lucia.createSession(userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
