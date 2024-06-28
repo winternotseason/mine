@@ -5,6 +5,7 @@ import { verifyPassword } from "@/lib/hash";
 import { errorObj } from "@/lib/types";
 import { redirect } from "next/navigation";
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 
 export async function login(
   prevData: errorObj | undefined | null,
@@ -25,5 +26,6 @@ export async function login(
     return { errors: "비밀번호가 맞지 않습니다." };
   }
   await createAuthSession(userData);
+  revalidatePath('/')
   redirect("/");
 }
