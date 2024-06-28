@@ -4,11 +4,11 @@ import { Collection, MongoClient } from "mongodb";
 import { cookies } from "next/headers";
 import { ObjectId } from "mongodb";
 
-const url = `mongodb+srv://xitseo:${process.env.MONGODB_PASSWORD}@universe.bpzvwux.mongodb.net/?retryWrites=true&w=majority&appName=universe`;
+
 
 let luciaInstance: Lucia | null = null;
 
-export const client = new MongoClient(url);
+export const client = new MongoClient(`mongodb+srv://alswjd0101:ajvls450@universe.bpzvwux.mongodb.net/?retryWrites=true&w=majority&appName=universe`);
 
 client
   .connect()
