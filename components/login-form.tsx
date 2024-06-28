@@ -1,17 +1,24 @@
+"use client";
+
 import classes from "./login-form.module.css";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
+import { useFormState } from "react-dom";
+import { login } from "@/actions/login";
+
 const LoginForm = () => {
+  const [formState, formAction] = useFormState(login, { errors: "" });
   return (
-    <form className={classes.box}>
+    <form className={classes.box} action={formAction}>
       <div className={classes.bordertop}>
         <IoPersonOutline className={classes.icon} color="#9f9f9f" />
-        <input placeholder="아이디" />
+        <input name="id" type="text" placeholder="아이디" />
       </div>
       <div className={classes.borderbottom}>
         <CiLock className={classes.icon} color="#9f9f9f" />
-        <input placeholder="비밀번호" />
+        <input name="password" type="password" placeholder="비밀번호" />
       </div>
+      <p>{formState.errors && formState.errors}</p>
       <p>
         <button>로그인</button>
       </p>

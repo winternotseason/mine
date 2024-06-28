@@ -4,6 +4,7 @@ import { client } from "@/lib/db";
 import { hashUserPassword } from "@/lib/hash";
 import { errorObj } from "@/lib/types";
 import { redirect } from "next/navigation";
+import { ObjectId } from "mongodb";
 
 export async function signup(
   prevData: errorObj | undefined | null,
@@ -16,7 +17,9 @@ export async function signup(
 
   const connectedClient = await client.connect();
   const db = connectedClient.db("mine");
-  const user = await db.collection("users").countDocuments({ id });
+  const user = await db
+    .collection("users")
+    .countDocuments({ _id: id  });
   // 1. 아이디가 데이터베이스에 존재하는 지 확인
   if (user > 0) {
     return { errors: "이미 존재하는 아이디입니다." };
@@ -34,7 +37,7 @@ export async function signup(
   try {
     const hashedPassword = await hashUserPassword(password);
     await db.collection("users").insertOne({
-      id,
+      _id: id,
       name,
       password: hashedPassword,
     });

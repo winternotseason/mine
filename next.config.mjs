@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
-  webpack(config) {
-    config.experiments = { ...config.experiments, topLevelAwait: true }; // 추가
-    return config;
-  },
   images: {
     remotePatterns: [
       {
