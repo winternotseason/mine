@@ -3,7 +3,6 @@ import MainHeader from "@/components/main-header";
 import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
-import SessionProviderWrapper from "@/components/session-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,11 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SessionProviderWrapper>
-          <MainHeader />
-          {children}
-          <MainNav />
-        </SessionProviderWrapper>
+        <MainHeader />
+        {children}
+        <MainNav />
       </body>
     </html>
   );
