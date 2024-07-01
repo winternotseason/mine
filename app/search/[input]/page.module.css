@@ -62,15 +62,27 @@
   padding: 1rem 0;
 }
 
+.main nav li {
+  cursor: pointer;
+}
+
 .arrowRight {
+  cursor: pointer;
   margin-left: 1rem;
 }
 
 .arrowLeft {
+  cursor: pointer;
   margin-right: 1rem;
 }
 
 .active {
-    font-weight: 700;
-    color : #526dfe;
+  font-weight: 700;
+  color: #526dfe;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }
