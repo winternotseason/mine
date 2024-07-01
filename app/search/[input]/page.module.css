@@ -14,9 +14,13 @@
 }
 
 .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
 }
 .item_image {
+  cursor: pointer;
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -31,6 +35,7 @@
 }
 
 .item .title {
+  cursor: pointer;
   font-size: 0.9rem;
 }
 
@@ -43,42 +48,16 @@
   font-size: 0.7rem;
   color: #8e8e8e;
 }
-
-.main nav {
-  margin-top: 1rem;
-  background-color: #e4e4e4;
-  width: 100%;
+.item button {
   display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-}
-
-.main nav ul {
-  width: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  padding: 1rem 0;
-}
-
-.main nav li {
-  cursor: pointer;
-}
-
-.arrowRight {
-  cursor: pointer;
-  margin-left: 1rem;
-}
-
-.arrowLeft {
-  cursor: pointer;
-  margin-right: 1rem;
-}
-
-.active {
-  font-weight: 700;
-  color: #526dfe;
+  justify-content: center;
+  align-items: center;
+  all: unset;
+  background-color: #526dfe;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 .loading {

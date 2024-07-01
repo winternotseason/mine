@@ -35,7 +35,9 @@ const MainHeader = () => {
       </p>
       {isSearchPage && <SearchInput isMain={false} />}
       <p>
-        <FaShoppingBasket size={30} color="#526DFE" />
+        <Link href="/basket">
+          <FaShoppingBasket size={30} color="#526DFE" />{" "}
+        </Link>
       </p>
     </header>
   );

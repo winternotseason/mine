@@ -4,20 +4,24 @@ import { Item } from "@/lib/types";
 import classes from "./page.module.css";
 import Image from "next/image";
 import { Suspense, useEffect, useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
 import ItemsLoading from "@/components/Items-loading";
+import { CiHeart } from "react-icons/ci";
+import { useDetailItemStore } from "@/store/detail-store";
+import { useRouter } from "next/navigation";
+import PageCounter from "@/components/page-counter";
+import { usePageCounterStore } from "@/store/page-store";
 
 export default function SearchInputResultPage({
   params,
 }: {
   params: { input: string };
 }) {
+  const router = useRouter();
   const inputValue = params.input;
-  const [currentPage, setCurrentPage] = useState("1");
+  const currentPage = usePageCounterStore((state) => state.page);
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const setDetailItem = useDetailItemStore((state) => state.setDetailItem);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
@@ -45,92 +49,59 @@ export default function SearchInputResultPage({
         <div className={classes.main}>
           <ul className={classes.items_grid}>
             {items.map((item) => (
-              <li className={classes.item} key={item.title}>
-                <div className={classes.item_image}>
-                  <Image
-                    src={item.image}
-                    fill
-                    alt={item.title}
-                    objectFit="cover"
+              <li className={classes.item} key={item.productId}>
+                <div className={classes.item_content}>
+                  <div className={classes.item_image}>
+                    <Image
+                      src={item.image}
+                      fill
+                      sizes="100%"
+                      alt={item.title}
+                      onClick={() => {
+                        const regex = /(<([^>]+)>)/gi;
+                        const titileWithoutTags = item.title.replace(regex, "");
+                        setDetailItem({
+                          link: item.link,
+                          title: titileWithoutTags,
+                          image: item.image,
+                          category: item.category3,
+                          price: item.lprice,
+                          mallName: item.mallName,
+                        });
+                        router.push("/product");
+                      }}
+                    />
+                  </div>
+                  <p className={classes.mall}>{item.mallName}</p>
+                  <p
+                    className={classes.title}
+                    dangerouslySetInnerHTML={{ __html: item.title }}
+                    onClick={() => {
+                      const regex = /(<([^>]+)>)/gi;
+                      const titileWithoutTags = item.title.replace(regex, "");
+                      setDetailItem({
+                        link: item.link,
+                        title: titileWithoutTags,
+                        image: item.image,
+                        category: item.category3,
+                        price: item.lprice,
+                        mallName: item.mallName,
+                      });
+                      router.push("/product");
+                    }}
                   />
+                  <p className={classes.price}>
+                    <strong>{item.lprice}</strong>원
+                  </p>
+                  <p className={classes.category}>
+                    {item.category1}/{item.category2}/{item.category3}
+                  </p>
                 </div>
-                <p className={classes.mall}>{item.mallName}</p>
-                <p
-                  className={classes.title}
-                  dangerouslySetInnerHTML={{ __html: item.title }}
-                />
-                <p className={classes.price}>
-                  <strong>{item.lprice}</strong>원
-                </p>
-                <p className={classes.category}>
-                  {item.category1}/{item.category2}/{item.category3}
-                </p>
+                <CiHeart />
               </li>
             ))}
           </ul>
-
-          <nav>
-            <ul>
-              <div className={classes.arrowLeft}>
-                <IoIosArrowBack
-                  onClick={() => {
-                    if (currentPage !== "1") {
-                      setCurrentPage((+currentPage - 1).toString());
-                    }
-                  }}
-                />
-              </div>
-              <li
-                className={currentPage === "1" ? classes.active : ""}
-                onClick={() => {
-                  setCurrentPage("1");
-                }}
-              >
-                1
-              </li>
-              <li
-                className={currentPage === "2" ? classes.active : ""}
-                onClick={() => {
-                  setCurrentPage("2");
-                }}
-              >
-                2
-              </li>
-              <li
-                className={currentPage === "3" ? classes.active : ""}
-                onClick={() => {
-                  setCurrentPage("3");
-                }}
-              >
-                3
-              </li>
-              <li
-                className={currentPage === "4" ? classes.active : ""}
-                onClick={() => {
-                  setCurrentPage("4");
-                }}
-              >
-                4
-              </li>
-              <li
-                className={currentPage === "5" ? classes.active : ""}
-                onClick={() => {
-                  setCurrentPage("5");
-                }}
-              >
-                5
-              </li>
-              <div className={classes.arrowRight}>
-                <IoIosArrowForward
-                  onClick={() => {
-                    if (currentPage !== "5") {
-                      setCurrentPage((+currentPage + 1).toString());
-                    }
-                  }}
-                />
-              </div>
-            </ul>
-          </nav>
+          <PageCounter />
         </div>
       )}
     </>

@@ -1,0 +1,41 @@
+"use client";
+
+import Image from "next/image";
+import classes from "./page.module.css";
+import { useDetailItemStore } from "@/store/detail-store";
+import Link from "next/link";
+import { useBasketStore } from "@/store/auth-store";
+const ProductDetail = () => {
+  const Item = useDetailItemStore((state) => state.Item);
+  const addItem = useBasketStore((state) => state.addItem);
+  return (
+    <div className={classes.main}>
+      <div className={classes.image}>
+        <Image src={Item.image} alt="" width={300} height={300} />
+      </div>
+      <div className={classes.content}>
+        <p className={classes.mall}>{Item.mallName}</p>
+        <p className={classes.product_name}>{Item.title}</p>
+        <p className={classes.category}>{Item.category}</p>
+        <p className={classes.price}>
+          <strong>{Item.price}</strong>원
+        </p>
+      </div>
+
+      <div className={classes.product_nav}>
+        <button
+          onClick={() => {
+            addItem({ product_name: Item.title, price: Item.price });
+          }}
+        >
+          장바구니에 담기
+        </button>
+        <button>
+          <Link href={Item.link}>구매하러 가기</Link>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetail;
