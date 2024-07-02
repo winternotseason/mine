@@ -80,7 +80,7 @@
   }
 
   .goods_grid {
-    padding: 6rem;
+    
     gap: 40px;
     grid-template-columns: repeat(4, 1fr);
   }
