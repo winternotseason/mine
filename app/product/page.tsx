@@ -5,13 +5,13 @@ import classes from "./page.module.css";
 import { useDetailItemStore } from "@/store/detail-store";
 import Link from "next/link";
 import { useBasketStore } from "@/store/auth-store";
-
 import { useState } from "react";
+import { formatCurrency } from "@/lib/format";
+
 const ProductDetail = () => {
   const Item = useDetailItemStore((state) => state.Item);
   const addItem = useBasketStore((state) => state.addItem);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
   const handleAddToBasket = () => {
     addItem({ product_name: Item.title, price: Item.price });
     setShowSuccessMessage(true);
@@ -29,7 +29,7 @@ const ProductDetail = () => {
         <p className={classes.product_name}>{Item.title}</p>
         <p className={classes.category}>{Item.category}</p>
         <p className={classes.price}>
-          <strong>{Item.price}</strong>
+          <strong>{formatCurrency(+Item.price)}</strong>
         </p>
       </div>
 

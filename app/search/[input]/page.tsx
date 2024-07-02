@@ -10,6 +10,7 @@ import { useDetailItemStore } from "@/store/detail-store";
 import { useRouter } from "next/navigation";
 import PageCounter from "@/components/page-counter";
 import { usePageCounterStore } from "@/store/page-store";
+import { formatCurrency } from "@/lib/format";
 
 export default function SearchInputResultPage({
   params,
@@ -91,7 +92,7 @@ export default function SearchInputResultPage({
                     }}
                   />
                   <p className={classes.price}>
-                    <strong>{item.lprice}</strong>원
+                    <strong>{formatCurrency(+item.lprice)}</strong>
                   </p>
                   <p className={classes.category}>
                     {item.category1}/{item.category2}/{item.category3}

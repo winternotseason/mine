@@ -6,6 +6,7 @@ import { GrCheckbox } from "react-icons/gr";
 import { GrCheckboxSelected } from "react-icons/gr";
 import { BsBasket3 } from "react-icons/bs";
 import { useState } from "react";
+import { formatCurrency } from "@/lib/format";
 
 const BasketPage = () => {
   const basketItems = useBasketStore((state) => state.basket_items);
@@ -106,7 +107,7 @@ const BasketPage = () => {
             <div className={classes.product}>
               <p className={classes.title}>{item.product_name}</p>
               <p className={classes.price}>
-                <strong>{item.price}</strong>
+                <strong>{formatCurrency(+item.price)}</strong>
               </p>
             </div>
             {/* 선택된 상품의 갯수, 수량 올리고 내리기 */}
