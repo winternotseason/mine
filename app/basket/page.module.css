@@ -112,3 +112,18 @@
 .empty .icon {
   font-size: 6rem;
 }
+
+@media all and (min-width: 1024px) {
+  .delete {
+    margin-top: 6rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  
+  }
+  .result {
+    bottom: 0;
+  }
+  .item {
+    margin: 2rem 7rem;
+  }
+}

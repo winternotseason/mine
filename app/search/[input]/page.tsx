@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import PageCounter from "@/components/page-counter";
 import { usePageCounterStore } from "@/store/page-store";
 import { formatCurrency } from "@/lib/format";
+import { useMediaQuery } from "react-responsive";
 
 export default function SearchInputResultPage({
   params,
@@ -23,22 +24,40 @@ export default function SearchInputResultPage({
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const setDetailItem = useDetailItemStore((state) => state.setDetailItem);
+  const isPC = useMediaQuery({
+    query: "(min-width: 1024px)",
+  });
+  const isTablet = useMediaQuery({
+    query: "(min-width: 768px) and (max-width: 1023px)",
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
       setLoading(true);
-      const pageStart = +currentPage * 10 - 9;
+      let pageStart, display;
+      if (isPC) {
+        display = 20;
+        pageStart = (currentPage - 1) * 20 + 1;
+      } else if (isTablet) {
+        display = 12;
+        pageStart = (currentPage - 1) * 15 + 1;
+      } else {
+        display = 10;
+        pageStart = +currentPage * 10 - 9;
+      }
+
       const response = await fetch(`${process.env.NEXTAUTH_URL}api/search`, {
         method: "POST",
-        body: JSON.stringify({ inputValue, start: pageStart }),
+        body: JSON.stringify({ inputValue, start: pageStart, display }),
       });
       const data = await response.json();
       const items: Array<Item> = data.items;
+      console.log(items);
       setItems(items);
       setLoading(false);
     };
     fetchData();
-  }, [currentPage, inputValue]);
+  }, [currentPage, inputValue, isPC, isTablet]);
 
   //const items: Array<Item> = data.items;
   //console.log(items)
@@ -91,6 +110,8 @@ export default function SearchInputResultPage({
                       router.push("/product");
                     }}
                   />
+                </div>
+                <div>
                   <p className={classes.price}>
                     <strong>{formatCurrency(+item.lprice)}</strong>
                   </p>
@@ -98,7 +119,6 @@ export default function SearchInputResultPage({
                     {item.category1}/{item.category2}/{item.category3}
                   </p>
                 </div>
-                <CiHeart />
               </li>
             ))}
           </ul>

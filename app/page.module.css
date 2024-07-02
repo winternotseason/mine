@@ -1,4 +1,6 @@
 .main {
+  width: 100%;
+  height: 100%;
   margin-top: 65px;
   margin-bottom: 54.59px;
 }
@@ -33,13 +35,13 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
 }
 
 .goods_grid p {
   margin-top: 0.2rem;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .goods_image {
@@ -70,4 +72,28 @@
 .info p {
   margin-bottom: 10px;
   font-weight: 600;
+}
+
+@media all and (min-width: 1024px) {
+  .main {
+    margin-top: 125px;
+  }
+
+  .goods_grid {
+    padding: 6rem;
+    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .footer .title {
+    font-size: 1.2rem;
+  }
+
+  .info p {
+    font-size: 1rem;
+  }
 }

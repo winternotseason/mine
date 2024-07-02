@@ -4,11 +4,17 @@ import Image from "next/image";
 import classes from "./main-header.module.css";
 import { FaShoppingBasket } from "react-icons/fa";
 import SearchInput from "./search-input";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useMediaQuery } from "react-responsive";
+import PcNav from "./pc-nav";
 
 const MainHeader = () => {
+  const isPC = useMediaQuery({
+    query: "(min-width: 1024px)",
+  });
+  const [inputValue, setInputValue] = useState("");
   const [isSearchPage, setIsSearchPage] = useState(false);
   const params = useParams();
   useEffect(() => {
@@ -21,24 +27,53 @@ const MainHeader = () => {
 
   return (
     <header className={`${classes.header}`}>
-      <p>
-        <Link href="/">
-          <Image
-            src="/mine-logo.png"
-            alt="mine logo"
-            width={30}
-            height={30}
-            priority
-          />
-        </Link>
-        <span>쇼핑</span>
-      </p>
-      {isSearchPage && <SearchInput isMain={false} />}
-      <p>
-        <Link href="/basket">
-          <FaShoppingBasket size={30} color="#526DFE" />{" "}
-        </Link>
-      </p>
+      <div className={classes.header_first}>
+        <p>
+          <Link href="/" className={classes.logo}>
+            {isPC ? (
+              <Image
+                src="/mine-logo-l.png"
+                alt="mine logo"
+                fill
+                priority
+                className={classes.icon}
+              />
+            ) : (
+              <Image
+                src="/mine-logo.png"
+                alt="mine logo"
+                fill
+                priority
+                className={classes.icon}
+              />
+            )}
+          </Link>
+          <span>쇼핑</span>
+        </p>
+        {/* 검색 결과 페이지이면서 모바일 화면일때, isMain은 false가 된다.*/}
+        {isSearchPage && <SearchInput isMain={false} />}
+        {isPC && (
+          <div className={classes.pc_search}>
+            <form
+              action={() => {
+                redirect(`${process.env.NEXTAUTH_URL}search/${inputValue}`);
+              }}
+            >
+              <input
+                type="text"
+                name="search-input"
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+            </form>
+          </div>
+        )}
+        <p>
+          <Link href="/basket" className={classes.icon}>
+            <FaShoppingBasket color="#526DFE" />
+          </Link>
+        </p>
+      </div>
+      {isPC && <PcNav />}
     </header>
   );
 };

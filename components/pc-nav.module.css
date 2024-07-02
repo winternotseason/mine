@@ -1,0 +1,19 @@
+.pc_nav {
+  padding: 1rem;
+}
+
+.pc_nav ul {
+  margin: 0;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0 4rem;
+}
+
+.pc_nav li {
+    font-weight:700;
+}
+
+.pc_nav a {
+    all: unset;
+}

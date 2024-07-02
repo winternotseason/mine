@@ -22,7 +22,7 @@ const ProductDetail = () => {
   return (
     <div className={classes.main}>
       <div className={classes.image}>
-        <Image src={Item.image} alt="" width={300} height={300} />
+        <Image src={Item.image} alt="" fill sizes="100%" />
       </div>
       <div className={classes.content}>
         <p className={classes.mall}>{Item.mallName}</p>

@@ -34,3 +34,15 @@
   font-weight: 700;
   color: #526dfe;
 }
+
+@media all and (min-width: 1024px) {
+  .page_counter {
+    margin: auto;
+    width: 70%;
+    padding: 2rem;
+  }
+  .page_counter ul {
+    padding: 2rem 0;
+    font-size: 1.6rem;
+  }
+}

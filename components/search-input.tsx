@@ -4,12 +4,12 @@ import classes from "./search-input.module.css";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
-const SearchInput = ({ isMain }: { isMain: boolean }) => {
+const SearchInput = ({ isMain }: { isMain: boolean; }) => {
   const [inputValue, setInputValue] = useState("");
   return (
     <div
       className={
-        isMain ? classes.search : `${classes.search} ${classes.inmain}`
+        isMain ? `${classes.search} ${classes.inmain}` : classes.search
       }
     >
       <form
