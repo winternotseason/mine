@@ -92,7 +92,9 @@
   .footer .title {
     font-size: 1.2rem;
   }
-
+  .pc_pad {
+    padding: 0 14rem;
+  }
   .info p {
     font-size: 1rem;
   }

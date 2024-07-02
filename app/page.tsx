@@ -8,22 +8,24 @@ export default function Home() {
   return (
     <main className={classes.main}>
       <SearchInput isMain={true} />
-      <div className={classes.ad}>
-        <ImageSlider />
-      </div>
-      <div className={classes.today}>
-        <p>지금 바로 확인하세요!</p>
-        <p>오늘의 KPOP 상품</p>
-        <ul className={classes.goods_grid}>
-          {goods.map((p) => (
-            <li key={p.title}>
-              <div className={classes.goods_image}>
-                <Image src={p.src} alt={p.title} fill />
-              </div>
-              <p className={classes.goods_title}>{p.title}</p>
-            </li>
-          ))}
-        </ul>
+      <div className={classes.pc_pad}>
+        <div className={classes.ad}>
+          <ImageSlider />
+        </div>
+        <div className={classes.today}>
+          <p>지금 바로 확인하세요!</p>
+          <p>오늘의 KPOP 상품</p>
+          <ul className={classes.goods_grid}>
+            {goods.map((p) => (
+              <li key={p.title}>
+                <div className={classes.goods_image}>
+                  <Image src={p.src} alt={p.title} fill />
+                </div>
+                <p className={classes.goods_title}>{p.title}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <footer className={classes.footer}>
         <div>
