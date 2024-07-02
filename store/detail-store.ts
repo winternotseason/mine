@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export type DetailItem = {
   link: string;
@@ -7,7 +7,7 @@ export type DetailItem = {
   image: string;
   category: string;
   price: string;
-  mallName:string;
+  mallName: string;
 };
 
 export type DetailItemState = {
@@ -20,12 +20,19 @@ export type DetailItemState = {
 export const useDetailItemStore = create<DetailItemState>()(
   persist(
     (set) => ({
-      Item: null,
+      Item: {
+        link: "",
+        title: "",
+        image: "",
+        category: "",
+        price: "",
+        mallName: "",
+      },
       setDetailItem: (newItem: DetailItem) => set({ Item: newItem }),
     }),
     {
       name: "detail-item-storage", // 로컬 스토리지에 저장될 키 이름
-      getStorage: () => localStorage, // 로컬 스토리지를 사용
+      storage: createJSONStorage(() => localStorage), // 로컬 스토리지를 사용
     }
   )
 );

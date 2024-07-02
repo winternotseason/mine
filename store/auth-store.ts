@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export type BasketItem = {
   product_name: string;
@@ -80,7 +80,7 @@ export const useBasketStore = create<BasketState>()(
     }),
     {
       name: "basket-storage", // 로컬 스토리지에 저장될 키 이름
-      getStorage: () => localStorage, // 로컬 스토리지를 사용
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
