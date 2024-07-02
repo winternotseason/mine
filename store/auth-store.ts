@@ -13,6 +13,8 @@ export type BasketState = {
   removeItem: (product_name: string) => void;
   allRemoveItem: () => void;
   removeSelectedItems: (selectedItems: { [key: string]: boolean }) => void;
+  increaseItemsAmount: (product_name: string) => void;
+  decreaseItemsAmount: (product_name: string) => void;
 };
 
 export const useBasketStore = create<BasketState>()(
@@ -54,6 +56,27 @@ export const useBasketStore = create<BasketState>()(
             (item) => !selectedItems[item.product_name]
           ),
         })),
+      increaseItemsAmount: (product_name) =>
+        set((state) => {
+          const updatedBasketItems = state.basket_items.map((item) =>
+            item.product_name === product_name
+              ? { ...item, amount: item.amount + 1 }
+              : item
+          );
+          return { basket_items: updatedBasketItems };
+        }),
+      decreaseItemsAmount: (product_name) =>
+        set((state) => {
+          const updatedBasketItems = state.basket_items.map((item) =>
+            item.product_name === product_name
+              ? {
+                  ...item,
+                  amount: item.amount === 0 ? item.amount : item.amount - 1,
+                }
+              : item
+          );
+          return { basket_items: updatedBasketItems };
+        }),
     }),
     {
       name: "basket-storage", // 로컬 스토리지에 저장될 키 이름

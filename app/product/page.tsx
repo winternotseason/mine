@@ -5,9 +5,20 @@ import classes from "./page.module.css";
 import { useDetailItemStore } from "@/store/detail-store";
 import Link from "next/link";
 import { useBasketStore } from "@/store/auth-store";
+import { formatCurrency } from "../basket/page";
+import { useState } from "react";
 const ProductDetail = () => {
   const Item = useDetailItemStore((state) => state.Item);
   const addItem = useBasketStore((state) => state.addItem);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const handleAddToBasket = () => {
+    addItem({ product_name: Item.title, price: Item.price });
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 3000);
+  };
   return (
     <div className={classes.main}>
       <div className={classes.image}>
@@ -18,22 +29,23 @@ const ProductDetail = () => {
         <p className={classes.product_name}>{Item.title}</p>
         <p className={classes.category}>{Item.category}</p>
         <p className={classes.price}>
-          <strong>{Item.price}</strong>원
+          <strong>{formatCurrency(+Item.price)}</strong>
         </p>
       </div>
 
       <div className={classes.product_nav}>
-        <button
-          onClick={() => {
-            addItem({ product_name: Item.title, price: Item.price });
-          }}
-        >
+        <button className={classes.pick} onClick={handleAddToBasket}>
           장바구니에 담기
         </button>
-        <button>
+        <button className={classes.buy}>
           <Link href={Item.link}>구매하러 가기</Link>
         </button>
       </div>
+      {showSuccessMessage && (
+        <div className={classes.successMessage}>
+          장바구니에 성공적으로 담겼습니다
+        </div>
+      )}
     </div>
   );
 };

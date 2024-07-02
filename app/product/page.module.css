@@ -48,12 +48,36 @@
 
 .product_nav button {
   width: 49%;
-  background-color: #526dfe;
-  color: white;
-  border: none;
   padding: 1rem;
 }
 
+.pick {
+  background-color: white;
+  color: #526dfe;
+  border: 1px solid #526dfe;
+}
+
+.buy {
+  border: none;
+  background-color: #526dfe;
+  color: white;
+}
+
 .product_nav a {
-    all: unset;
+  all: unset;
+}
+
+.successMessage {
+  width: 70%;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #526dfe;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
