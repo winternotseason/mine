@@ -5,7 +5,7 @@ import classes from "./page.module.css";
 import { useDetailItemStore } from "@/store/detail-store";
 import Link from "next/link";
 import { useBasketStore } from "@/store/auth-store";
-import { formatCurrency } from "../basket/page";
+
 import { useState } from "react";
 const ProductDetail = () => {
   const Item = useDetailItemStore((state) => state.Item);
@@ -29,7 +29,7 @@ const ProductDetail = () => {
         <p className={classes.product_name}>{Item.title}</p>
         <p className={classes.category}>{Item.category}</p>
         <p className={classes.price}>
-          <strong>{formatCurrency(+Item.price)}</strong>
+          <strong>{Item.price}</strong>
         </p>
       </div>
 

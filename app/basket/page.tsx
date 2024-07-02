@@ -7,13 +7,6 @@ import { GrCheckboxSelected } from "react-icons/gr";
 import { BsBasket3 } from "react-icons/bs";
 import { useState } from "react";
 
-export const formatCurrency = (number: number) => {
-  return new Intl.NumberFormat("ko-KR", {
-    style: "currency",
-    currency: "KRW",
-  }).format(number);
-};
-
 const BasketPage = () => {
   const basketItems = useBasketStore((state) => state.basket_items);
   const allRemoveItems = useBasketStore((state) => state.allRemoveItem);
@@ -113,7 +106,7 @@ const BasketPage = () => {
             <div className={classes.product}>
               <p className={classes.title}>{item.product_name}</p>
               <p className={classes.price}>
-                <strong>{formatCurrency(+item.price)}</strong>
+                <strong>{item.price}</strong>
               </p>
             </div>
             {/* 선택된 상품의 갯수, 수량 올리고 내리기 */}
@@ -141,7 +134,7 @@ const BasketPage = () => {
         <div className={classes.total_price}>
           <p>결제 금액</p>
           <p className={classes.price}>
-            <strong>{formatCurrency(+total_price)}</strong>
+            <strong>{total_price}</strong>
           </p>
         </div>
         <p className={classes.go}>주문하기</p>
