@@ -3,28 +3,33 @@ import Image from "next/image";
 import classes from "./page.module.css";
 import { goods } from "@/lib/goods";
 import SearchInput from "@/components/search-input";
+import { raleway } from "./layout";
 
 export default function Home() {
   return (
     <main className={classes.main}>
       <SearchInput isMain={true} />
-      <div className={classes.pc_pad}>
+      <div className={classes.content}>
         <div className={classes.ad}>
           <ImageSlider />
         </div>
         <div className={classes.today}>
-          <p>지금 바로 확인하세요!</p>
-          <p>오늘의 KPOP 상품</p>
-          <ul className={classes.goods_grid}>
-            {goods.map((p) => (
-              <li key={p.title}>
+          <div className={`${classes.today_header} ${raleway.className}`}>
+            TODAYS KPOP PRODUCTS
+          </div>
+          <div className={classes.today_content}>
+            <ul>
+              {goods.map(item => <li key={item.title}>
                 <div className={classes.goods_image}>
-                  <Image src={p.src} alt={p.title} fill />
+                  <Image width={200} height={200} src={item.src} alt={item.title}/>
                 </div>
-                <p className={classes.goods_title}>{p.title}</p>
-              </li>
-            ))}
-          </ul>
+                <div className={classes.goods_description}>
+                  <p className={classes.goods_artist}>{item.artist}</p>
+                  <p className={classes.goods_title}>{item.title}</p>
+                </div>
+              </li>)}
+            </ul>
+          </div>
         </div>
       </div>
       <footer className={classes.footer}>

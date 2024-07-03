@@ -16,12 +16,11 @@
 }
 
 .today {
-  box-shadow: 0 -3px 3px -3px rgb(180, 180, 180);
-  width: 100%;
   margin-top: 0.5rem;
   padding-top: 1.3rem;
   padding-left: 1.3rem;
   padding-right: 1.3rem;
+  margin-bottom: 100px;
 }
 
 .today p {
@@ -30,26 +29,43 @@
   margin-top: 0.1rem;
 }
 
-.goods_grid {
-  margin-top: 1rem;
+.today_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.today_content ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
 }
 
-.goods_grid p {
-  margin-top: 0.2rem;
+.today_content li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  padding: 10px;
+}
+
+.goods_description {
+  margin-top: 20px;
+}
+
+.goods_description p {
+  font-size: 12px;
+}
+
+.goods_description .goods_title {
   font-weight: 400;
-  font-size: 1rem;
 }
 
-.goods_image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
-  overflow: hidden;
+.goods_description .goods_artist {
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
 .footer {
@@ -79,23 +95,30 @@
     margin-top: 125px;
   }
 
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .today {
+    width: 1240px;
+    margin-top: 90px;
+  }
+
+  .today_header {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
   .goods_grid {
-    
     gap: 40px;
     grid-template-columns: repeat(4, 1fr);
   }
 
   .footer {
     padding: 1.5rem;
-    font-size: 1.1rem;
-  }
-  .footer .title {
-    font-size: 1.2rem;
-  }
-  .pc_pad {
-    padding: 0 14rem;
-  }
-  .info p {
-    font-size: 1rem;
+    font-size: 15px;
   }
 }

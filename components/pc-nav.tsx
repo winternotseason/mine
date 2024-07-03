@@ -6,16 +6,16 @@ const PcNav = () => {
     <nav className={classes.pc_nav}>
       <ul>
         <Link href="/">
-          <li>홈</li>
+          <li>HOME</li>
         </Link>
-        <li>오늘행사</li>
-        <li>쿠폰</li>
-        <li>도착보장</li>
-        <li>럭셔리</li>
-        <li>리빙윈도</li>
-        <li>도서</li>
-        <li>핫아이템</li>
-        <li>기획전</li>
+        <li>TODAY</li>
+        <li>COUPON</li>
+        <li>LUXURY</li>
+        <li>LIVING</li>
+        <li>FOOD</li>
+        <li>BOOK</li>
+        <li>HOT</li>
+        <li>EVENT</li>
       </ul>
     </nav>
   );

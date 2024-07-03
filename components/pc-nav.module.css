@@ -1,19 +1,21 @@
 .pc_nav {
-  padding: 1rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .pc_nav ul {
   margin: 0;
   display: flex;
   list-style: none;
-  justify-content: space-around;
-  padding: 0 4rem;
+  justify-content: center;
+  gap: 20px;
 }
 
 .pc_nav li {
-    font-weight:700;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .pc_nav a {
-    all: unset;
+  all: unset;
 }
