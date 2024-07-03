@@ -15,7 +15,5 @@ export interface Item {
   category4: string;
 }
 
-export interface errorObj {
-  errors: Object;
-}
+
 

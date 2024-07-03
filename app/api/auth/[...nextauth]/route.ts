@@ -1,0 +1,56 @@
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/lib/db";
+import { verifyPassword } from "@/lib/hash";
+
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {},
+      async authorize(credentials: any) {
+        const { username, password } = credentials as {
+          username: string;
+          password: string;
+        };
+
+        const client = await clientPromise;
+        const db = client.db("mine");
+        const user = await db.collection("users").findOne({ id: username });
+
+        if (!user) {
+          console.log("유저가 존재하지 않습니다");
+          return null;
+        }
+        const isMatchPassword = await verifyPassword(user.password, password);
+        if (!isMatchPassword) {
+          console.log("비밀번호가 다릅니다.");
+          return null;
+        }
+        console.log("로그인 성공!");
+        return { id: username };
+      },
+    }),
+  ],
+
+  session: {
+    strategy: "jwt",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/login",
+  },
+  adapter: MongoDBAdapter(clientPromise),
+  events: {
+    signOut(data) {
+      console.log("로그아웃!");
+      console.log(data);
+    },
+  },
+});
