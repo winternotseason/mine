@@ -3,8 +3,7 @@ import ImageSlider from "@/components/image-slider";
 import classes from "./page.module.css";
 
 
-import { raleway } from "./layout";
-import { auth } from "./api/auth/[...nextauth]/route";
+import { auth } from "@/app/auth";
 import TodayGoodsSlider from "@/components/today-goods-slider";
 
 export default async function Home() {
@@ -19,12 +18,12 @@ export default async function Home() {
           <ImageSlider />
         </div>
         <div className={classes.today}>
-          <div className={`${classes.today_header} ${raleway.className}`}>
+          <div className={classes.today_header}>
             TODAYS KPOP PRODUCTS
           </div>
           <div className={classes.today_content}>
             <ul>
-             <TodayGoodsSlider />
+              <TodayGoodsSlider />
             </ul>
           </div>
         </div>

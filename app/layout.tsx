@@ -1,6 +1,6 @@
 import MainNav from "@/components/main-nav";
 import MainHeader from "@/components/main-header";
-import { Raleway, Montserrat } from "next/font/google";
+
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -19,16 +19,7 @@ export const viewport: Viewport = {
   minimumScale: 1,
 };
 
-export const raleway = Raleway({
-  weight: ["100"],
-  style: ["normal"],
-  subsets: ["latin"],
-});
 
-export const montserrat = Montserrat({
-  weight: ["200", "300", "400", "600", "800"],
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,
@@ -37,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body>
         <SessionProviderWrapper>
           <MainHeader />
           {children}

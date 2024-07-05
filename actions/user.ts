@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, signIn } from "@/app/api/auth/[...nextauth]/route";
+import { auth, signIn } from "@/app/auth"
 
 import { redirect } from "next/navigation";
 
