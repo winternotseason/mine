@@ -3,9 +3,9 @@
 import { Item } from "@/lib/types";
 import classes from "./page.module.css";
 import Image from "next/image";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ItemsLoading from "@/components/Items-loading";
-import { CiHeart } from "react-icons/ci";
+
 import { useDetailItemStore } from "@/store/detail-store";
 import { useRouter } from "next/navigation";
 import PageCounter from "@/components/page-counter";

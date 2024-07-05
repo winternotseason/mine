@@ -11,11 +11,12 @@ import "swiper/css/navigation";
 import "@/app/globals.css";
 
 // import required modules
-import { Autoplay, Parallax, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 import classes from "./image-slider.module.css";
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
+import { ads } from "@/lib/main-ad";
 
 const ImageSlider = () => {
   const [swiper, setSwiper] = useState<any>();
@@ -60,18 +61,17 @@ const ImageSlider = () => {
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className={classes.swiper}
         >
-          <SwiperSlide className={classes.adBox}>
-            <Image src="/main-ad-1.webp" alt="ad" width={825} height={387} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.adBox}>
-            <Image src="/main-ad-2.webp" alt="ad" width={825} height={387} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.adBox}>
-            <Image src="/main-ad-3.webp" alt="ad" width={825} height={387} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.adBox}>
-            <Image src="/main-ad-4.webp" alt="ad" width={825} height={387} />
-          </SwiperSlide>
+          {ads.map((item) => (
+            <SwiperSlide className={classes.adBox} key={item.main}>
+              <Image src={item.src} alt={item.main} width={750} height={800} />
+              <div className={classes.adText}>
+                <p>{item.sub}</p>
+                <center>
+                  <p>{item.main}</p>
+                </center>
+              </div>
+            </SwiperSlide>
+          ))}
           <div className="autoplay-progress" slot="container-end">
             <svg viewBox="0 0 48 48" ref={progressCircle}>
               <circle cx="24" cy="24" r="20"></circle>
@@ -79,10 +79,10 @@ const ImageSlider = () => {
             <span ref={progressContent}></span>
           </div>
           <div onClick={handleNext} className={classes.swiperNextButton}>
-            <SlArrowRight color="#d7d7d7" size={60} />
+            <SlArrowRight color="#ffffff" size={60} />
           </div>
           <div onClick={handlePrev} className={classes.swiperPrevButton}>
-            <SlArrowLeft color="#d7d7d7" size={60} />
+            <SlArrowLeft color="#ffffff" size={60} />
           </div>
         </Swiper>
       )}

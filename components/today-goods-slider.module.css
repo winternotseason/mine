@@ -1,0 +1,24 @@
+.goods {
+    width:280px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.goods .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 27.5px;
+}
+
+.goodsName {
+    height:39px;
+}
+
+.goodsPrice {
+    margin-top:5px;
+    font-weight: 600;
+}

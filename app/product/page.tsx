@@ -21,25 +21,30 @@ const ProductDetail = () => {
   };
   return (
     <div className={classes.main}>
-      <div className={classes.image}>
-        <Image src={Item.image} alt="" fill sizes="100%" />
-      </div>
-      <div className={classes.content}>
-        <p className={classes.mall}>{Item.mallName}</p>
-        <p className={classes.product_name}>{Item.title}</p>
-        <p className={classes.category}>{Item.category}</p>
-        <p className={classes.price}>
-          <strong>{formatCurrency(+Item.price)}</strong>
-        </p>
-      </div>
-
-      <div className={classes.product_nav}>
-        <button className={classes.pick} onClick={handleAddToBasket}>
-          장바구니에 담기
-        </button>
-        <button className={classes.buy}>
-          <Link href={Item.link}>구매하러 가기</Link>
-        </button>
+      <div className={classes.mainContent}>
+        <div className={classes.containerLeft}>
+          <div className={classes.LeftHeader}>
+            <p className={classes.category}>{Item.category}</p>
+          </div>
+          <div className={classes.image}>
+            <Image src={Item.image} alt="" width={500} height={500}/>
+          </div>
+        </div>
+        <div className={classes.containerRight}>
+          <div className={classes.RightContent}>
+            <p className={classes.product_name}>{Item.title}</p>
+            <p className={classes.mall}>{Item.mallName}</p>
+            <p>{formatCurrency(+Item.price)}</p>
+          </div>
+          <div className={classes.btn}>
+            <button className={classes.pick} onClick={handleAddToBasket}>
+              장바구니에 담기
+            </button>
+            <button className={classes.buy}>
+              <Link href={Item.link}>구매하러 가기</Link>
+            </button>
+          </div>
+        </div>
       </div>
       {showSuccessMessage && (
         <div className={classes.successMessage}>

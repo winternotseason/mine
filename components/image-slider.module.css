@@ -1,7 +1,7 @@
 .swiperNextButton {
   all: unset;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 50%;
   right: 20px;
   display: flex;
@@ -13,11 +13,10 @@
   border-radius: 50%;
 }
 
-
 .swiperPrevButton {
   all: unset;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,29 +28,26 @@
   border-radius: 50%;
 }
 
-.swiperPrevButton svg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiperPrevButton:hover,
-.swiperNextButton:hover {
-  background-color: rgb(231, 231, 231);
+.swiperNextButton:hover,
+.swiperPrevButton:hover {
+  background-color: rgb(255, 255, 255, 0.5);
 }
 
 .adBox {
   position: relative;
   display: flex;
   justify-content: center;
-  width: 825px;
-  height: 387px;
+  width: 750px;
+  height: 800px;
   margin: 0;
 }
 
 .adText {
+  font-weight: 600;
+  font-size: 40px;
+  color:white;
   position: absolute;
-  top:0;
+  top: 600px;
   transition: all 0.4 ease-in-out;
   z-index: 5;
 }

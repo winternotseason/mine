@@ -1,7 +1,7 @@
 "use server";
 
-import { signIn } from "@/app/api/auth/[...nextauth]/route";
-import { revalidatePath } from "next/cache";
+import { auth, signIn } from "@/app/api/auth/[...nextauth]/route";
+
 import { redirect } from "next/navigation";
 
 export const signup = async (
@@ -57,12 +57,12 @@ export const login = async (
       password,
       redirect: false,
     });
+    await auth();
     success = true;
   } catch (err) {
     console.log(err);
   }
   if (success) {
-    revalidatePath("/", "layout");
     redirect("/");
   }
   return { message: "hi" };

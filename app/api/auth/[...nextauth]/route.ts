@@ -35,7 +35,7 @@ export const {
         }
         console.log("로그인 성공!");
         console.log("login로직:", user);
-        return { id: user.id, name: user.name };
+        return { id: user.id, name: user.name, ...user };
       },
     }),
   ],
@@ -51,21 +51,6 @@ export const {
     signOut(data) {
       console.log("로그아웃!");
       console.log(data);
-    },
-  },
-  callbacks: {
-    jwt({ token }) {
-      console.log("auth.ts jwt", token);
-      return token;
-    },
-    session({ session, token, user }) {
-      if (session.user) {
-        session.user.id = token.sub;
-        delete session.user.email;
-        delete session.user.image;
-      }
-
-      return session; // The return type will match the one returned in `useSession()`
     },
   },
 });

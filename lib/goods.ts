@@ -1,51 +1,47 @@
 export const goods = [
-    {
-      src: "/today-goods/today-goods-1.jpg",
-      artist:"NewJeans",
-      title: "뉴진스 - How Sweet Weverse Albums Ver. 랜덤발송",
-    },
-    {
-      src: "/today-goods/today-goods-2.jpg",
-      artist:"AESPA",
-      title: "에스파(asepa) 1집 - Armageddon (SMini VER.) 버전선택",
-    },
-    {
-      src: "/today-goods/today-goods-3.jpg",
-      artist:"IVE",
-      title: "아이브(IVE) 앨범 - 2nd EP IVE SWITCH ON ver",
-    },
-    {
-      src: "/today-goods/today-goods-4.jpg",
-      artist:"TWS",
-      title: "TWS 투어스 서머비트 미니2집 HEY!HEY!, 나우버전(BLUE)",
-    },
-    {
-      src: "/today-goods/today-goods-5.jpg",
-      artist:"RIIZE",
-      title: "라이즈 앨범 미니 1집 [RIIZING] Collect Book Ver.",
-    },{
-      src: "/today-goods/today-goods-1.jpg",
-      artist:"NewJeans",
-      title: "뉴진스 - How Sweet Weverse Albums Ver. 랜덤발송",
-    },
-    {
-      src: "/today-goods/today-goods-2.jpg",
-      artist:"AESPA",
-      title: "에스파(asepa) 1집 - Armageddon (SMini VER.) 버전선택",
-    },
-    {
-      src: "/today-goods/today-goods-3.jpg",
-      artist:"IVE",
-      title: "아이브(IVE) 앨범 - 2nd EP IVE SWITCH ON ver",
-    },
-    {
-      src: "/today-goods/today-goods-4.jpg",
-      artist:"TWS",
-      title: "TWS 투어스 서머비트 미니2집 HEY!HEY!, 나우버전(BLUE)",
-    },
-    {
-      src: "/today-goods/today-goods-5.jpg",
-      artist:"RIIZE",
-      title: "라이즈 앨범 미니 1집 [RIIZING] Collect Book Ver.",
-    },
-  ];
+  {
+    src: "/today-goods/today-goods-1.png",
+    title: "2023 LE SSERAFIM TOUR ‘FLAME RISES’ IN SEOUL",
+    price: "47,000",
+  },
+  {
+    src: "/today-goods/today-goods-2.png",
+    title: "TWS 2nd Mini Album 'SUMMER BEAT!'",
+    price: "12,000",
+  },
+  {
+    src: "/today-goods/today-goods-3.png",
+    title: "TXT PGOTO CARD BINDER",
+    price: "26,000",
+  },
+  {
+    src: "/today-goods/today-goods-4.png",
+    title: "AESPA [Armageddon] (MY Power Ver.)",
+    price: "17,000",
+  },
+  {
+    src: "/today-goods/today-goods-5.png",
+    title: "NewJeas X MURAKAMI ACRYLIC PGONE GRIP",
+    price: "18,000",
+  },
+  {
+    src: "/today-goods/today-goods-6.png",
+    title: "NewJeans bunni TALKING PLUSH",
+    price: "49,000",
+  },
+  {
+    src: "/today-goods/today-goods-7.png",
+    title: "SEVENTEEN Going Company Diary",
+    price: "31,000",
+  },
+  {
+    src: "/today-goods/today-goods-8.png",
+    title: "ENHYPEN RQMANCE : UNTOLD",
+    price: "13,000",
+  },
+  {
+    src: "/today-goods/today-goods-9.png",
+    title: "ILLIT 1st Mini Album 'SUPER REAL ME'",
+    price: "14,000",
+  },
+];

@@ -9,30 +9,15 @@ import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
-import { signOut, useSession, getSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+
+import { signOut, useSession } from "next-auth/react";
+import PcNav from "./pc-nav";
 
 const MainHeader = () => {
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    const updateSession = async () => {
-      await getSession();
-    };
-    updateSession();
-  }, [session]);
-
   const [inputValue, setInputValue] = useState("");
   const [isSearchPage, setIsSearchPage] = useState(false);
   const params = useParams();
-  useEffect(() => {
-    if (params.input) {
-      setIsSearchPage(true);
-    } else {
-      setIsSearchPage(false);
-    }
-  }, [params.input]);
-
+  const { data, status } = useSession();
   return (
     <header className={`${classes.header}`}>
       <div className={classes.header_first}>
@@ -41,8 +26,6 @@ const MainHeader = () => {
             <p className={classes.header_logo}>MINE</p>
           </Link>
         </div>
-
-        <span>쇼핑</span>
 
         {/* 검색 결과 페이지이면서 모바일 화면일때, isMain은 false가 된다.*/}
         {isSearchPage && <SearchInput isMain={false} />}
@@ -65,7 +48,7 @@ const MainHeader = () => {
         </div>
 
         <div className={classes.header_right}>
-          {session?.user ? (
+          {data?.user ? (
             <>
               <div className={classes.rightContent}></div>
               <div className={classes.rightContent}>
@@ -96,6 +79,7 @@ const MainHeader = () => {
               </div>
             </>
           )}
+
           <div className={classes.rightContent}>
             <Link href="/basket">
               <PiShoppingCartSimpleThin size={35} />
@@ -104,6 +88,7 @@ const MainHeader = () => {
           </div>
         </div>
       </div>
+      <PcNav />
     </header>
   );
 };

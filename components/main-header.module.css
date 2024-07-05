@@ -53,17 +53,18 @@
   display: flex;
   justify-content: space-between;
 }
-
+/* rightContent 회원가입, 로그인, 로그아웃, 장바구니 아이콘 */
 .rightContent {
   display: flex;
   width: 50px;
-  height:50px;
+  height: 50px;
 }
 
 .rightContent a {
-display:flex;
-flex-direction: column;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rightContent p {
@@ -71,11 +72,12 @@ justify-content: space-between;
 }
 
 .logoutBtn {
-  display:flex;
-flex-direction: column;
-justify-content: space-between;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: none;
-  border:none;
+  border: none;
 }
 
 .pc_search {

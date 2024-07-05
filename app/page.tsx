@@ -1,14 +1,17 @@
 import ImageSlider from "@/components/image-slider";
-import Image from "next/image";
-import classes from "./page.module.css";
-import { goods } from "@/lib/goods";
-import SearchInput from "@/components/search-input";
-import { raleway } from "./layout";
 
-export default function Home() {
+import classes from "./page.module.css";
+
+
+import { raleway } from "./layout";
+import { auth } from "./api/auth/[...nextauth]/route";
+import TodayGoodsSlider from "@/components/today-goods-slider";
+
+export default async function Home() {
+  const session = await auth();
+  console.log(session);
   return (
     <main className={classes.main}>
-      <SearchInput isMain={true} />
       <div className={classes.content}>
         <div className={classes.ad}>
           <div className={classes.adBackgroundLeft} />
@@ -21,22 +24,7 @@ export default function Home() {
           </div>
           <div className={classes.today_content}>
             <ul>
-              {goods.map((item) => (
-                <li key={item.title}>
-                  <div className={classes.goods_image}>
-                    <Image
-                      width={200}
-                      height={200}
-                      src={item.src}
-                      alt={item.title}
-                    />
-                  </div>
-                  <div className={classes.goods_description}>
-                    <p className={classes.goods_artist}>{item.artist}</p>
-                    <p className={classes.goods_title}>{item.title}</p>
-                  </div>
-                </li>
-              ))}
+             <TodayGoodsSlider />
             </ul>
           </div>
         </div>

@@ -7,6 +7,7 @@
 
 .page_counter ul {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   list-style: none;
   width: 300px;
@@ -19,5 +20,11 @@
 .arrowRight,
 .arrowLeft,
 .page_counter li {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+}
+
+.notPage {
+  cursor: default;
 }

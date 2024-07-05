@@ -17,13 +17,17 @@ const PageCounter = () => {
     <nav className={classes.page_counter}>
       <ul>
         <div className={classes.arrowLeft}>
-          <IoIosArrowBack
-            onClick={() => {
-              if (currentPage.toString() !== "1") {
-                decreasePage();
-              }
-            }}
-          />
+          {currentPage == 1 ? (
+            <IoIosArrowBack className={classes.notPage} color="#cdcdcd" />
+          ) : (
+            <IoIosArrowBack
+              onClick={() => {
+                if (currentPage.toString() !== "1") {
+                  decreasePage();
+                }
+              }}
+            />
+          )}
         </div>
         <li
           className={currentPage.toString() === "1" ? classes.active : ""}
@@ -66,13 +70,17 @@ const PageCounter = () => {
           5
         </li>
         <div className={classes.arrowRight}>
-          <IoIosArrowForward
-            onClick={() => {
-              if (currentPage.toString() !== "5") {
-                increasePage();
-              }
-            }}
-          />
+          {currentPage == 5 ? (
+            <IoIosArrowForward className={classes.notPage} color="#cdcdcd" />
+          ) : (
+            <IoIosArrowForward
+              onClick={() => {
+                if (currentPage.toString() !== "5") {
+                  increasePage();
+                }
+              }}
+            />
+          )}
         </div>
       </ul>
     </nav>
