@@ -24,7 +24,7 @@ export const signup = async (
   let success;
   try {
     /* 이름 아이디 패스워드를 body에 담아서 보냄 */
-    const res = await fetch(`http://localhost:3000/api/register`, {
+    const res = await fetch(`${process.env.AUTH_URL}api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
