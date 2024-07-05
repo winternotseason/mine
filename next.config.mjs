@@ -17,6 +17,7 @@ const nextConfig = {
     AUTH_URL: isProd
       ? "https://mine-shopping.vercel.app/"
       : "http://127.0.0.1:3000/",
+      AUTH_SECRET: 'asdfkopwekop'
   },
 };
 
