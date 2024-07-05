@@ -3,8 +3,6 @@ import MainHeader from "@/components/main-header";
 
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-
-import "./globals.css";
 import SessionProviderWrapper from "@/components/session-provider";
 
 export const metadata: Metadata = {

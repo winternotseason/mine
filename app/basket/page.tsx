@@ -2,12 +2,8 @@
 
 import { useBasketStore } from "@/store/auth-store";
 import classes from "./page.module.css";
-import { GrCheckbox } from "react-icons/gr";
-import { GrCheckboxSelected } from "react-icons/gr";
-import { BsBasket3 } from "react-icons/bs";
 import { useState } from "react";
-import { formatCurrency } from "@/lib/format";
-import { useSession } from "next-auth/react";
+
 import { useRouter } from "next/navigation";
 
 const BasketPage = () => {
@@ -24,10 +20,7 @@ const BasketPage = () => {
   const removeSelectedItems = useBasketStore(
     (state) => state.removeSelectedItems
   );
-  const { data } = useSession();
-  if (!data?.user) {
-    router.replace("/login");
-  }
+
   // {'상품이름' : true/false} : 상품이 선택 되었는지의 여부
   const [selectedItems, setSelectedItems] = useState<{
     [key: string]: boolean;
@@ -57,7 +50,7 @@ const BasketPage = () => {
         <div className={classes.basketWrapper}>
           <div className={classes.basketLeft}>
             <div>
-              <h1>{data?.user.name}님의 장바구니 상품</h1>
+              <h1> 장바구니 상품</h1>
               <table className={classes.basketTable}>
                 <thead>
                   <tr>

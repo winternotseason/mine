@@ -3,9 +3,23 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
 import { verifyPassword } from "@/lib/hash";
-import type { NextAuthConfig } from "next-auth";
 
-export const { handlers, auth, signIn } = NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+} = NextAuth({
+  callbacks: {
+    jwt({ token}) {
+      console.log('auth.ts jwt', token);
+      return token;
+    },
+    session({ session, newSession, user}) {
+      console.log('auth.ts session', session, newSession, user);
+      return session;
+    }
+  },
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "credentials",

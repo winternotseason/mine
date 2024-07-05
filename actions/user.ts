@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, signIn } from "@/app/auth"
+import { auth, signIn } from "@/app/auth";
 
 import { redirect } from "next/navigation";
 
@@ -57,7 +57,6 @@ export const login = async (
       password,
       redirect: false,
     });
-    await auth();
     success = true;
   } catch (err) {
     console.log(err);
