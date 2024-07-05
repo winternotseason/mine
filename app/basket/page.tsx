@@ -8,8 +8,10 @@ import { BsBasket3 } from "react-icons/bs";
 import { useState } from "react";
 import { formatCurrency } from "@/lib/format";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const BasketPage = () => {
+  const router = useRouter();
   const basketItems = useBasketStore((state) => state.basket_items);
   const allRemoveItems = useBasketStore((state) => state.allRemoveItem);
   const increaseItemsAmount = useBasketStore(
@@ -22,8 +24,10 @@ const BasketPage = () => {
   const removeSelectedItems = useBasketStore(
     (state) => state.removeSelectedItems
   );
-  const session = useSession();
-  console.log(session)
+  const { data } = useSession();
+  if (!data?.user) {
+    router.replace("/login");
+  }
   // {'상품이름' : true/false} : 상품이 선택 되었는지의 여부
   const [selectedItems, setSelectedItems] = useState<{
     [key: string]: boolean;
@@ -46,34 +50,6 @@ const BasketPage = () => {
   });
   //  상품 가격을 한국식으로 포맷팅하기
 
-  if (Object.keys(basketItems).length === 0) {
-    return (
-      <div className={classes.main}>
-        <ul>
-          <div className={classes.delete}>
-            <p
-              onClick={() => {
-                allRemoveItems();
-              }}
-            >
-              모두 삭제
-            </p>
-            <p
-              onClick={() => {
-                removeSelectedItems(selectedItems);
-              }}
-            >
-              선택 삭제
-            </p>
-          </div>
-
-          <div className={classes.empty}>
-            <BsBasket3 color="#526dfe" className={classes.icon} />
-          </div>
-        </ul>
-      </div>
-    );
-  }
   return (
     <div className={classes.container}>
       <h1>장바구니</h1>
@@ -81,7 +57,7 @@ const BasketPage = () => {
         <div className={classes.basketWrapper}>
           <div className={classes.basketLeft}>
             <div>
-              <h1>장바구니 상품</h1>
+              <h1>{data?.user.name}님의 장바구니 상품</h1>
               <table className={classes.basketTable}>
                 <thead>
                   <tr>

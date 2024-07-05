@@ -1,3 +1,149 @@
 .main {
-  padding-top:150px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 150px;
+}
+
+.mainContent {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: 1500px;
+  height: 700px;
+  padding: 32px 0;
+}
+
+.LeftHeader {
+  font-size: 13px;
+  color: #4e4e4e;
+  margin-bottom: 10px;
+}
+
+.containerRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 26.5px;
+  margin-left: 50px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.mall {
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.price {
+  float: inline-end;
+}
+
+.btn {
+  height: 50px;
+  margin-top: 40px;
+}
+
+.btn button {
+  float: inline-end;
+  width: 180px;
+  height: 50px;
+  border: 1px solid rgb(51, 51, 51);
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.pick {
+  color: white;
+  background-color: #2a2a2a;
+  margin-right: 20px;
+}
+
+.buy {
+  background-color: #ffffff;
+}
+
+.buy a {
+  all: unset;
+}
+
+.modalBackground {
+  z-index: 100;
+  width: 100dvw;
+  height: 100dvh; /* Change from 100dvw to 100dvh for full viewport height */
+  background-color: rgba(0, 0, 0, 0.2); /* Fix the rgba format */
+  position: absolute; /* Add this to ensure the background covers the whole screen */
+  top: 0;
+  left: 0;
+}
+
+.basketModal {
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  width: 670px;
+  top: 485px;
+  padding: 30px;
+}
+
+.basketModal h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.modalFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.modalPrice {
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.modalBtn {
+  margin-top: 20px;
+  height: 50px;
+}
+
+.modalBtn button {
+  float: inline-end;
+  width: 250px;
+  height: 50px;
+  border: 1px solid rgb(51, 51, 51);
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.modalShoppingBtn {
+  background-color: white;
+}
+
+.modalBasketBtn {
+  margin-left: 30px;
+  color: white;
+  background-color: #2a2a2a;
 }

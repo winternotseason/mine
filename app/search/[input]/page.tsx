@@ -61,6 +61,7 @@ export default function SearchInputResultPage({
 
   //const items: Array<Item> = data.items;
   //console.log(items)
+
   return (
     <>
       {loading ? (
@@ -69,62 +70,76 @@ export default function SearchInputResultPage({
         <div className={classes.main}>
           <div className={classes.content}>
             <h1>
-              <strong>바지</strong>에 관한 통합 검색 결과입니다.
+              <strong>{decodeURIComponent(inputValue)}</strong>에 관한 통합 검색
+              결과입니다.
             </h1>
-            <ul className={classes.items_grid}>
-              {items.map((item) => (
-                <li className={classes.item} key={item.productId}>
-                  <div className={classes.item_image}>
-                    <Image
-                      src={item.image}
-                      fill
-                      sizes="100%"
-                      alt={item.title}
-                      onClick={() => {
-                        const regex = /(<([^>]+)>)/gi;
-                        const titileWithoutTags = item.title.replace(regex, "");
-                        setDetailItem({
-                          link: item.link,
-                          title: titileWithoutTags,
-                          image: item.image,
-                          category: item.category3,
-                          price: item.lprice,
-                          mallName: item.mallName,
-                        });
-                        router.push("/product");
-                      }}
-                    />
-                  </div>
-                  <div className={classes.item_text}>
-                    <p className={classes.mall}>{item.mallName}</p>
-                    <p
-                      className={classes.title}
-                      dangerouslySetInnerHTML={{ __html: item.title }}
-                      onClick={() => {
-                        const regex = /(<([^>]+)>)/gi;
-                        const titileWithoutTags = item.title.replace(regex, "");
-                        setDetailItem({
-                          link: item.link,
-                          title: titileWithoutTags,
-                          image: item.image,
-                          category: item.category3,
-                          price: item.lprice,
-                          mallName: item.mallName,
-                        });
-                        router.push("/product");
-                      }}
-                    />
-                    <p className={classes.price}>
-                      {formatCurrency(+item.lprice).slice(1)}
-                    </p>
-                    <p className={classes.category}>
-                      {item.category1}/{item.category2}/{item.category3}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <PageCounter />
+            {Object.keys(items).length === 0 ? (
+              <h1>검색 결과가 없습니다.</h1>
+            ) : (
+              <>
+                {" "}
+                <ul className={classes.items_grid}>
+                  {items.map((item) => (
+                    <li className={classes.item} key={item.productId}>
+                      <div className={classes.item_image}>
+                        <Image
+                          src={item.image}
+                          fill
+                          sizes="100%"
+                          alt={item.title}
+                          onClick={() => {
+                            const regex = /(<([^>]+)>)/gi;
+                            const titileWithoutTags = item.title.replace(
+                              regex,
+                              ""
+                            );
+                            setDetailItem({
+                              link: item.link,
+                              title: titileWithoutTags,
+                              image: item.image,
+                              category: item.category3,
+                              price: item.lprice,
+                              mallName: item.mallName,
+                            });
+                            router.push("/product");
+                          }}
+                        />
+                      </div>
+                      <div className={classes.item_text}>
+                        <p className={classes.mall}>{item.mallName}</p>
+                        <p
+                          className={classes.title}
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                          onClick={() => {
+                            const regex = /(<([^>]+)>)/gi;
+                            const titileWithoutTags = item.title.replace(
+                              regex,
+                              ""
+                            );
+                            setDetailItem({
+                              link: item.link,
+                              title: titileWithoutTags,
+                              image: item.image,
+                              category: item.category3,
+                              price: item.lprice,
+                              mallName: item.mallName,
+                            });
+                            router.push("/product");
+                          }}
+                        />
+                        <p className={classes.price}>
+                          {formatCurrency(+item.lprice).slice(1)}
+                        </p>
+                        <p className={classes.category}>
+                          {item.category1}/{item.category2}/{item.category3}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <PageCounter />
+              </>
+            )}
           </div>
         </div>
       )}
