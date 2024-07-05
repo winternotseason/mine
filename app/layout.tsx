@@ -1,10 +1,11 @@
 import MainNav from "@/components/main-nav";
 import MainHeader from "@/components/main-header";
-import { Raleway,Montserrat } from "next/font/google";
+import { Raleway, Montserrat } from "next/font/google";
 import type { Metadata, Viewport } from "next";
-
+import "./globals.css";
 
 import "./globals.css";
+import SessionProviderWrapper from "@/components/session-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +26,9 @@ export const raleway = Raleway({
 });
 
 export const montserrat = Montserrat({
-  weight: ['200','400','600','800'],
-  subsets: ['latin']
-})
+  weight: ["200", "300", "400", "600", "800"],
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -37,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <MainHeader />
-        {children}
-        <MainNav />
+        <SessionProviderWrapper>
+          <MainHeader />
+          {children}
+          <MainNav />
+        </SessionProviderWrapper>
       </body>
     </html>
   );

@@ -7,12 +7,35 @@
 
 .ad {
   margin-top: 0.5rem;
-  width: 100%;
+  width: 1200px;
+  height: 387px;
   aspect-ratio: 2.9 / 1;
   display: flex;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+.adBackgroundLeft {
+  position: absolute;
+  width: 187.5px;
+  height:100%;
+  z-index: 3;
+  left:0;
+  background-color : rgb(0,0,0,0.2);
+  pointer-events: none;
+}
+
+
+
+.adBackgroundRight {
+  position: absolute;
+  width: 187.5px;
+  height:100%;
+  z-index: 3;
+  right:0;
+  background-color : rgb(0,0,0,0.2);
+  pointer-events: none;
 }
 
 .today {
@@ -104,7 +127,7 @@
 
   .today {
     width: 1240px;
-    margin-top: 90px;
+    margin-top: 30px;
   }
 
   .today_header {

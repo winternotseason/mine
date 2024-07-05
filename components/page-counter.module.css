@@ -1,48 +1,23 @@
 .page_counter {
-  margin-top: 1rem;
-  background-color: #e4e4e4;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 1rem;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 .page_counter ul {
-  width: 100%;
-  background-color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style: none;
-  padding: 1rem 0;
-}
-
-.page_counter li {
-  cursor: pointer;
-}
-
-.arrowRight {
-  cursor: pointer;
-  margin-left: 1rem;
-}
-
-.arrowLeft {
-  cursor: pointer;
-  margin-right: 1rem;
+  width: 300px;
 }
 
 .active {
-  font-weight: 700;
-  color: #526dfe;
+  font-weight: 600;
 }
 
-@media all and (min-width: 1024px) {
-  .page_counter {
-    margin: auto;
-    width: 70%;
-    padding: 2rem;
-  }
-  .page_counter ul {
-    padding: 2rem 0;
-    font-size: 1.6rem;
-  }
+.arrowRight,
+.arrowLeft,
+.page_counter li {
+  cursor: pointer;
 }

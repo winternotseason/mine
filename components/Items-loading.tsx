@@ -4,7 +4,7 @@ import { PulseLoader } from "react-spinners";
 
 const ItemsLoading = () => {
   return <div className={classes.loading}>
-  <PulseLoader color="#526DFE"/></div>;
+  <PulseLoader color="#000000"/></div>;
 };
 
 export default ItemsLoading;

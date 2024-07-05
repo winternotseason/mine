@@ -7,6 +7,7 @@ import { GrCheckboxSelected } from "react-icons/gr";
 import { BsBasket3 } from "react-icons/bs";
 import { useState } from "react";
 import { formatCurrency } from "@/lib/format";
+import { useSession } from "next-auth/react";
 
 const BasketPage = () => {
   const basketItems = useBasketStore((state) => state.basket_items);
@@ -21,7 +22,8 @@ const BasketPage = () => {
   const removeSelectedItems = useBasketStore(
     (state) => state.removeSelectedItems
   );
-
+  const session = useSession();
+  console.log(session)
   // {'상품이름' : true/false} : 상품이 선택 되었는지의 여부
   const [selectedItems, setSelectedItems] = useState<{
     [key: string]: boolean;
@@ -73,72 +75,54 @@ const BasketPage = () => {
     );
   }
   return (
-    <div className={classes.main}>
-      <ul>
-        <div className={classes.delete}>
-          <p
-            onClick={() => {
-              allRemoveItems();
-            }}
-          >
-            모두 삭제
-          </p>
-          <p
-            onClick={() => {
-              removeSelectedItems(selectedItems);
-            }}
-          >
-            선택 삭제
-          </p>
+    <div className={classes.container}>
+      <h1>장바구니</h1>
+      <div className={classes.basket}>
+        <div className={classes.basketWrapper}>
+          <div className={classes.basketLeft}>
+            <div>
+              <h1>장바구니 상품</h1>
+              <table className={classes.basketTable}>
+                <thead>
+                  <tr>
+                    <th>상품정보</th>
+                    <th>수량</th>
+                    <th>가격</th>
+                    <th>선택</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className={classes.empty}>
+                    <td colSpan={4}>장바구니에 담긴 상품이 없습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className={classes.basketButton}>
+              <button className={classes.btn}>선택삭제</button>
+              <button className={classes.btngray}>쇼핑계속하기</button>
+            </div>
+          </div>
+          <div className={classes.basketRight}>
+            <div className={classes.paymentBox}>
+              <ul>
+                <li>
+                  <p>총 상품금액</p>
+                  <p>0원</p>
+                </li>
+                <li className={classes.fee}>
+                  <p>배송비</p>
+                  <p>0원</p>
+                </li>
+                <li className={classes.total}>
+                  <p>총 결제금액</p>
+                  <p>0원</p>
+                </li>
+              </ul>
+              <button>결제하기</button>
+            </div>
+          </div>
         </div>
-        {basketItems.map((item) => (
-          <li className={classes.item} key={item.product_name}>
-            {/* 선태 박스 */}
-            <div className={classes.check_box}>
-              {selectedItems[item.product_name] ? (
-                <GrCheckboxSelected
-                  onClick={() => toggleSelect(item.product_name)}
-                />
-              ) : (
-                <GrCheckbox onClick={() => toggleSelect(item.product_name)} />
-              )}
-            </div>
-            {/* 상품 이름, 가격 */}
-            <div className={classes.product}>
-              <p className={classes.title}>{item.product_name}</p>
-              <p className={classes.price}>
-                <strong>{formatCurrency(+item.price)}</strong>
-              </p>
-            </div>
-            {/* 선택된 상품의 갯수, 수량 올리고 내리기 */}
-            <div className={classes.amount}>
-              <button
-                onClick={() => {
-                  increaseItemsAmount(item.product_name);
-                }}
-              >
-                +
-              </button>
-              <p>{item.amount ? item.amount : 1}</p>
-              <button
-                onClick={() => {
-                  decreaseItemsAmount(item.product_name);
-                }}
-              >
-                -
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className={classes.result}>
-        <div className={classes.total_price}>
-          <p>결제 금액</p>
-          <p className={classes.price}>
-            <strong>{total_price}</strong>
-          </p>
-        </div>
-        <p className={classes.go}>주문하기</p>
       </div>
     </div>
   );

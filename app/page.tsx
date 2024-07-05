@@ -11,6 +11,8 @@ export default function Home() {
       <SearchInput isMain={true} />
       <div className={classes.content}>
         <div className={classes.ad}>
+          <div className={classes.adBackgroundLeft} />
+          <div className={classes.adBackgroundRight} />
           <ImageSlider />
         </div>
         <div className={classes.today}>
@@ -19,15 +21,22 @@ export default function Home() {
           </div>
           <div className={classes.today_content}>
             <ul>
-              {goods.map(item => <li key={item.title}>
-                <div className={classes.goods_image}>
-                  <Image width={200} height={200} src={item.src} alt={item.title}/>
-                </div>
-                <div className={classes.goods_description}>
-                  <p className={classes.goods_artist}>{item.artist}</p>
-                  <p className={classes.goods_title}>{item.title}</p>
-                </div>
-              </li>)}
+              {goods.map((item) => (
+                <li key={item.title}>
+                  <div className={classes.goods_image}>
+                    <Image
+                      width={200}
+                      height={200}
+                      src={item.src}
+                      alt={item.title}
+                    />
+                  </div>
+                  <div className={classes.goods_description}>
+                    <p className={classes.goods_artist}>{item.artist}</p>
+                    <p className={classes.goods_title}>{item.title}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

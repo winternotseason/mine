@@ -12,3 +12,6 @@ body {
   overflow-x: hidden;
 }
 
+.swiper-slide {
+  margin:0;
+}

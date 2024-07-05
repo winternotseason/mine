@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
@@ -34,11 +34,11 @@ export const {
           return null;
         }
         console.log("로그인 성공!");
-        return { id: username };
+        console.log("login로직:", user);
+        return { id: user.id, name: user.name };
       },
     }),
   ],
-
   session: {
     strategy: "jwt",
   },
@@ -51,6 +51,21 @@ export const {
     signOut(data) {
       console.log("로그아웃!");
       console.log(data);
+    },
+  },
+  callbacks: {
+    jwt({ token }) {
+      console.log("auth.ts jwt", token);
+      return token;
+    },
+    session({ session, token, user }) {
+      if (session.user) {
+        session.user.id = token.sub;
+        delete session.user.email;
+        delete session.user.image;
+      }
+
+      return session; // The return type will match the one returned in `useSession()`
     },
   },
 });

@@ -1,9 +1,57 @@
-.container {
-  width: 3700px;
-  transform: (-2040px);
+.swiperNextButton {
+  all: unset;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 
-.inner {
-  width: 1240px;
-  float: left;
+
+.swiperPrevButton {
+  all: unset;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 20px;
+  transform: translate(0, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.swiperPrevButton svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiperPrevButton:hover,
+.swiperNextButton:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+.adBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 825px;
+  height: 387px;
+  margin: 0;
+}
+
+.adText {
+  position: absolute;
+  top:0;
+  transition: all 0.4 ease-in-out;
+  z-index: 5;
 }

@@ -16,3 +16,7 @@
   .container a {
     all: unset;
   }
+  .container h1 {
+    font-size: 30px;
+    font-weight: 600;
+  }

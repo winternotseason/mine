@@ -5,7 +5,7 @@ import classes from "./page.module.css";
 const JoinPage = () => {
   return (
     <div className={classes.container}>
-      <Image src="/mine-logo-l.png" alt="logo" width={180} height={54.15} />
+      <h1>MINE</h1>
       <JoinForm />
     </div>
   );
