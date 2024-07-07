@@ -1,46 +1,6 @@
-"use client";
-
-import { useBasketStore } from "@/store/auth-store";
 import classes from "./page.module.css";
-import { useState } from "react";
-
-import { useRouter } from "next/navigation";
 
 const BasketPage = () => {
-  const router = useRouter();
-  const basketItems = useBasketStore((state) => state.basket_items);
-  const allRemoveItems = useBasketStore((state) => state.allRemoveItem);
-  const increaseItemsAmount = useBasketStore(
-    (state) => state.increaseItemsAmount
-  );
-  const decreaseItemsAmount = useBasketStore(
-    (state) => state.decreaseItemsAmount
-  );
-  // 모든 장바구니 아이템 지우기
-  const removeSelectedItems = useBasketStore(
-    (state) => state.removeSelectedItems
-  );
-
-  // {'상품이름' : true/false} : 상품이 선택 되었는지의 여부
-  const [selectedItems, setSelectedItems] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const toggleSelect = (productName: string) => {
-    // '상품이름A' productName => { ...prev,'상품이름A' : !true }
-    setSelectedItems((prev) => ({
-      ...prev,
-      [productName]: !prev[productName],
-    }));
-  };
-
-  let total_price: number = 0;
-  // 만약 { '상품이름' : true }면, 상품 가격 * 상품 amount를 total_price에 저장
-  basketItems.forEach((item) => {
-    if (selectedItems[item.product_name]) {
-      total_price += +item.price * item.amount;
-    }
-  });
   //  상품 가격을 한국식으로 포맷팅하기
 
   return (

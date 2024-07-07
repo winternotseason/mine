@@ -3,13 +3,12 @@
 import classes from "./main-header.module.css";
 import SearchInput from "./search-input";
 import { redirect, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
-
 import { signOut, useSession } from "next-auth/react";
 import PcNav from "./pc-nav";
 
@@ -33,7 +32,7 @@ const MainHeader = () => {
         <div className={classes.pc_search}>
           <form
             action={() => {
-              redirect(`${process.env.NEXTAUTH_URL}search/${inputValue}`);
+              redirect(`${process.env.AUTH_URL}search/${inputValue}`);
             }}
           >
             <input
@@ -65,12 +64,12 @@ const MainHeader = () => {
             </>
           ) : (
             <>
-              <section className={classes.rightContent}>
+              <div className={classes.rightContent}>
                 <Link href="/join">
                   <PiUserPlusThin size={35} />
                   <p>회원가입</p>
                 </Link>
-              </section>
+              </div>
               <div className={classes.rightContent}>
                 <Link href="/login" className={classes.flex}>
                   <CiLogin size={35} />

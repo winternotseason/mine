@@ -46,7 +46,7 @@ export default function SearchInputResultPage({
         pageStart = +currentPage * 10 - 9;
       }
 
-      const response = await fetch(`${process.env.NEXTAUTH_URL}api/search`, {
+      const response = await fetch(`${process.env.AUTH_URL}api/search`, {
         method: "POST",
         body: JSON.stringify({ inputValue, start: pageStart, display }),
       });
