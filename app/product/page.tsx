@@ -14,7 +14,6 @@ const ProductDetail = () => {
   const Item = useDetailItemStore((state) => state.Item);
   const addItem = useBasketStore((state) => state.addItem);
   const [modal, setModal] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const handleAddToBasket = () => {
     addItem({ product_name: Item.title, price: Item.price });
     setModal(true);
@@ -38,7 +37,7 @@ const ProductDetail = () => {
           </div>
           <div className={classes.btn}>
             <button className={classes.buy}>
-              <Link href={Item.link}>구매하러 가기</Link>
+              <Link href={Item.link} target="_blank">구매하러 가기</Link>
             </button>
             <button className={classes.pick} onClick={handleAddToBasket}>
               장바구니에 담기
