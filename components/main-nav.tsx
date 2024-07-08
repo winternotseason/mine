@@ -5,8 +5,7 @@ import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { TfiBackRight } from "react-icons/tfi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { GoSignIn, GoSignOut } from "react-icons/go";
-import { GoPerson } from "react-icons/go";
+import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
 import { CiLogin } from "react-icons/ci";
 
@@ -15,9 +14,11 @@ const MainNav = () => {
   const { data, status } = useSession();
   return (
     <div className={classes.footer}>
-      <div className={classes.nav}>
-        <GoPerson className={classes.icon} />
-        <p>마이페이지</p>
+      <div className={classes.nav} onClick={()=>{
+        router.push('/basket')
+      }}>
+        <PiShoppingCartSimpleThin className={classes.icon} />
+        <p>장바구니</p>
       </div>
       <Link href="/">
         <div className={classes.nav}>

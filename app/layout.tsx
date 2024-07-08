@@ -5,6 +5,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SessionProviderWrapper from "@/components/session-provider";
 import { Montserrat } from "next/font/google";
+import Footer from "@/components/footer";
 
 const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -30,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}> 
+      <body className={montserrat.className}>
         <SessionProviderWrapper>
           <MainHeader />
           {children}

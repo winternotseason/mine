@@ -1,5 +1,5 @@
 .box {
-  width: 500px;
+  width: 20rem;
   margin-top: 3rem;
   border: 1px solid #c6c6c6;
   padding: 1.5rem;
@@ -52,4 +52,10 @@
   border: none;
   background-color: black;
   width: 100%;
+}
+
+@media all and (min-width: 1024px) {
+  .box {
+    width: 31.25rem;
+  }
 }

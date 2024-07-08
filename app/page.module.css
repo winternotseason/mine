@@ -54,28 +54,7 @@
   margin-bottom: 0.3rem;
 }
 
-.footer {
-  margin-top: 1.25rem;
-  font-size: 0.75rem;
-  background-color: #f8f9fd;
-  color: #757575;
-  padding-bottom: 3rem;
-}
 
-.footer div {
-  padding: 1rem;
-  border-top: 1px solid rgb(241, 244, 246);
-}
-
-.footer .title {
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-.info p {
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-}
 .content {
   width: 100%;
   display: flex;
@@ -103,7 +82,7 @@
   }
   .today_content {
     width: 87.5rem;
-    height: 23rem;
+    height: 29rem;
   }
   .goods_grid {
     gap: 2.5rem;

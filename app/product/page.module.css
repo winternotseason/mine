@@ -3,15 +3,24 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  padding-top: 5rem;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
 }
 
 .mainContent {
+  max-width: 80rem;
   margin-top: 3.1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 90%;
-  height: 100%;
+  aspect-ratio: 2/1;
 }
 
 .LeftHeader {
@@ -109,10 +118,9 @@
   z-index: 101;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: white;
   position: absolute;
-  width: 80%;
+  width: 24rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -120,6 +128,7 @@
 }
 
 .basketModal h1 {
+  align-self: center;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -127,14 +136,15 @@
 
 .modalImage {
   position: relative;
-  width: 100%;
+  width: 80%;
+  max-width: 10rem;
   aspect-ratio: 1/1;
 }
 
 .modalContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 0.9rem;
   margin-left: 0.5rem;
 }
@@ -142,12 +152,10 @@
 .modalFlex {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .modalPrice {
   font-weight: 600;
-  margin-top: 1.5rem;
 }
 
 .modalBtn {
@@ -156,7 +164,6 @@
   align-items: center;
   width: 100%;
   margin-top: 20px;
-  height: 3.1rem;
 }
 
 .modalBtn button {
@@ -177,4 +184,38 @@
 .modalBasketBtn {
   color: white;
   background-color: #2a2a2a;
+}
+@media all and (min-width: 1024px) {
+  .main {
+    align-items: center;
+    padding-top: 7rem;
+  }
+  .containerLeft {
+    max-width: 40rem;
+    width: 49%;
+    justify-content: flex-end;
+  }
+  .containerRight {
+    width: 49%;
+    justify-content: flex-end;
+  }
+  .mainContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .basketModal {
+    width: 40rem;
+    max-height: 20rem;
+  }
+  .modalContent {
+    font-size: 1.2rem;
+    justify-content: space-between;
+  }
+  .modalPrice {
+    font-size: 1.8rem;
+  }
+  .modalFlex {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
