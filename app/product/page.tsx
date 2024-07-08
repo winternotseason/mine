@@ -3,7 +3,6 @@
 import Image from "next/image";
 import classes from "./page.module.css";
 import { useDetailItemStore } from "@/store/detail-store";
-import Link from "next/link";
 import { useBasketStore } from "@/store/auth-store";
 import { useState } from "react";
 import { formatCurrency } from "@/lib/format";
@@ -38,10 +37,13 @@ const ProductDetail = () => {
               <p className={classes.price}>{formatCurrency(+Item.price)}</p>
             </div>
             <div className={classes.btn}>
-              <button className={classes.buy}>
-                <Link href={Item.link} target="_blank">
-                  구매하러 가기
-                </Link>
+              <button
+                className={classes.buy}
+                onClick={() => {
+                  window.open(Item.link, "_blank");
+                }}
+              >
+                구매하러 가기
               </button>
               <button className={classes.pick} onClick={handleAddToBasket}>
                 장바구니에 담기

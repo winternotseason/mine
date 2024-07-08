@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* 모바일 하면서 넣은 것들*/
-  padding-top: 6rem;
+  padding-top: 7rem;
+
 }
 
 .today {

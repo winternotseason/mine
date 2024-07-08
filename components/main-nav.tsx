@@ -15,10 +15,10 @@ const MainNav = () => {
   return (
     <div className={classes.footer}>
       <div className={classes.nav} onClick={()=>{
-        router.push('/basket')
+        router.back()
       }}>
-        <PiShoppingCartSimpleThin className={classes.icon} />
-        <p>장바구니</p>
+        <TfiBackRight className={classes.icon} />
+        <p>뒤로가기</p>
       </div>
       <Link href="/">
         <div className={classes.nav}>
