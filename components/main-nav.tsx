@@ -26,6 +26,12 @@ const MainNav = () => {
           <p>쇼핑홈</p>
         </div>
       </Link>
+      <Link href="/basket">
+        <div className={classes.nav}>
+          <PiShoppingCartSimpleThin className={classes.icon} />
+          <p>장바구니</p>
+        </div>
+      </Link>
       {data?.user ? (
         <div
           onClick={() => {
