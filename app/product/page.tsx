@@ -26,7 +26,7 @@ const ProductDetail = () => {
             <p className={classes.category}>{Item.category}</p>
           </div>
           <div className={classes.image}>
-            <Image src={Item.image} alt="" width={500} height={500} />
+            <Image src={Item.image} alt="" fill />
           </div>
         </div>
         <div className={classes.containerRight}>
