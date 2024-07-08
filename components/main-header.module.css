@@ -21,7 +21,7 @@
 }
 
 .header_logo {
-  margin-top:1px;
+  margin-top: 1px;
   display: flex;
   align-items: center;
   color: black;
@@ -47,6 +47,10 @@
 .search {
   /* display : flex */
   display: none;
+}
+
+.mobileModal {
+  display: block;
 }
 
 /*모바일 : right-content, 검색창 display: none, 
@@ -104,5 +108,8 @@ nav도 li 갯수 반으로 축소 */
     all: unset;
     width: 1.5rem;
     height: 1.5rem;
+  }
+  .mobileModal {
+    display: none;
   }
 }

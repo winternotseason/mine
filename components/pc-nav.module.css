@@ -1,5 +1,5 @@
 .pc_nav {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .pc_nav ul {
@@ -7,14 +7,24 @@
   display: flex;
   list-style: none;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .pc_nav li {
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .pc_nav a {
   all: unset;
+}
+
+.onPC {
+  display: none;
+}
+
+@media all and (min-width: 1024px) {
+  .onPC {
+    display: block;
+  }
 }

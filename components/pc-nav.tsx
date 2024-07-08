@@ -12,10 +12,10 @@ const PcNav = () => {
         <li>COUPON</li>
         <li>LUXURY</li>
         <li>LIVING</li>
-        <li>FOOD</li>
-        <li>BOOK</li>
-        <li>HOT</li>
-        <li>EVENT</li>
+        <li className={classes.onPC}>FOOD</li>
+        <li className={classes.onPC}>BOOK</li>
+        <li className={classes.onPC}>HOT</li>
+        <li className={classes.onPC}>EVENT</li>
       </ul>
     </nav>
   );

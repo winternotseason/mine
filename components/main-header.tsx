@@ -44,7 +44,7 @@ const MainHeader = () => {
 
         <div className={classes.header_right}>
           {/* 모바일 환경에서 보일 search ICON */}
-          <div>
+          <div className={classes.mobileModal}>
             <CiSearch
               size={25}
               onClick={() => {
@@ -94,12 +94,7 @@ const MainHeader = () => {
         </div>
       </div>
       <PcNav />
-      {searchModal && (
-        <MobileSearchModal
-          
-          setSearchModal={setSearchModal}
-        />
-      )}
+      {searchModal && <MobileSearchModal setSearchModal={setSearchModal} />}
     </header>
   );
 };
