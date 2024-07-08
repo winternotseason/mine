@@ -1,8 +1,8 @@
 "use client";
 
 import classes from "./main-header.module.css";
-import SearchInput from "./search-input";
-import { redirect, useParams } from "next/navigation";
+
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
@@ -11,25 +11,21 @@ import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
 import PcNav from "./pc-nav";
+import MobileSearchModal from "./mobile-search-modal";
 
 const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
-  const [isSearchPage, setIsSearchPage] = useState(false);
-  const params = useParams();
+  const [searchModal, setSearchModal] = useState(false);
   const { data, status } = useSession();
   return (
     <header className={`${classes.header}`}>
-      <div className={classes.header_first}>
+      <div className={classes.header_top}>
         <div className={classes.header_left}>
           <Link href="/">
             <p className={classes.header_logo}>MINE</p>
           </Link>
         </div>
-
-        {/* 검색 결과 페이지이면서 모바일 화면일때, isMain은 false가 된다.*/}
-        {isSearchPage && <SearchInput isMain={false} />}
-
-        <div className={classes.pc_search}>
+        <div className={classes.search}>
           <form
             action={() => {
               redirect(`${process.env.AUTH_URL}search/${inputValue}`);
@@ -47,10 +43,20 @@ const MainHeader = () => {
         </div>
 
         <div className={classes.header_right}>
+          {/* 모바일 환경에서 보일 search ICON */}
+          <div>
+            <CiSearch
+              size={25}
+              onClick={() => {
+                setSearchModal(true);
+              }}
+            />
+          </div>
+          {/* 세션 유저가 존재하면 로그아웃 버튼, 아니면 회원가입, 로그인 버튼 */}
           {data?.user ? (
             <>
-              <div className={classes.rightContent}></div>
-              <div className={classes.rightContent}>
+              <div className={classes.rightItem}></div>
+              <div className={classes.rightItem}>
                 <button
                   className={classes.logoutBtn}
                   onClick={() => {
@@ -64,13 +70,13 @@ const MainHeader = () => {
             </>
           ) : (
             <>
-              <div className={classes.rightContent}>
+              <div className={classes.rightItem}>
                 <Link href="/join">
                   <PiUserPlusThin size={35} />
                   <p>회원가입</p>
                 </Link>
               </div>
-              <div className={classes.rightContent}>
+              <div className={classes.rightItem}>
                 <Link href="/login" className={classes.flex}>
                   <CiLogin size={35} />
                   <p>로그인</p>
@@ -79,7 +85,7 @@ const MainHeader = () => {
             </>
           )}
 
-          <div className={classes.rightContent}>
+          <div className={classes.rightItem}>
             <Link href="/basket">
               <PiShoppingCartSimpleThin size={35} />
               <p>장바구니</p>
@@ -88,6 +94,12 @@ const MainHeader = () => {
         </div>
       </div>
       <PcNav />
+      {searchModal && (
+        <MobileSearchModal
+          
+          setSearchModal={setSearchModal}
+        />
+      )}
     </header>
   );
 };

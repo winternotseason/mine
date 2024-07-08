@@ -1,0 +1,44 @@
+.modalBackground {
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 101;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 5rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 0.2rem;
+}
+
+.modal input {
+  box-sizing: border-box;
+  all: unset;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.modal button {
+  all: unset;
+}

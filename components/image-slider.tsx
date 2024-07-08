@@ -63,7 +63,9 @@ const ImageSlider = () => {
         >
           {ads.map((item) => (
             <SwiperSlide className={classes.adBox} key={item.main}>
-              <Image src={item.src} alt={item.main} width={750} height={800} />
+              <div className={classes.adImageContainer}>
+                <Image src={item.src} alt={item.main} fill />
+              </div>
               <div className={classes.adText}>
                 <p>{item.sub}</p>
                 <center>
