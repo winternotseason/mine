@@ -34,7 +34,7 @@ const TodayGoodsSlider = () => {
           <SwiperSlide key={item.title} className={classes.slide}>
             <div className={classes.goods}>
               <div className={classes.image}>
-                <Image src={item.src} fill alt={item.title} />
+                <Image src={item.src} fill alt={item.title} priority/>
               </div>
               <div className={classes.description}>
                 <div className={classes.goodsName}>{item.title}</div>
