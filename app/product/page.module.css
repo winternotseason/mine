@@ -137,7 +137,7 @@
   justify-content: space-between;
 
   font-size: 0.9rem;
-  margin-left: 0.2rem;
+  margin-left: 0.5rem;
 }
 
 .modalFlex {
@@ -148,7 +148,7 @@
 
 .modalPrice {
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
 }
 
 .modalBtn {
@@ -162,7 +162,7 @@
 
 .modalBtn button {
   float: inline-end;
-  width: 48%;
+  width: 49%;
   height: 3.1rem;
   border: 1px solid rgb(51, 51, 51);
   padding: 0 20px;
