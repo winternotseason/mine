@@ -1,4 +1,5 @@
 .goods {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,8 +9,10 @@
 .goods .description {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 0.4rem 0;
+  height: 8rem;
 }
 
 .image {
@@ -19,10 +22,11 @@
 }
 
 .goodsName {
-  height: 39px;
+  height: 3rem;
 }
 
 .goodsPrice {
+  height: 3rem;
   margin-top: 5px;
   font-weight: 600;
 }
@@ -41,6 +45,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding:0.5rem;
+    font-size: 0.9rem;
   }
   .image {
     position: relative;

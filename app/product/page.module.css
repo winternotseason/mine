@@ -134,8 +134,7 @@
 .modalContent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
+  justify-content: center;
   font-size: 0.9rem;
   margin-left: 0.5rem;
 }
