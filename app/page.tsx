@@ -24,7 +24,7 @@ export default async function Home() {
           <div className={classes.today_header}>TODAYS KPOP PRODUCTS</div>
           <div className={classes.today_content}>
             <ul>
-              <TodayGoodsSlider />
+            <TodayGoodsSlider />
             </ul>
           </div>
         </div>

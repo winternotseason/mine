@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "@/app/globals.css";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import Image from "next/image";
 import classes from "./mobile-image-slider.module.css";
 import { ads } from "@/lib/main-ad";
@@ -25,10 +25,7 @@ const MoblieImageSlider = () => {
         delay: 2500,
         disableOnInteraction: false,
       }}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Autoplay, Pagination]}
+      modules={[Autoplay]}
       className="mySwiper"
       loop={true}
     >
