@@ -5,38 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.ad {
-  margin-top: 0.5rem;
-  margin: auto 0;
-  width: 120rem;
-  height: 50rem;
-  aspect-ratio: 2.9 / 1;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.adBackgroundLeft {
-  position: absolute;
-  width: 36.5625rem;
-  height: 100%;
-  z-index: 2;
-  left: 0;
-  background-color: rgb(0, 0, 0, 0.4);
-  pointer-events: none;
-}
-
-.adBackgroundRight {
-  position: absolute;
-  width: 36.5625rem;
-  height: 100%;
-  z-index: 3;
-  right: 0;
-  background-color: rgb(0, 0, 0, 0.4);
-  pointer-events: none;
+  /* 모바일 하면서 넣은 것들*/
+  padding-top: 10rem;
 }
 
 .today {
@@ -107,6 +77,14 @@
   flex-direction: column;
   align-items: center;
 }
+
+.ad {
+  display: none;
+}
+.mobileAd {
+  width: 100%;
+  aspect-ratio: 1/1.06;
+}
 @media all and (min-width: 1024px) {
   .main {
     margin-top: 8rem;
@@ -127,5 +105,36 @@
     flex-direction: column;
     font-size: 0.75rem;
     padding: 2rem;
+  }
+  .ad {
+    margin-top: 0.5rem;
+    margin: auto 0;
+    width: 120rem;
+    height: 50rem;
+    aspect-ratio: 2.9 / 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .adBackgroundLeft {
+    position: absolute;
+    width: 36.5625rem;
+    height: 100%;
+    z-index: 2;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  .adBackgroundRight {
+    position: absolute;
+    width: 36.5625rem;
+    height: 100%;
+    z-index: 3;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.4);
+    pointer-events: none;
   }
 }
