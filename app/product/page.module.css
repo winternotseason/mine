@@ -15,7 +15,7 @@
 }
 
 .LeftHeader {
-  padding-top:1rem;
+  padding-top: 1rem;
   font-size: 0.8rem;
   color: #4e4e4e;
   margin-bottom: 0.625rem;
@@ -87,14 +87,14 @@
 }
 
 .buy {
-  color:black;
+  color: black;
   background-color: #ffffff;
 }
 
 .buy a {
   all: unset;
 }
-
+/* 장바구니 버튼 클릭시 나타나는 모달 */
 .modalBackground {
   z-index: 100;
   width: 100dvw;
@@ -112,23 +112,32 @@
   align-items: center;
   background-color: white;
   position: absolute;
-  width: 670px;
-  top: 485px;
-  padding: 30px;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.3rem;
 }
 
 .basketModal h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
+}
+
+.modalImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 
 .modalContent {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 20px;
-  margin-left: 20px;
+
+  font-size: 0.9rem;
+  margin-left: 0.2rem;
 }
 
 .modalFlex {
@@ -139,21 +148,25 @@
 
 .modalPrice {
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 }
 
 .modalBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin-top: 20px;
   height: 3.1rem;
 }
 
 .modalBtn button {
   float: inline-end;
-  width: 23.1rem;
+  width: 48%;
   height: 3.1rem;
   border: 1px solid rgb(51, 51, 51);
   padding: 0 20px;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 400;
   cursor: pointer;
 }
@@ -163,7 +176,6 @@
 }
 
 .modalBasketBtn {
-  margin-left: 30px;
   color: white;
   background-color: #2a2a2a;
 }

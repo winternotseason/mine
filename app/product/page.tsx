@@ -52,7 +52,7 @@ const ProductDetail = () => {
             <h1>장바구니 담기 완료</h1>
             <div className={classes.modalFlex}>
               <div className={classes.modalImage}>
-                <Image src={Item.image} alt="" width={150} height={150} />
+                <Image src={Item.image} alt="" fill />
               </div>
               <div className={classes.modalContent}>
                 <p>{Item.title}</p>
