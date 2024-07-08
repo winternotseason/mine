@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
   position: fixed;
-  z-index:99;
+  z-index: 1;
   bottom: 0;
   display: flex;
   justify-content: space-around;
@@ -48,8 +48,6 @@
 .footer a {
   all: unset;
 }
-
-
 
 @media all and (min-width: 1024px) {
   .footer {

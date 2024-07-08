@@ -1,8 +1,8 @@
 .page_counter {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
-  padding-bottom: 100px;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
 }
 
 .page_counter ul {
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  width: 300px;
+  width: 18.5rem;
 }
 
 .active {
@@ -27,4 +27,7 @@
 
 .notPage {
   cursor: default;
+}
+@media all and (min-width: 1024px) { 
+
 }

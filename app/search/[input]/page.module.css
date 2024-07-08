@@ -3,22 +3,24 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 135px;
-  margin-bottom: 54.59px;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
 }
 
 .items_grid {
+  width: 90%;
   border-top: 1px solid rgb(220, 220, 220);
-  margin-top: 40px;
+  margin-top: 2.5rem;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 32px 0;
-  row-gap: 40px;
+  padding: 1rem 0;
+  column-gap: 0.3rem;
+  row-gap: 0.5rem;
 }
 
 .item {
-  width: 200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -34,11 +36,11 @@
   aspect-ratio: 1 / 1;
 }
 .item_text {
-  height: 132px;
+  height: 9rem;
 }
 
 .item_text p {
-  font-size: 13px;
+  font-size: 1rem;
 }
 
 .item .mall {
@@ -67,8 +69,8 @@
   all: unset;
   background-color: #526dfe;
   color: white;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
 }
 
@@ -82,12 +84,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1500px;
+  width: 94rem;
 }
 
 .content h1 {
-  margin-top: 40px;
-  font-size: 30px;
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -120,6 +122,7 @@
     font-size: 12px;
   }
 }
+
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .items_grid {
     grid-template-columns: repeat(3, 1fr);
