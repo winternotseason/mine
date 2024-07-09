@@ -36,10 +36,10 @@
   border: none;
   margin-left: 1rem;
   width: 100%;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
 }
 .box .icon {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
 }
 
 .box button {
@@ -47,7 +47,7 @@
   margin-top: 1rem;
   border-radius: 10px;
   padding: 0.8rem 0;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   color: white;
   border: none;
   background-color: black;
@@ -57,5 +57,10 @@
 @media all and (min-width: 1024px) {
   .box {
     width: 31.25rem;
+  }
+  .box input,
+  .box button,
+  .box .icon {
+    font-size: 1.1rem;
   }
 }

@@ -41,15 +41,15 @@
   border: none;
   margin-left: 1rem;
   width: 100%;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .box .icon {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .box button {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 10px;
@@ -62,5 +62,10 @@
 @media all and (min-width: 1024px) {
   .box {
     width: 31.25rem;
+  }
+  .box input,
+  .box button,
+  .box .icon {
+    font-size: 1.1rem;
   }
 }
