@@ -4,18 +4,18 @@
 ### **네이버 검색 쇼핑 api**를 활용한 프론트엔드 쇼핑몰 구현 프로젝트, MINE 입니다.
 #### 원하는 상품을 탐색하고, 최저가로 즐겨보세요!
 
-## 개요
+## ✍️ 개요
 
 - 📄 프로젝트 명: MINE
 - 📅 개발 기간: 2024.06.27-2024.07.11
 - 🔨 도구: NextJS, CSS-module, MongoDB, Vercel ···
 - 👩🏻‍💻 개발자: 황서연 (개인개발)
 
-## 배포 주소
+## 💾 배포 주소
 
-💾 [https://mine-shopping.vercel.app/](https://mine-shopping.vercel.app/)
+[https://mine-shopping.vercel.app/](https://mine-shopping.vercel.app/)
 
-## 기술 스택
+## ⚒️ 기술 스택
 
 ### Environment
 ![Visual Studio Code](https://img.shields.io/badge/visual%20studio%20code-297ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
@@ -32,7 +32,7 @@
 ![Zustand](https://img.shields.io/badge/zustand-5B4524?style=flat-square&logo=&logoColor=white)
 
 
-## 화면 구성
+## 📺 화면 구성
 
 | 화면  | 모바일 이미지                                                                                             | 데스크탑 이미지                                                                                          |
 |-----------|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -42,14 +42,14 @@
 | **가입단**   | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/0739aa1a-da7b-4ca0-8f5a-39b551e6b779" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/c0b8ca02-dd06-4896-89ff-2830b73ba41d" width="500"/> |
 | **로그인** | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/3c22a9b2-209c-4b9b-a948-980e37517484" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/7b8f28e6-686c-4de3-9b91-254de6ef1895" width="500"/> |
 
-## 주요 기능
+## 🔑 주요 기능
 
 - 🔎 **상품 탐색 기능**: 네이버 쇼핑 api를 자체 서버 API를 이용해 호출
 - ✨ **회원 기능**: Next-Auth/MongoDB를 이용해 구현, Next-Auth의 자체적인 로그인 로그아웃 기능을 이용한 안전한 쿠키 사용
 - 🎬 **광고 슬라이더 기능**: 메인 광고 배너와, 오늘의 상품 목록들을 swiper 라이브러리를 통해 구현
 - 🛒 **실제 구매 사이트 이동**: 사용자가 선택한 상품을 구매하러가기 링크를 통해 실제 구매가 가능한 사이트로 이동
 
-## 파일 구조
+## 📁 파일 구조
 ```
 📦app
  ┣ 📂api
@@ -118,6 +118,6 @@
 ```
 외 lib, store 폴더 등
 
-## 블로그
+## 📄 블로그 정리
 [![블로그1](https://github.com/winternotseason/winternotseason/assets/157186101/17ab073a-a441-4b28-a4f4-01b0d55dcdbb)](https://seodevelopment.tistory.com/66)
 [![블로그2](https://github.com/winternotseason/winternotseason/assets/157186101/7a2f5b70-27c5-4b14-9cc1-51c1255b1009)](https://seodevelopment.tistory.com/67)
