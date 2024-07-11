@@ -17,6 +17,7 @@ const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchModal, setSearchModal] = useState(false);
   const { data, status } = useSession();
+
   return (
     <header className={`${classes.header}`}>
       <div className={classes.header_top}>
@@ -28,7 +29,7 @@ const MainHeader = () => {
         <div className={classes.search}>
           <form
             action={() => {
-              redirect(`${process.env.AUTH_URL}search/${inputValue}`);
+              redirect(`${process.env.NEXT_PUBLIC_URL}search/${inputValue}`);
             }}
           >
             <input

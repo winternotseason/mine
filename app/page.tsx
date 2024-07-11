@@ -1,15 +1,10 @@
-import ImageSlider from "@/components/image-slider";
-
 import classes from "./page.module.css";
-
-import { auth } from "@/app/auth";
+import ImageSlider from "@/components/image-slider";
 import TodayGoodsSlider from "@/components/today-goods-slider";
 import MoblieImageSlider from "@/components/mobile-image-slider";
 import Footer from "@/components/footer";
 
 export default async function Home() {
-  const session = await auth();
-  console.log(session);
   return (
     <main className={classes.main}>
       <div className={classes.content}>
@@ -25,7 +20,7 @@ export default async function Home() {
           <div className={classes.today_header}>TODAYS KPOP PRODUCTS</div>
           <div className={classes.today_content}>
             <ul>
-            <TodayGoodsSlider />
+              <TodayGoodsSlider />
             </ul>
           </div>
         </div>

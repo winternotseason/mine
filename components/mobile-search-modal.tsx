@@ -18,7 +18,7 @@ const MobileSearchModal = ({ setSearchModal }: Props) => {
     e.preventDefault();
     setSearchModal(false);
     if (inputValue.trim() !== "") {
-      router.push(`${process.env.AUTH_URL}search/${inputValue}`);
+      router.replace(`${process.env.NEXT_PUBLIC_URL}search/${inputValue}`);
     }
   };
 

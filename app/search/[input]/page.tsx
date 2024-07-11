@@ -5,7 +5,6 @@ import classes from "./page.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ItemsLoading from "@/components/Items-loading";
-
 import { useDetailItemStore } from "@/store/detail-store";
 import { useRouter } from "next/navigation";
 import PageCounter from "@/components/page-counter";
@@ -24,12 +23,14 @@ export default function SearchInputResultPage({
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const setDetailItem = useDetailItemStore((state) => state.setDetailItem);
+
   const isPC = useMediaQuery({
     query: "(min-width: 1024px)",
   });
   const isTablet = useMediaQuery({
     query: "(min-width: 768px) and (max-width: 1023px)",
   });
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
@@ -46,13 +47,12 @@ export default function SearchInputResultPage({
         pageStart = +currentPage * 10 - 9;
       }
 
-      const response = await fetch(`${process.env.AUTH_URL}api/search`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}api/search`, {
         method: "POST",
         body: JSON.stringify({ inputValue, start: pageStart, display }),
       });
       const data = await response.json();
       const items: Array<Item> = data.items;
-      console.log(items);
       setItems(items);
       setLoading(false);
     };
