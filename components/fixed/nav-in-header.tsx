@@ -1,7 +1,7 @@
 import Link from "next/link";
-import classes from "./pc-nav.module.css";
+import classes from "./nav-in-header.module.css";
 
-const PcNav = () => {
+const NavInHeader = () => {
   return (
     <nav className={classes.pc_nav}>
       <ul>
@@ -21,4 +21,4 @@ const PcNav = () => {
   );
 };
 
-export default PcNav;
+export default NavInHeader;

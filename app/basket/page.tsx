@@ -1,7 +1,6 @@
 import classes from "./page.module.css";
 
 const BasketPage = () => {
-  //  상품 가격을 한국식으로 포맷팅하기
 
   return (
     <div className={classes.container}>

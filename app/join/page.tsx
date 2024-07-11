@@ -1,5 +1,4 @@
-import JoinForm from "@/components/join-form";
-import Image from "next/image";
+import JoinForm from "@/components/user/join-form";
 import classes from "./page.module.css";
 
 const JoinPage = () => {

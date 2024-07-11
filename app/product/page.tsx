@@ -3,7 +3,7 @@
 import Image from "next/image";
 import classes from "./page.module.css";
 import { useDetailItemStore } from "@/store/detail-store";
-import { useBasketStore } from "@/store/auth-store";
+
 import { useState } from "react";
 import { formatCurrency } from "@/lib/format";
 import { useRouter } from "next/navigation";
@@ -12,12 +12,8 @@ import Footer from "@/components/footer";
 const ProductDetail = () => {
   const router = useRouter();
   const Item = useDetailItemStore((state) => state.Item);
-  const addItem = useBasketStore((state) => state.addItem);
   const [modal, setModal] = useState(false);
-  const handleAddToBasket = () => {
-    addItem({ product_name: Item.title, price: Item.price });
-    setModal(true);
-  };
+
   return (
     <div className={classes.container}>
       <div className={classes.main}>
@@ -45,7 +41,7 @@ const ProductDetail = () => {
               >
                 구매하러 가기
               </button>
-              <button className={classes.pick} onClick={handleAddToBasket}>
+              <button className={classes.pick} onClick={()=>{setModal(true)}}>
                 장바구니에 담기
               </button>
             </div>

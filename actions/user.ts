@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, signIn } from "@/app/auth";
+import { signIn } from "@/app/auth";
 
 import { redirect } from "next/navigation";
 
@@ -32,7 +32,7 @@ export const signup = async (
       body: JSON.stringify({ name, id, password }),
     });
     const result = await res.json();
-    console.log(result.status, result.message);
+
     if (result.status === 201) {
       success = true;
     } else {
@@ -52,7 +52,7 @@ export const login = async (
   const password = formData.get("password") as string;
   let success;
   try {
-    const res = await signIn("credentials", {
+    await signIn("credentials", {
       username: id,
       password,
       redirect: false,

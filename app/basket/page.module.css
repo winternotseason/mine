@@ -87,15 +87,18 @@
 .paymentBox ul {
   list-style: none;
 }
+
 .paymentBox li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-weight: 400;
 }
+
 .fee {
   margin-top: 9px;
 }
+
 .total {
   color: rgb(248, 86, 54);
   border-top: 1px solid rgb(210, 210, 210);

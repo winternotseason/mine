@@ -1,22 +1,22 @@
 .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .join {
-    cursor: pointer;
-  
-    color: #888888;
-  }
-  
-  .container a {
-    all: unset;
-  }
-  .container h1 {
-    font-size: 30px;
-    font-weight: 600;
-  }
+.container a {
+  all: unset;
+}
+.container h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.join {
+  cursor: pointer;
+
+  color: #888888;
+}

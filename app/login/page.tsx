@@ -1,7 +1,6 @@
-import Image from "next/image";
 import classes from "./page.module.css";
 import Link from "next/link";
-import LoginForm from "@/components/login-form";
+import LoginForm from "@/components/user/login-form";
 
 const LoginPage = () => {
   return (

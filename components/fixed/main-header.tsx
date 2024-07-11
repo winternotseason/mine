@@ -1,7 +1,6 @@
 "use client";
 
 import classes from "./main-header.module.css";
-
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
@@ -10,8 +9,8 @@ import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
-import PcNav from "./pc-nav";
-import MobileSearchModal from "./mobile-search-modal";
+import NavInHeader from "./nav-in-header";
+import MobileSearchModal from "../mobile-search-modal";
 
 const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
@@ -94,7 +93,7 @@ const MainHeader = () => {
           </div>
         </div>
       </div>
-      <PcNav />
+      <NavInHeader />
       {searchModal && <MobileSearchModal setSearchModal={setSearchModal} />}
     </header>
   );
