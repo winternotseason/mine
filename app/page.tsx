@@ -1,7 +1,7 @@
 import classes from "./page.module.css";
-import ImageSlider from "@/components/image-slider";
-import TodayGoodsSlider from "@/components/today-goods-slider";
-import MoblieImageSlider from "@/components/mobile-image-slider";
+import ImageSlider from "@/components/slider/image-slider";
+import TodayGoodsSlider from "@/components/slider/today-goods-slider";
+import MoblieImageSlider from "@/components/slider/mobile-image-slider";
 import Footer from "@/components/footer";
 
 export default async function Home() {

@@ -5,7 +5,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SessionProviderWrapper from "@/components/session-provider";
 import { Montserrat } from "next/font/google";
-import Footer from "@/components/footer";
 
 const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -15,6 +14,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "MINE",
   description: "나만의 쇼핑을 즐겨보세요!",
+  icons: {
+		icon: "/icon.PNG",
+	},
 };
 
 export const viewport: Viewport = {
