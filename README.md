@@ -25,7 +25,10 @@
   <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/></a>&nbsp
  </p>
 <h3>Config</h3>
-<img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/></a>&nbsp
+<p>
+  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/></a>&nbsp
+ </p>
+
 <h3>Development</h3>
 <p>
  <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white"/></a>&nbsp 
@@ -74,6 +77,13 @@
       </td>
       <td><img width="800" alt="signin-pc" src="https://github.com/winternotseason/winternotseason/assets/157186101/7b8f28e6-686c-4de3-9b91-254de6ef1895">
       </td>
-    </tr>
+    </tr
+       </tr>
   </tbody>
 </table>
+<br />
+<h2>주요 기능</h2>
+<p>🔎 상품 탐색 기능 : 네이버 쇼핑 api를 자체 서버 API를 이용해 호출</p>
+<p>✨ 회원 기능 : Next-Auth/MongoDB를 이용해 구현, Next-Auth의 자체적인 로그인 로그아웃 기능을 이용한 안전한 쿠키 사용</p>
+<p>🎬 광고 슬라이더 기능 : 메인 광고 배너와, 오늘의 상품 목록들을 swiper 라이브러리를 통해 구현</p>
+<p>🛒 실제 구매 사이트 이동 : 사용자가 선택한 상품을 구매하러가기 링크를 통해 실제 구매가 가능한 사이트로 이동</p>
