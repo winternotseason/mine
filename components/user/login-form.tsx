@@ -10,17 +10,23 @@ import { signIn } from "next-auth/react";
 const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     try {
-      await signIn("credentials", {
+      const res = await signIn("credentials", {
         username: id,
         password,
         redirect: false,
       });
-      router.replace("/");
+      console.log(res)
+      if (res.error) {
+        setMessage("아이디 또는 비밀번호가 다릅니다.");
+      } else {
+        router.replace("/");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -49,6 +55,9 @@ const LoginForm = () => {
           }}
         />
       </div>
+      {message.trim().length !== 0 && (
+        <p className={classes.message}>{message}</p>
+      )}
       <p>
         <button>로그인</button>
       </p>

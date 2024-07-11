@@ -31,7 +31,7 @@ const JoinForm = () => {
           placeholder="비밀번호 확인"
         />
       </div>
-      <p>{formState.message && formState.message}</p>
+      <p className={classes.message}>{formState.message && formState.message}</p>
       <p>
         <button>가입하기</button>
       </p>
