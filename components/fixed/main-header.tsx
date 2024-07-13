@@ -15,6 +15,7 @@ import MobileSearchModal from "../mobile-search-modal";
 const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchModal, setSearchModal] = useState(false);
+
   const { data, status } = useSession();
 
   return (

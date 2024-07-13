@@ -6,22 +6,25 @@ import { CiLock } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { signIn } from "next-auth/react";
+import { ClipLoader } from "react-spinners";
 
 const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [pendding, setPendding] = useState(false);
   const router = useRouter();
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     try {
+      setPendding(true);
       const res = await signIn("credentials", {
         username: id,
         password,
         redirect: false,
       });
-      console.log(res)
+      setPendding(false);
       if (res.error) {
         setMessage("아이디 또는 비밀번호가 다릅니다.");
       } else {
@@ -55,12 +58,14 @@ const LoginForm = () => {
           }}
         />
       </div>
+      <p>
+        <button>
+          {pendding ? <ClipLoader color="#eeeeee" size={17} /> : "로그인"}
+        </button>
+      </p>
       {message.trim().length !== 0 && (
         <p className={classes.message}>{message}</p>
       )}
-      <p>
-        <button>로그인</button>
-      </p>
     </form>
   );
 };

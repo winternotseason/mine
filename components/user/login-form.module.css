@@ -62,7 +62,7 @@
 
 .message {
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   font-size: 0.7rem;
 }
 
@@ -74,5 +74,8 @@
   .box button,
   .box .icon {
     font-size: 1.1rem;
+  }
+  .message {
+    font-size:0.9rem;
   }
 }

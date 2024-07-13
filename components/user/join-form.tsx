@@ -3,11 +3,18 @@
 import classes from "./join-form.module.css";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { signup } from "@/actions/user";
+import {ClipLoader} from 'react-spinners'
 
-const JoinForm = () => {
+const Sumbit = () => {
+  const { pending } = useFormStatus();
+  return <button>{pending ? <ClipLoader color="#eeeeee" size={20}/> : "가입하기"}</button>;
+};
+
+export default function JoinForm() {
   const [formState, formAction] = useFormState(signup, { message: "" });
+
   // signup 함수에 name, id, password, password-confirm 받아서 보냄
   return (
     <form className={classes.box} action={formAction}>
@@ -31,12 +38,12 @@ const JoinForm = () => {
           placeholder="비밀번호 확인"
         />
       </div>
-      <p className={classes.message}>{formState.message && formState.message}</p>
+      <p className={classes.message}>
+        {formState.message && formState.message}
+      </p>
       <p>
-        <button>가입하기</button>
+        <Sumbit />
       </p>
     </form>
   );
-};
-
-export default JoinForm;
+}
