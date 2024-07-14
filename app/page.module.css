@@ -6,7 +6,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding-top: 7rem;
-  
 }
 
 .today {
@@ -28,7 +27,10 @@
 
 .today_content {
   width: 100%;
+  max-width: 40rem;
+  min-width: 30rem;
   height: 22rem;
+  margin-bottom: 10rem;
 }
 
 .today p {
@@ -54,13 +56,11 @@
   margin-bottom: 0.3rem;
 }
 
-
 .content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom:20rem;
 }
 
 .ad {
@@ -84,6 +84,7 @@
   .today_content {
     width: 87.5rem;
     height: 29rem;
+    max-width: none;
   }
   .goods_grid {
     gap: 2.5rem;
