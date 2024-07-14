@@ -5,7 +5,6 @@ import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { TfiBackRight } from "react-icons/tfi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
 import { CiLogin } from "react-icons/ci";
 
@@ -14,9 +13,12 @@ const MainNav = () => {
   const { data, status } = useSession();
   return (
     <div className={classes.footer}>
-      <div className={classes.nav} onClick={()=>{
-        router.back()
-      }}>
+      <div
+        className={classes.nav}
+        onClick={() => {
+          router.back();
+        }}
+      >
         <TfiBackRight className={classes.icon} />
         <p>뒤로가기</p>
       </div>
@@ -26,12 +28,7 @@ const MainNav = () => {
           <p>쇼핑홈</p>
         </div>
       </Link>
-      <Link href="/basket">
-        <div className={classes.nav}>
-          <PiShoppingCartSimpleThin className={classes.icon} />
-          <p>장바구니</p>
-        </div>
-      </Link>
+
       {data?.user ? (
         <div
           onClick={() => {
