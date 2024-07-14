@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
-import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
@@ -85,13 +84,6 @@ const MainHeader = () => {
               </div>
             </>
           )}
-
-          <div className={classes.rightItem}>
-            <Link href="/basket">
-              <PiShoppingCartSimpleThin size={35} />
-              <p>장바구니</p>
-            </Link>{" "}
-          </div>
         </div>
       </div>
       <NavInHeader />
