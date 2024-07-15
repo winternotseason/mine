@@ -3,6 +3,8 @@
 import React from "react";
 import classes from "./post-delete-button.module.css";
 import { useRouter } from "next/navigation";
+import revalidate from "@/lib/revalidate";
+
 
 const PostDeleteBtn = ({ postid }: { postid: string }) => {
   const router = useRouter();
@@ -13,9 +15,9 @@ const PostDeleteBtn = ({ postid }: { postid: string }) => {
         body: JSON.stringify(postid),
       });
       const result = await res.json();
-      console.log(result)
       if(result.status === 201) {
-        router.push('/service')
+       await revalidate('/service')
+       router.push('/service')
       }
     } catch (err) {
       console.error(err);
