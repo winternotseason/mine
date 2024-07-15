@@ -1,26 +1,27 @@
-'use client';
+"use client";
 
 import React from "react";
 import classes from "./page.module.css";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { post } from "@/actions/post";
 
 const PostPage = () => {
   const { data, status } = useSession();
 
   return (
     <div className={classes.container}>
+      <h1>1:1 문의</h1>
       {status === "unauthenticated" ? (
         <h2 className={classes.message}>로그인이 필요합니다</h2>
       ) : (
-        <form>
+        <form action={post}>
           <div className={classes.input_title}>
             <label htmlFor="title">제목</label>
-            <input type="text" name="title" id="title" />
+            <input type="text" name="title" id="title" required />
           </div>
           <div className={classes.input_content}>
             <label htmlFor="content">내용</label>
-            <textarea name="content" id="content" />
+            <textarea name="content" id="content" required/>
           </div>
           <button>작성</button>
         </form>
