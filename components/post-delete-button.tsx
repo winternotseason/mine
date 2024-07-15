@@ -5,7 +5,6 @@ import classes from "./post-delete-button.module.css";
 import { useRouter } from "next/navigation";
 import revalidate from "@/lib/revalidate";
 
-
 const PostDeleteBtn = ({ postid }: { postid: string }) => {
   const router = useRouter();
   const handleDeletePost = async () => {
@@ -15,9 +14,9 @@ const PostDeleteBtn = ({ postid }: { postid: string }) => {
         body: JSON.stringify(postid),
       });
       const result = await res.json();
-      if(result.status === 201) {
-       await revalidate('/service')
-       router.push('/service')
+      if (result.status === 201) {
+        await revalidate(`${process.env.NEXT_PUBLIC_URL}/service`);
+        router.push(`${process.env.NEXT_PUBLIC_URL}/service`);
       }
     } catch (err) {
       console.error(err);

@@ -10,7 +10,10 @@ const Sevice = async () => {
     <div className={classes.container}>
       <div className={classes.header}>
         <h1>고객센터</h1>
-        <Link href="/service/post" className={classes.post_btn}>
+        <Link
+          href={`${process.env.NEXT_PUBLIC_URL}service/post`}
+          className={classes.post_btn}
+        >
           글쓰기
         </Link>
       </div>
@@ -20,7 +23,12 @@ const Sevice = async () => {
         ) : (
           <ul className={classes.posts_list}>
             {posts.reverse().map((post) => (
-              <Link href={`/service/${post._id.toString()}`} key={post._id.toString()}>
+              <Link
+                href={`${
+                  process.env.NEXT_PUBLIC_URL
+                }service/${post._id.toString()}`}
+                key={post._id.toString()}
+              >
                 <li className={classes.post}>
                   <p>{post.title}</p>
                   <p>{post.user}</p>
