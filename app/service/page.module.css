@@ -17,6 +17,22 @@
   text-decoration: none;
 }
 
+.posts_box {
+  padding: 0 2rem;
+}
+
 .posts_list {
-    padding:2rem;
+  list-style: none;
+  padding: 2rem;
+}
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.post p {
+    color:#373737;
 }
