@@ -8,8 +8,8 @@ import { CiSearch } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
 import { signOut, useSession } from "next-auth/react";
-import NavInHeader from "./nav-in-header";
 import MobileSearchModal from "../mobile-search-modal";
+import { PiQuestionThin } from "react-icons/pi";
 
 const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
@@ -55,7 +55,12 @@ const MainHeader = () => {
           {/* 세션 유저가 존재하면 로그아웃 버튼, 아니면 회원가입, 로그인 버튼 */}
           {data?.user ? (
             <>
-              <div className={classes.rightItem}></div>
+              <div className={classes.rightItem}>
+                <Link className={classes.logoutBtn} href="/service">
+                  <PiQuestionThin size={35} />
+                  <p>고객센터</p>
+                </Link>
+              </div>
               <div className={classes.rightItem}>
                 <button
                   className={classes.logoutBtn}
@@ -86,7 +91,6 @@ const MainHeader = () => {
           )}
         </div>
       </div>
-      <NavInHeader />
       {searchModal && <MobileSearchModal setSearchModal={setSearchModal} />}
     </header>
   );

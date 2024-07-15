@@ -1,0 +1,22 @@
+.container {
+  padding-top: 4.3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.post_btn {
+  padding: 0.5rem;
+  color: white;
+  background-color: black;
+  align-self: flex-end;
+  text-decoration: none;
+}
+
+.posts_list {
+    padding:2rem;
+}

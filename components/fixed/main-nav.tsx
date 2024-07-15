@@ -2,7 +2,8 @@
 
 import classes from "./main-nav.module.css";
 import { BiSolidShoppingBagAlt } from "react-icons/bi";
-import { TfiBackRight } from "react-icons/tfi";
+import { PiQuestionThin } from "react-icons/pi";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
@@ -16,11 +17,11 @@ const MainNav = () => {
       <div
         className={classes.nav}
         onClick={() => {
-          router.back();
+          router.push('/service');
         }}
       >
-        <TfiBackRight className={classes.icon} />
-        <p>뒤로가기</p>
+        <PiQuestionThin className={classes.icon} />
+        <p>고객센터</p>
       </div>
       <Link href="/">
         <div className={classes.nav}>
