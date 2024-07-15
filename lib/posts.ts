@@ -20,9 +20,9 @@ export const detailPost = async (postid: string) => {
     const collection = db.collection("posts");
     const objid = new ObjectId(postid);
     const post = await collection.findOne({ _id: objid });
+   
     return post;
   } catch {
     console.log("글 불러오기 오류");
   }
 };
-

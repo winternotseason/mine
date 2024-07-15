@@ -13,7 +13,7 @@ export const {
     jwt({ token }) {
       return token;
     },
-    session({ session, newSession, user }) {
+    session({ session }) {
       return session;
     },
   },
@@ -40,7 +40,7 @@ export const {
         }
 
         // Any object returned will be saved in `user` property of the JWT
-        return { id: user.id, name: user.name, ...user };
+        return { email: user.id, name: user.name, ...user };
       },
     }),
   ],
