@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.post_box {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  width: 100%;
+  height: 26rem;
+  padding: 1rem;
+}
+
+
+
+.post_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.post_content {
+  padding: 0.5rem 0;
+  border-top: 1px solid rgb(187, 187, 187);
+  border-bottom: 1px solid rgb(187, 187, 187);
+  height: 20rem;
+}
