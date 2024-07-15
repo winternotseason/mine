@@ -76,6 +76,12 @@ const MainHeader = () => {
           ) : (
             <>
               <div className={classes.rightItem}>
+                <Link className={classes.logoutBtn} href="/service">
+                  <PiQuestionThin size={35} />
+                  <p>고객센터</p>
+                </Link>
+              </div>
+              <div className={classes.rightItem}>
                 <Link href="/join">
                   <PiUserPlusThin size={35} />
                   <p>회원가입</p>

@@ -19,6 +19,6 @@ export const post = async (formData: FormData) => {
     success = true;
   } catch {}
   if (success) {
-    redirect(`${process.env.NEXT_PUBLIC_URL}/service`);
+    redirect('/service');
   }
 };

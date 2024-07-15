@@ -7,7 +7,7 @@ import { auth } from "@/app/auth";
 const DetailPost = async ({ params }: { params: { postid: string } }) => {
   const post = await detailPost(params.postid);
   const session = await auth();
-
+  console.log(session)
   if (!post) {
     return (
       <div className={classes.container}>
@@ -16,7 +16,7 @@ const DetailPost = async ({ params }: { params: { postid: string } }) => {
     );
   }
 
-  if (session.user.email !== post.id) {
+  if (!session || session.user.email !== post.id) {
     return (
       <div className={classes.container}>
         <h1>작성자만 볼 수 있습니다.</h1>
