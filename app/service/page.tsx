@@ -19,11 +19,13 @@ const Sevice = async () => {
           "작성된 글이 없습니다."
         ) : (
           <ul className={classes.posts_list}>
-            {posts.reverse().map((post) => (
-              <li key={post._id.toString()} className={classes.post}>
-                <p>{post.title}</p>
-                <p>{post.user}</p>
-              </li>
+            {posts.reverse().map((post, index) => (
+              <Link href={`/service/${index}`} key={post._id.toString()}>
+                <li className={classes.post}>
+                  <p>{post.title}</p>
+                  <p>{post.user}</p>
+                </li>
+              </Link>
             ))}
           </ul>
         )}

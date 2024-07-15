@@ -17,13 +17,14 @@
   text-decoration: none;
 }
 
-.posts_box {
-  padding: 0 2rem;
-}
-
 .posts_list {
   list-style: none;
   padding: 2rem;
+}
+
+.posts_list a {
+  color: black;
+  text-decoration-line: none;
 }
 
 .post {
@@ -34,5 +35,5 @@
 }
 
 .post p {
-    color:#373737;
+  color: #373737;
 }
