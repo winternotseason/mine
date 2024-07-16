@@ -3,7 +3,6 @@
 import React from "react";
 import classes from "./page.module.css";
 import { post } from "@/actions/post";
-import { auth } from "@/app/auth";
 import { useSession } from "next-auth/react";
 
 const PostPage = () => {
