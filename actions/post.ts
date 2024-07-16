@@ -26,7 +26,6 @@ export const post = async (formData: FormData) => {
 };
 
 export const addReply = async (formData: FormData) => {
-  console.log('답변 폼')
   const content = formData.get("content") as string;
   const postid = formData.get("postid") as string;
   let success = false;
@@ -36,11 +35,10 @@ export const addReply = async (formData: FormData) => {
     const reply = db.collection("reply");
     await reply.insertOne({ post_id: postid, content });
     success = true;
-    console.log('답변 등록')
   } catch {}
 
   if (success) {
     revalidatePath(`/service/${postid}`, "page");
-    redirect(`/service`)
+    redirect(`/service`);
   }
 };

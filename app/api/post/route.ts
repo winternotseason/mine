@@ -41,7 +41,6 @@ export async function POST(req: Request) {
     console.log(post);
     const reply_collection = db.collection("reply");
     const replyObj = await reply_collection.findOne({ post_id: postid });
-    console.log(replyObj)
     if (!replyObj) {
       return NextResponse.json({ post, status: 200 });
     }

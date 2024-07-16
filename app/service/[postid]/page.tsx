@@ -27,7 +27,6 @@ const DetailPost = ({ params }: Props) => {
       const data = await res.json();
       setLoading(false);
       const post: Post = data.post;
-      console.log(data);
       setPost(post);
       if (data.reply) {
         setReply(data.reply);
@@ -72,6 +71,7 @@ const DetailPost = ({ params }: Props) => {
 
   return (
     <div className={classes.container}>
+      <h1>1:1 문의</h1>
       <div className={classes.post_box}>
         <div className={classes.post_header}>
           <p>{post.title}</p>
