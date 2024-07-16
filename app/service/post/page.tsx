@@ -1,11 +1,14 @@
+"use client";
+
 import React from "react";
 import classes from "./page.module.css";
 import { post } from "@/actions/post";
 import { auth } from "@/app/auth";
+import { useSession } from "next-auth/react";
 
-const PostPage = async () => {
-  const session = await auth();
-  
+const PostPage = () => {
+  const { data: session } = useSession();
+
   return (
     <div className={classes.container}>
       <h1>1:1 문의</h1>
