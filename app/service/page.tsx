@@ -1,10 +1,32 @@
-import React from "react";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import classes from "./page.module.css";
 import Link from "next/link";
 import { getPosts } from "@/lib/posts";
+import { useRouter } from "next/navigation";
 
-const Sevice = async () => {
-  const posts = await getPosts();
+export type Post = {
+  _id: string;
+  user: string;
+  title: string;
+  content: string;
+  id: string;
+};
+
+const Sevice = () => {
+  const [posts, setPosts] = useState<Post[]>();
+  const router = useRouter();
+  console.log('호출!')
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/post`);
+      const data = await res.json();
+      const posts: Post[] = data.posts;
+      setPosts(posts);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className={classes.container}>
@@ -18,22 +40,27 @@ const Sevice = async () => {
         </Link>
       </div>
       <div className={classes.posts_box}>
-        {posts.length === 0 ? (
+        {posts?.length === 0 ? (
           "작성된 글이 없습니다."
         ) : (
           <ul className={classes.posts_list}>
-            {posts.reverse().map((post) => (
-              <Link
-                href={`${
-                  process.env.NEXT_PUBLIC_URL
-                }service/${post._id.toString()}`}
+            {posts?.reverse().map((post) => (
+              <div
+                onClick={() => {
+                  router.refresh();
+                  router.push(
+                    `${
+                      process.env.NEXT_PUBLIC_URL
+                    }service/${post._id.toString()}`
+                  );
+                }}
                 key={post._id.toString()}
               >
                 <li className={classes.post}>
                   <p>{post.title}</p>
                   <p>{post.user}</p>
                 </li>
-              </Link>
+              </div>
             ))}
           </ul>
         )}

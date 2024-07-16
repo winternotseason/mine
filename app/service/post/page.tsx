@@ -1,17 +1,15 @@
-"use client";
-
 import React from "react";
 import classes from "./page.module.css";
-import { useSession } from "next-auth/react";
 import { post } from "@/actions/post";
+import { auth } from "@/app/auth";
 
-const PostPage = () => {
-  const { data, status } = useSession();
-
+const PostPage = async () => {
+  const session = await auth();
+  
   return (
     <div className={classes.container}>
       <h1>1:1 문의</h1>
-      {status === "unauthenticated" ? (
+      {!session ? (
         <h2 className={classes.message}>로그인이 필요합니다</h2>
       ) : (
         <form action={post}>
@@ -21,7 +19,7 @@ const PostPage = () => {
           </div>
           <div className={classes.input_content}>
             <label htmlFor="content">내용</label>
-            <textarea name="content" id="content" required/>
+            <textarea name="content" id="content" required />
           </div>
           <button>작성</button>
         </form>

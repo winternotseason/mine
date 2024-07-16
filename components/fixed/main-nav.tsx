@@ -3,7 +3,6 @@
 import classes from "./main-nav.module.css";
 import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { PiQuestionThin } from "react-icons/pi";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
@@ -17,7 +16,7 @@ const MainNav = () => {
       <div
         className={classes.nav}
         onClick={() => {
-          router.push('/service');
+          router.push("/service");
         }}
       >
         <PiQuestionThin className={classes.icon} />

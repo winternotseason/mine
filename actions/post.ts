@@ -2,6 +2,7 @@
 
 import { auth } from "@/app/auth";
 import clientPromise from "@/lib/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export const post = async (formData: FormData) => {
@@ -19,6 +20,7 @@ export const post = async (formData: FormData) => {
     success = true;
   } catch {}
   if (success) {
+    revalidatePath('/service')
     redirect('/service');
   }
 };

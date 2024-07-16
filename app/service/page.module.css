@@ -22,7 +22,7 @@
   padding: 2rem;
 }
 
-.posts_list a {
+.posts_list  {
   color: black;
   text-decoration-line: none;
 }

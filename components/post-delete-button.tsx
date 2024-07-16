@@ -9,14 +9,14 @@ const PostDeleteBtn = ({ postid }: { postid: string }) => {
   const router = useRouter();
   const handleDeletePost = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/postdelete`, {
-        method: "POST",
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/post`, {
+        method: "DELETE",
         body: JSON.stringify(postid),
       });
       const result = await res.json();
       if (result.status === 201) {
-        await revalidate(`${process.env.NEXT_PUBLIC_URL}/service`);
-        router.push(`${process.env.NEXT_PUBLIC_URL}/service`);
+        await revalidate("/service");
+        router.push(`${process.env.NEXT_PUBLIC_URL}service`);
       }
     } catch (err) {
       console.error(err);
