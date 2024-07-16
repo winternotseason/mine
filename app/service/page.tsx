@@ -17,7 +17,7 @@ export type Post = {
 const Sevice = () => {
   const [posts, setPosts] = useState<Post[]>();
   const router = useRouter();
-  console.log('호출!')
+ 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/post`);
@@ -41,7 +41,7 @@ const Sevice = () => {
       </div>
       <div className={classes.posts_box}>
         {posts?.length === 0 ? (
-          "작성된 글이 없습니다."
+          <p className={classes.empty_list}>작성된 글이 없습니다.</p>
         ) : (
           <ul className={classes.posts_list}>
             {posts?.reverse().map((post) => (

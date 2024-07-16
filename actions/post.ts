@@ -12,7 +12,7 @@ export const post = async (formData: FormData) => {
   try {
     const session = await auth();
     const user = session.user.name;
-    const id = session.user.email
+    const id = session.user.email;
     const client = await clientPromise;
     const db = client.db("mine");
     const posts = db.collection("posts");
@@ -20,7 +20,27 @@ export const post = async (formData: FormData) => {
     success = true;
   } catch {}
   if (success) {
-    revalidatePath('/service')
-    redirect('/service');
+    revalidatePath("/service");
+    redirect("/service");
+  }
+};
+
+export const addReply = async (formData: FormData) => {
+  console.log('답변 폼')
+  const content = formData.get("content") as string;
+  const postid = formData.get("postid") as string;
+  let success = false;
+  try {
+    const client = await clientPromise;
+    const db = client.db("mine");
+    const reply = db.collection("reply");
+    await reply.insertOne({ post_id: postid, content });
+    success = true;
+    console.log('답변 등록')
+  } catch {}
+
+  if (success) {
+    revalidatePath(`/service/${postid}`, "page");
+    redirect(`/service`)
   }
 };

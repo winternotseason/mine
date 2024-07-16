@@ -1,5 +1,8 @@
 .container {
-  padding-top: 4.3rem;
+  height: 100dvh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  overflow-y: scroll;
 }
 
 .header {
@@ -36,4 +39,8 @@
 
 .post p {
   color: #373737;
+}
+
+.empty_list {
+  text-align: center;
 }

@@ -32,15 +32,21 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const postid = await req.json();
-
   try {
     const client = await clientPromise;
     const db = client.db("mine");
     const collection = db.collection("posts");
     const objid = new ObjectId(postid);
     const post = await collection.findOne({ _id: objid });
-
-    return NextResponse.json({ post, status: 200 });
+    console.log(post);
+    const reply_collection = db.collection("reply");
+    const replyObj = await reply_collection.findOne({ post_id: postid });
+    console.log(replyObj)
+    if (!replyObj) {
+      return NextResponse.json({ post, status: 200 });
+    }
+    const reply = replyObj.content;
+    return NextResponse.json({ post, reply, status: 200 });
   } catch {
     return NextResponse.json({ status: 400 });
   }
