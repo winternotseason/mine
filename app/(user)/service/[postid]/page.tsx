@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./page.module.css";
 import PostDeleteBtn from "@/components/post-delete-button";
-import type { Post } from "@/app/service/page";
+import type { Post } from "@/app/(user)/service/page";
 import { useSession } from "next-auth/react";
 import { addReply } from "@/actions/post";
 

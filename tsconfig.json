@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/session-provider.tss"
-, "app/service/[postid]/loading.tss"  ],
+, "app/(user)/service/[postid]/loading.tss"  ],
   "exclude": ["node_modules"]
 }
