@@ -1,9 +1,0 @@
-.today-swiper .swiper-slide {
-  width: 50%;
-}
-
-@media all and (min-width: 1024px) {
-  .today-swiper .swiper-slide {
-    width: 20%;
-  }
-}

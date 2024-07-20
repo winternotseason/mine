@@ -5,7 +5,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-    padding-top: 4rem;
+  padding-top: 4rem;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ad {
+  margin-top: 0.5rem;
+  margin: auto 0;
+  width: 100%;
+  max-width: 70rem;
+  aspect-ratio: 1/0.4;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .today {
@@ -21,6 +40,7 @@
 }
 
 .today_header {
+  align-self: flex-start;
   font-size: 1.7rem;
   margin-bottom: 1rem;
 }
@@ -33,76 +53,29 @@
   margin-bottom: 10rem;
 }
 
+.today_content ul {
+  display: flex;
+  list-style: none;
+}
+
 .today p {
   font-size: 1.1rem;
   font-weight: 700;
   margin-top: 0.1rem;
 }
 
-.goods_description {
-  margin-top: 1.25rem;
-}
-
-.goods_description p {
-  font-size: 0.75rem;
-}
-
-.goods_description .goods_title {
-  font-weight: 400;
-}
-
-.goods_description .goods_artist {
-  font-weight: 800;
-  margin-bottom: 0.3rem;
-}
-
-.content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.ad {
-  display: none;
-}
-.mobileAd {
-  width: 100%;
-  aspect-ratio: 1/1.06;
-}
 @media all and (min-width: 1024px) {
   .main {
     margin-top: 4rem;
     padding-top: 0;
   }
 
-  .today_header {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .today_content {
-    width: 87.5rem;
-    height: 29rem;
-    max-width: none;
-  }
-  .goods_grid {
-    gap: 2.5rem;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.75rem;
-    padding: 2rem;
-  }
   .ad {
     margin-top: 0.5rem;
     margin: auto 0;
-    width: 120rem;
-    height: 50rem;
-    aspect-ratio: 2.9 / 1;
+    width: 100%;
+    max-width: 70rem;
+    aspect-ratio: 1/0.4;
     display: flex;
     justify-content: center;
     position: relative;
@@ -130,5 +103,19 @@
   }
   .mobileAd {
     display: none;
+  }
+
+  .today_header {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .today_content {
+    width: 87.5rem;
+    height: 29rem;
+    max-width: none;
+  }
+  .content {
+    padding: 3rem;
   }
 }
