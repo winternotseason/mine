@@ -7,15 +7,13 @@ import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import MobileSearchModal from "../mobile-search-modal";
 import { PiQuestionThin } from "react-icons/pi";
 
 const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchModal, setSearchModal] = useState(false);
-
-  const { data, status } = useSession();
 
   return (
     <header className={`${classes.header}`}>
@@ -53,48 +51,27 @@ const MainHeader = () => {
             />
           </div>
           {/* 세션 유저가 존재하면 로그아웃 버튼, 아니면 회원가입, 로그인 버튼 */}
-          {data?.user ? (
-            <>
-              <div className={classes.rightItem}>
-                <Link className={classes.logoutBtn} href="/service">
-                  <PiQuestionThin size={35} />
-                  <p>고객센터</p>
-                </Link>
-              </div>
-              <div className={classes.rightItem}>
-                <button
-                  className={classes.logoutBtn}
-                  onClick={() => {
-                    signOut({ redirect: false });
-                  }}
-                >
-                  <CiLogin size={35} />
-                  <p>로그아웃</p>
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={classes.rightItem}>
-                <Link className={classes.logoutBtn} href="/service">
-                  <PiQuestionThin size={35} />
-                  <p>고객센터</p>
-                </Link>
-              </div>
-              <div className={classes.rightItem}>
-                <Link href="/join">
-                  <PiUserPlusThin size={35} />
-                  <p>회원가입</p>
-                </Link>
-              </div>
-              <div className={classes.rightItem}>
-                <Link href="/login" className={classes.flex}>
-                  <CiLogin size={35} />
-                  <p>로그인</p>
-                </Link>{" "}
-              </div>
-            </>
-          )}
+
+          <>
+            <div className={classes.rightItem}>
+              <Link className={classes.logoutBtn} href="/service">
+                <PiQuestionThin size={35} />
+                <p>고객센터</p>
+              </Link>
+            </div>
+            <div className={classes.rightItem}>
+              <Link href="/join">
+                <PiUserPlusThin size={35} />
+                <p>회원가입</p>
+              </Link>
+            </div>
+            <div className={classes.rightItem}>
+              <Link href="/login" className={classes.flex}>
+                <CiLogin size={35} />
+                <p>로그인</p>
+              </Link>{" "}
+            </div>
+          </>
         </div>
       </div>
       {searchModal && <MobileSearchModal setSearchModal={setSearchModal} />}

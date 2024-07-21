@@ -1,7 +1,7 @@
 import { productUpload } from "@/actions/product";
 import ImagePicker from "./_component/ImagePicker";
 import ProductFormSubmit from "./_component/ProductFormSubmit";
-import { auth } from "../../auth";
+import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 
 const inputStyle = "font-semibold text-lg mb-2";
@@ -10,7 +10,7 @@ const AddProductPage = async () => {
 
   return (
     <div className="w-full h-full">
-      <div className="py-28 px-7">
+      <div className="p-4">
         <form action={productUpload}>
           {/* 이미지 업로드 */}
           <ImagePicker name="image" />

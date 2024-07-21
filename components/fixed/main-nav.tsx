@@ -5,12 +5,11 @@ import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { PiQuestionThin } from "react-icons/pi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
 import { CiLogin } from "react-icons/ci";
 
 const MainNav = () => {
   const router = useRouter();
-  const { data, status } = useSession();
+
   return (
     <div className={classes.footer}>
       <div
@@ -29,26 +28,12 @@ const MainNav = () => {
         </div>
       </Link>
 
-      {data?.user ? (
-        <div
-          onClick={() => {
-            signOut({ redirect: false }).then(() => {
-              router.push("/");
-            });
-          }}
-          className={`${classes.nav} ${classes.login}`}
-        >
+      <Link href="/login">
+        <div className={`${classes.nav} ${classes.login}`}>
           <CiLogin className={classes.icon} />
-          <p>로그아웃</p>
+          <p>로그인</p>
         </div>
-      ) : (
-        <Link href="/login">
-          <div className={`${classes.nav} ${classes.login}`}>
-            <CiLogin className={classes.icon} />
-            <p>로그인</p>
-          </div>
-        </Link>
-      )}
+      </Link>
     </div>
   );
 };

@@ -3,9 +3,14 @@
 import { useRouter } from "next/navigation";
 import SubmitButton from "./SubmitButton";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { loginSchema, LoginSchemaType } from "@/lib/zod";
+import { loginSchema, LoginSchemaType } from "@/lib/validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "./FormInput";
+import { errorMessage } from "./join-form";
+import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
+import { fetchUserById } from "@/lib/auth/user";
+import { useUserStore } from "@/lib/store/User";
 
 const LoginForm = () => {
   const {
@@ -14,9 +19,29 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(loginSchema) });
   const router = useRouter();
+  const setUser = useUserStore((state) => state.setUser);
+  const setIsAuthenticated = useUserStore((state) => state.setIsAuthenticated);
+  const { data: session, status } = useSession();
+  const [message, setMessage] = useState("");
 
-  const onSubmit: SubmitHandler<LoginSchemaType> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginSchemaType> = async (data) => {
+    try {
+      const res = await signIn("credentials", {
+        username: data.id,
+        password: data.password,
+        redirect: false,
+      });
+
+      if (res.error) {
+        setMessage("아이디 또는 비밀번호가 다릅니다.");
+      }
+      const User = await fetchUserById(session.user.id);
+      setUser(User);
+      setIsAuthenticated(true);
+      router.push("/main");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -29,24 +54,25 @@ const LoginForm = () => {
         name="id"
         type="text"
         placeholder="아이디"
-        isBottom={false}
         register={register}
       />
-
+      {errors.id?.message && (
+        <p className={errorMessage}>{errors.id?.message}</p>
+      )}
       <FormInput
         icon="lock"
         name="password"
         type="password"
         placeholder="비밀번호"
-        isBottom={true}
         register={register}
       />
-
+      {errors.password?.message && (
+        <p className={errorMessage}>{errors.password?.message}</p>
+      )}
+      {message.trim().length !== 0 && <p>{message}</p>}
       <p>
         <SubmitButton text="로그인" />
       </p>
-      {errors.id?.message && <p>{errors.id?.message}</p>}
-      {errors.password?.message && <p>{errors.password?.message}</p>}
     </form>
   );
 };

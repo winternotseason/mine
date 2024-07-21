@@ -1,13 +1,13 @@
-import clientPromise from "@/lib/db";
+import connectDB from "@/lib/db";
 import { hashUserPassword } from "@/lib/hash";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
     // {id : 'xitseo', name : '황서연', password: 'ajvls450@"}
-    const { id, name, password } = await req.json();
+    const { id, name, password, selectedAvatar } = await req.json();
 
-    const client = await clientPromise;
+    const client = await connectDB();
     const db = client.db("mine");
 
     const user = await db.collection("users").countDocuments({ id });
@@ -25,9 +25,10 @@ export async function POST(req: Request) {
       id,
       password: hashedPassword,
       name,
+      selectedAvatar
     });
-    // 성공하면 actions/users.ts의 회원가입 함수로
-    return NextResponse.json({ message: "회원 등록", status: 201 });
+    // 회원가입 성공
+    return NextResponse.json({ status: 201 });
   } catch (error) {
     return NextResponse.json({
       message: "회원가입 오류",

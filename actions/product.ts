@@ -1,7 +1,7 @@
 "use server";
-import { auth } from "@/app/auth";
+import { auth } from "@/auth";
 import { uploadImage } from "@/lib/cloudinary";
-import clientPromise from "@/lib/db";
+import connectDB from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -20,10 +20,10 @@ export const productUpload = async (formData: FormData) => {
   if (image.size === 0) {
     return;
   }
-  let success
+  let success;
   try {
     const user = await auth();
-    const client = await clientPromise;
+    const client = await connectDB();
     const db = client.db("mine");
     const collection = db.collection("products");
     await collection.insertOne({
@@ -33,11 +33,11 @@ export const productUpload = async (formData: FormData) => {
       price,
       content,
     });
-    success = true
+    success = true;
   } catch {
     return;
   }
   if (success) {
-    redirect('/')
+    redirect("/");
   }
 };

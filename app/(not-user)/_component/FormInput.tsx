@@ -2,33 +2,25 @@ import React from "react";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiLock } from "react-icons/ci";
 import { UseFormRegister } from "react-hook-form";
-import { LoginSchemaType, RegisterSchemaType } from "@/lib/zod";
+import { LoginSchemaType, RegisterSchemaType } from "@/lib/validations/auth";
 
 interface FormInputProps {
   icon: "person" | "lock";
   name: "id" | "password" | "passwordConfirm" | "name";
   type: string;
   placeholder: string;
-  isBottom: Boolean;
   register: UseFormRegister<LoginSchemaType | RegisterSchemaType>;
 }
+
+export const boxStyle = "p-4 flex items-center border-[1px] rounded-md my-2 shadow-md focus-within:border-black";
 
 const FormInput = ({
   icon,
   name,
   type,
-  isBottom,
   placeholder,
   register,
 }: FormInputProps) => {
-  let boxStyle;
-  if (isBottom) {
-    boxStyle = "p-4 flex items-center border-[1px]";
-  } else {
-    boxStyle =
-      "p-4 flex items-center border-t-[1px] border-l-[1px] border-r-[1px]";
-  }
-
   return (
     <>
       {icon === "person" ? (
@@ -39,6 +31,7 @@ const FormInput = ({
             type={type}
             placeholder={placeholder}
             {...register(name)}
+            className="outline-none"
           />
         </div>
       ) : (
@@ -48,7 +41,8 @@ const FormInput = ({
             name={name}
             type={type}
             placeholder={placeholder}
-            {...register("id")}
+            {...register(name)}
+             className="outline-none"
           />
         </div>
       )}
