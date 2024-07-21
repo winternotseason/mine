@@ -21,17 +21,17 @@ const MainNav = () => {
         <PiQuestionThin className={classes.icon} />
         <p>고객센터</p>
       </div>
-      <Link href="/">
+      <Link href="/main">
         <div className={classes.nav}>
           <BiSolidShoppingBagAlt className={classes.icon} />
           <p>쇼핑홈</p>
         </div>
       </Link>
 
-      <Link href="/login">
+      <Link href="/mypage">
         <div className={`${classes.nav} ${classes.login}`}>
           <CiLogin className={classes.icon} />
-          <p>로그인</p>
+          <p>마이페이지</p>
         </div>
       </Link>
     </div>

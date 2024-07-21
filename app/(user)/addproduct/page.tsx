@@ -1,12 +1,16 @@
+"use client";
+
 import { productUpload } from "@/actions/product";
 import ImagePicker from "./_component/ImagePicker";
 import ProductFormSubmit from "./_component/ProductFormSubmit";
 import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
+import { useUserStore } from "@/lib/store/User";
 
 const inputStyle = "font-semibold text-lg mb-2";
 
-const AddProductPage = async () => {
+const AddProductPage = () => {
+  const user = useUserStore((state) => state.user);
 
   return (
     <div className="w-full h-full">
@@ -42,6 +46,7 @@ const AddProductPage = async () => {
               className="h-40 resize-none border-[1px] p-2 outline-none"
             />
           </div>
+          <input type="hidden" name="userId" value={user?.id || ""} />
           <ProductFormSubmit />
         </form>
       </div>

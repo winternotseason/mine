@@ -1,5 +1,5 @@
 "use server";
-import { auth } from "@/auth";
+
 import { uploadImage } from "@/lib/cloudinary";
 import connectDB from "@/lib/db";
 import { revalidatePath } from "next/cache";
@@ -10,6 +10,7 @@ export const productUpload = async (formData: FormData) => {
   const title = formData.get("title");
   const price = formData.get("price");
   const content = formData.get("content");
+  const userId = formData.get("userId");
 
   let imageUrl;
   try {
@@ -22,12 +23,11 @@ export const productUpload = async (formData: FormData) => {
   }
   let success;
   try {
-    const user = await auth();
     const client = await connectDB();
     const db = client.db("mine");
     const collection = db.collection("products");
     await collection.insertOne({
-      id: user.user.email,
+      seller: userId,
       image,
       title,
       price,
@@ -38,6 +38,6 @@ export const productUpload = async (formData: FormData) => {
     return;
   }
   if (success) {
-    redirect("/");
+    redirect("/main");
   }
 };

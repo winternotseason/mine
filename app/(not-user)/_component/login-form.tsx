@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "./FormInput";
 import { errorMessage } from "./join-form";
 import { signIn, useSession } from "next-auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchUserById } from "@/lib/auth/user";
 import { useUserStore } from "@/lib/store/User";
 
@@ -23,6 +23,15 @@ const LoginForm = () => {
   const setIsAuthenticated = useUserStore((state) => state.setIsAuthenticated);
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
+  useEffect(() => {
+    if (session) {
+      (async () => {
+        const user = await fetchUserById(session.user.id);
+        setUser(user);
+        setIsAuthenticated(true);
+      })();
+    }
+  }, [session, setUser, setIsAuthenticated]);
 
   const onSubmit: SubmitHandler<LoginSchemaType> = async (data) => {
     try {
@@ -34,11 +43,9 @@ const LoginForm = () => {
 
       if (res.error) {
         setMessage("아이디 또는 비밀번호가 다릅니다.");
+      } else {
+        router.push("/main");
       }
-      const User = await fetchUserById(session.user.id);
-      setUser(User);
-      setIsAuthenticated(true);
-      router.push("/main");
     } catch (err) {
       console.error(err);
     }
