@@ -16,7 +16,7 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(loginSchema) });
   const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
@@ -78,7 +78,7 @@ const LoginForm = () => {
       )}
       {message.trim().length !== 0 && <p>{message}</p>}
       <p>
-        <SubmitButton text="로그인" />
+        <SubmitButton text="로그인" pending={isSubmitting} />
       </p>
     </form>
   );

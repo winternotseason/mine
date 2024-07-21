@@ -1,3 +1,4 @@
+
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
@@ -6,6 +7,9 @@ const nextConfig = {
       {
         hostname: "shopping-phinf.pstatic.net",
       },
+      {
+        hostname : "res.cloudinary.com"
+      }
     ],
   },
 };

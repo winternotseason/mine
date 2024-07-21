@@ -7,31 +7,32 @@ import { redirect } from "next/navigation";
 
 export const productUpload = async (formData: FormData) => {
   const image = formData.get("image") as File;
-  const title = formData.get("title");
-  const price = formData.get("price");
-  const content = formData.get("content");
-  const userId = formData.get("userId");
+  const title = formData.get("title") as string;
+  const price = formData.get("price") as string;
+  const content = formData.get("content") as string;
+  const userId = formData.get("userId") as string;
 
-  let imageUrl;
+  let imageUrl: string | undefined;
+
   try {
     imageUrl = await uploadImage(image);
   } catch (error) {
     console.error(error);
   }
-  if (image.size === 0) {
-    return;
-  }
-  let success;
+
+  let success: boolean | undefined;
   try {
     const client = await connectDB();
     const db = client.db("mine");
-    const collection = db.collection("products");
+    const collection = db.collection<Product>("products");
     await collection.insertOne({
       seller: userId,
-      image,
+      imageUrl,
       title,
-      price,
+      price: parseFloat(price),
       content,
+      Hearts: [],
+      createAt: new Date(),
     });
     success = true;
   } catch {

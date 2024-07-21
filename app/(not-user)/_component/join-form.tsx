@@ -16,7 +16,8 @@ export default function JoinForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+
+    formState: { errors, isSubmitting },
   } = useForm<RegisterSchemaType>({ resolver: zodResolver(registerSchema) });
   const router = useRouter();
   const [message, setMessage] = useState("");
@@ -92,7 +93,7 @@ export default function JoinForm() {
       )}
       {message.trim().length !== 0 && <p>{message}</p>}
       <p>
-        <SubmitButton text="가입하기" />
+        <SubmitButton text="가입하기" pending={isSubmitting}/>
       </p>
     </form>
   );
