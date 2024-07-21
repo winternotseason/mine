@@ -39,6 +39,7 @@ export const productUpload = async (formData: FormData) => {
     return;
   }
   if (success) {
+    revalidatePath('/main','page')
     redirect("/main");
   }
 };

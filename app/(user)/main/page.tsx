@@ -20,7 +20,7 @@ export default async function Home() {
   queryClient.getQueryData(["products"]);
   const dehydratedState = dehydrate(queryClient);
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full overflow-auto">
       <HydrationBoundary state={dehydratedState}>
         <Products />
       </HydrationBoundary>
