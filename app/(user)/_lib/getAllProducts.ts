@@ -7,6 +7,7 @@ export async function getAllProducts() {
       cache: "no-store",
     });
     const data = await res.json()
+    
     return data
   }
   

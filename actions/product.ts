@@ -2,7 +2,7 @@
 
 import { uploadImage } from "@/lib/cloudinary";
 import connectDB from "@/lib/db";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export const productUpload = async (formData: FormData) => {
@@ -39,7 +39,7 @@ export const productUpload = async (formData: FormData) => {
     return;
   }
   if (success) {
-    revalidatePath('/main','page')
+    revalidateTag('products')
     redirect("/main");
   }
 };
