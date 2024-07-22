@@ -7,11 +7,11 @@ import "dayjs/locale/ko";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
-const Product = ({ product }: { product: Product }) => {
+const Product = ({ product }: { product: IProduct }) => {
   return (
     <article className="flex p-4">
       <div className="w-40 h-40 relative rounded-lg overflow-hidden">
-        <Image src={product.imageUrl} alt="image" fill sizes="100%"/>
+        <Image src={product.imageUri} alt="image" fill sizes="100%"/>
       </div>
       <div className="flex flex-col h-40 justify-between ml-4">
         <div>
@@ -19,7 +19,7 @@ const Product = ({ product }: { product: Product }) => {
           <p className="text-gray-500">
             {dayjs(product.createAt).fromNow(true)}
           </p>
-          <p className="font-semibold text-lg">{product.price.toString()}원</p>
+          <p className="font-semibold text-lg">{product.price}원</p>
         </div>
         <div className="flex items-center">
           <GoHeart color="#949494" />

@@ -2,11 +2,11 @@ interface UserId {
   user_id: string;
 }
 
-interface Product {
+interface IProduct {
   seller: string;
-  imageUrl: string;
+  imageUri: string;
   title: string;
-  price: number;
+  price: string;
   content: string;
   Hearts: UserId[];
   createAt : Date

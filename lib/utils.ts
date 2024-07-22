@@ -12,7 +12,6 @@ export const fetcher = async (
   options: RequestInit = {}
 ): Promise<any> => {
   const headers = {
-    "Content-Type": "application/json",
     ...options.headers,
   };
 

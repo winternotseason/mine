@@ -1,16 +1,23 @@
 "use client";
 
+import { File } from "buffer";
 import Image from "next/image";
-import React, { ChangeEventHandler, useRef, useState } from "react";
+import React, {
+  ChangeEventHandler,
+  Dispatch,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 import { CiCamera } from "react-icons/ci";
 
-const ImagePicker = ({ name }: { name: string }) => {
+const ImagePicker = ({ name, setImage }: { name: string; setImage: any }) => {
   const [pickedImage, setPickedImage] = useState(null);
   const imageRef = useRef(null);
 
   const handleImageChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    setImage(file);
     if (!file) return;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
@@ -24,6 +31,7 @@ const ImagePicker = ({ name }: { name: string }) => {
   };
 
   const handleDeleteImage = () => {
+    setImage(null);
     setPickedImage(null);
   };
 
@@ -43,7 +51,7 @@ const ImagePicker = ({ name }: { name: string }) => {
         className="w-24 h-24 border-[1px] flex flex-col justify-center items-center rounded-lg"
       >
         <CiCamera size={40} color="#555555" />
-        <p className="text-sm">{pickedImage ? '사진 변경' :'사진 업로드'}</p>
+        <p className="text-sm">{pickedImage ? "사진 변경" : "사진 업로드"}</p>
       </button>
       {pickedImage && (
         <div className="ml-3 w-24 h-24 relative">
