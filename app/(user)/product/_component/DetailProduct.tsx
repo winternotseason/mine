@@ -41,7 +41,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
           {/* 상품 정보 상단 (판매자 정보) */}
 
           <div className="flex items-center">
-            <Link href={`${process.env.NEXT_PUBLIC_URL}${product.seller}`}>
+            <Link href={`${process.env.NEXT_PUBLIC_URL}${product?.seller}`}>
               <div className="w-20 h-20 relative rounded-full overflow-hidden">
                 <Image
                   src={`/avatar${user?.selectedAvatar}.png`}
@@ -50,7 +50,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
                 />
               </div>{" "}
             </Link>
-            <Link href={`${process.env.NEXT_PUBLIC_URL}${product.seller}`}>
+            <Link href={`${process.env.NEXT_PUBLIC_URL}${product?.seller}`}>
               <p className="ml-4 font-bold text-2xl">{user?.name}</p>{" "}
             </Link>
           </div>
