@@ -9,7 +9,7 @@ const PostDeleteBtn = ({ postid }: { postid: string }) => {
   const router = useRouter();
   const handleDeletePost = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/post`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/product`, {
         method: "DELETE",
         body: JSON.stringify(postid),
       });

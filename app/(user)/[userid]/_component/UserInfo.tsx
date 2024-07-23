@@ -19,7 +19,7 @@ interface Props {
 }
 
 const UserInfo = ({ userid, session }: Props) => {
-  const router = useRouter()
+  const router = useRouter();
   const { data: user, error } = useQuery<
     User,
     Object,
@@ -54,11 +54,17 @@ const UserInfo = ({ userid, session }: Props) => {
         <div>
           <p>{user?.name}</p>
           <p>{user?.id}</p>
-          <button onClick={()=>{
-            signOut({redirect:false}).then(()=>{
-              router.push('/')
-            })
-          }}>로그아웃</button>
+          {session?.user.id === userid && (
+            <button
+              onClick={() => {
+                signOut({ redirect: false }).then(() => {
+                  router.push("/");
+                });
+              }}
+            >
+              로그아웃
+            </button>
+          )}
         </div>
       </div>
       {/* 내가 올린 상품들 */}

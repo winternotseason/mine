@@ -1,7 +1,7 @@
 import { fetcher } from "@/lib/utils";
 
 export async function getAllProducts() {
-  const products = await fetcher(`${process.env.NEXT_PUBLIC_URL}api/post`, {
+  const products = await fetcher(`${process.env.NEXT_PUBLIC_URL}api/product`, {
     next: {
       // revalidateTage('posts') : cache 초기화
       tags: ["posts"],
@@ -12,8 +12,19 @@ export async function getAllProducts() {
   return products;
 }
 
-export async function getProduct() {
+export async function getProduct({ queryKey }: { queryKey: [string, string] }) {
   // objectId 받아와서 해당 product return
+  const [_, productid] = queryKey;
+  const user = await fetcher(
+    `${process.env.NEXT_PUBLIC_URL}api/product/${productid}`,
+    {
+      next: {
+        tags: ["products"],
+      },
+      cache: "no-store",
+    }
+  );
+  return user;
 }
 
 export async function getUser({ queryKey }: { queryKey: [string, string] }) {
@@ -50,5 +61,5 @@ export async function getUserProducts({
       cache: "no-store",
     }
   );
-  return products
+  return products;
 }

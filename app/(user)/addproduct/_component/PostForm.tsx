@@ -4,21 +4,21 @@ import React, { ChangeEvent, FormEvent } from "react";
 import { IProduct } from "../../_lib/type";
 import ImagePicker from "./ImagePicker";
 import ProductFormSubmit from "./ProductFormSubmit";
-import { useUserStore } from "@/lib/store/User";
+
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetcher } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const inputStyle = "font-semibold text-lg mb-2";
 
 const PostForm = () => {
-  const user = useUserStore((state) => state.user);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>();
-
+  const { data: session } = useSession();
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -32,8 +32,8 @@ const PostForm = () => {
       formData.append("price", price);
       formData.append("content", content);
       formData.append("image", image);
-      formData.append("seller", user.id);
-      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/post`, {
+      formData.append("seller", session.user.id);
+      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/product`, {
         method: "POST",
         body: formData,
       });
