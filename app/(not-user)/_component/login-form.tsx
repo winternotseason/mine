@@ -9,8 +9,6 @@ import FormInput from "./FormInput";
 import { errorMessage } from "./join-form";
 import { signIn, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
-import { fetchUserById } from "@/lib/auth/user";
-import { useUserStore } from "@/lib/store/User";
 
 const LoginForm = () => {
   const {
@@ -19,19 +17,7 @@ const LoginForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(loginSchema) });
   const router = useRouter();
-  const setUser = useUserStore((state) => state.setUser);
-  const setIsAuthenticated = useUserStore((state) => state.setIsAuthenticated);
-  const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
-  useEffect(() => {
-    if (session) {
-      (async () => {
-        const user = await fetchUserById(session.user.id);
-        setUser(user);
-        setIsAuthenticated(true);
-      })();
-    }
-  }, [session, setUser, setIsAuthenticated]);
 
   const onSubmit: SubmitHandler<LoginSchemaType> = async (data) => {
     try {

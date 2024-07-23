@@ -6,14 +6,19 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import React from "react";
-import { getAllProducts } from "../_lib/getAllProducts";
+import { getAllProducts } from "../_lib/api-handler/getAllProducts";
 import Product from "./Product";
-
+import { IProduct } from "../_lib/type";
 const Products = () => {
-  const { data } = useQuery<IProduct[]>({
+  const { isFetching, data } = useQuery<IProduct[]>({
     queryKey: ["products"],
     queryFn: getAllProducts,
+    staleTime: 1000 * 60 * 60 * 24, // 24시간
   });
+
+  if (isFetching) {
+    return <span>Loading...</span>;
+  }
 
   return (
     <>

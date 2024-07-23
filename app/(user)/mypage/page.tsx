@@ -7,13 +7,13 @@ import Image from "next/image";
 import React from "react";
 import Fallback from "../addproduct/_component/Fallback";
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../_lib/getAllProducts";
-
+import { getAllProducts } from "../_lib/api-handler/getAllProducts";
+import { IProduct } from "../_lib/type";
 const Mypage = () => {
   const { data } = useQuery<IProduct[]>({
     queryKey: ["products"],
     queryFn: getAllProducts,
-    staleTime: Infinity,
+    staleTime: 1000 * 60 * 60 * 24,
   });
   const user = useUserStore((state) => state.user);
   const router = useRouter();

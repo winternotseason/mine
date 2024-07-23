@@ -1,14 +1,13 @@
 "use client";
 
 import React, { ChangeEvent, FormEvent } from "react";
+import { IProduct } from "../../_lib/type";
 import ImagePicker from "./ImagePicker";
 import ProductFormSubmit from "./ProductFormSubmit";
 import { useUserStore } from "@/lib/store/User";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetcher } from "@/lib/utils";
-import { useSession } from "next-auth/react";
-import { uploadImage } from "@/lib/cloudinary";
 import { useRouter } from "next/navigation";
 
 const inputStyle = "font-semibold text-lg mb-2";
@@ -19,12 +18,13 @@ const PostForm = () => {
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>();
-  const { data: session } = useSession();
+
   const queryClient = useQueryClient();
   const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: async (e: FormEvent) => {
+      // form의 onSubmit에 mutation.mutate
       console.log(image);
       e.preventDefault();
       const formData = new FormData();
@@ -32,15 +32,18 @@ const PostForm = () => {
       formData.append("price", price);
       formData.append("content", content);
       formData.append("image", image);
-      formData.append("seller", session.user.id);
+      formData.append("seller", user.id);
       return fetcher(`${process.env.NEXT_PUBLIC_URL}api/post`, {
         method: "POST",
         body: formData,
       });
     },
-    // react-query의 data를 바꿈
+    // 성공적으로 DB에 입력되었을때
     onSuccess: async (insertedProduct, variables) => {
       console.log(insertedProduct);
+      // 성공하면?
+      // 서버에서 최신 데이터를 가져오도록 트리거 : queryClient.invalidateQueries({queryKey:['products']}) => 서버 요청 발생
+      // 현재 캐시에 있는 데이터를 직접 업데이트. 서버에 요청을 보내지 않고 로컬 캐시만 업데이트
       if (queryClient.getQueryData(["products"])) {
         queryClient.setQueryData(["products"], (prevdata: IProduct[]) => {
           const shallow = [...prevdata];
@@ -49,9 +52,15 @@ const PostForm = () => {
         });
       }
     },
-    onSettled : () => {
-        router.push('/main')
-    }
+    onError: () => {
+      console.log("상품 업로드 오류");
+    },
+    // 성공 실패 여부에 관계 없음
+    onSettled: (_, error) => {
+      if (error) return;
+      // error가 없다면 main 화면으로 redirect
+      router.push("/main");
+    },
   });
 
   return (
@@ -95,7 +104,7 @@ const PostForm = () => {
           }
         />
       </div>
-      <ProductFormSubmit />
+      <ProductFormSubmit isPending={mutation.isPending} />
     </form>
   );
 };

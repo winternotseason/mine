@@ -1,13 +1,16 @@
 import { uploadImage } from "@/lib/cloudinary";
 import connectDB from "@/lib/db";
 import { NextResponse } from "next/server";
+import { IProduct } from "@/app/(user)/_lib/type";
 
 export async function GET() {
   const client = await connectDB();
   const db = client.db("mine");
-  const products = (
-    await db.collection("products").find({}).sort({ _id: -1 }).toArray()
-  )
+  const products = await db
+    .collection("products")
+    .find({})
+    .sort({ _id: -1 })
+    .toArray();
   return NextResponse.json(products);
 }
 
@@ -36,7 +39,7 @@ export async function POST(req: Request) {
     Hearts: [],
     createAt: new Date(),
   };
-  const what = await db.collection<IProduct>("products").insertOne(insertData);
-  await db.collection("products").createIndex({ productId: 1 });
+  await db.collection<IProduct>("products").insertOne(insertData);
+
   return NextResponse.json(insertData);
 }

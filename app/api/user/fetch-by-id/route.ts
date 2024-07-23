@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import connectDB from "@/lib/db";
 
+// api/user/userid
 export async function POST(req: Request) {
   const client = await connectDB();
   const { id } = await req.json();

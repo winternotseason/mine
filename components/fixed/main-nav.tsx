@@ -6,10 +6,11 @@ import { PiQuestionThin } from "react-icons/pi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CiLogin } from "react-icons/ci";
+import { useSession } from "next-auth/react";
 
 const MainNav = () => {
   const router = useRouter();
-
+  const { data: session, status } = useSession();
   return (
     <div className={classes.footer}>
       <div
@@ -28,7 +29,7 @@ const MainNav = () => {
         </div>
       </Link>
 
-      <Link href="/mypage">
+      <Link href={`/${session?.user?.id}`}>
         <div className={`${classes.nav} ${classes.login}`}>
           <CiLogin className={classes.icon} />
           <p>마이페이지</p>
