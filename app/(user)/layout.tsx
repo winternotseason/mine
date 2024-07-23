@@ -5,7 +5,7 @@ import RQProvider from "./_component/RQProvider";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full h-full">
-      <div className="w-full h-full pt-20 pb-20">
+      <div className="w-full h-full pt-20 pb-16">
         <RQProvider>
           <MainHeader />
           {children}

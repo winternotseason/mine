@@ -11,7 +11,7 @@ export default async function Home() {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["products"],
-    queryFn: getAllProducts,
+    queryFn: getAllProducts,   
   });
 
   queryClient.getQueryData(["products"]);
