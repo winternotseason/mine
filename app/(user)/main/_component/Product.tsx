@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
-import { IProduct } from "../_lib/type";
+import { IProduct } from "../../_lib/type";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");

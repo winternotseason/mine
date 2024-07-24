@@ -5,7 +5,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import Products from "../_component/Products";
+import Products from "./_component/Products";
 
 export default async function Home() {
   const queryClient = new QueryClient();

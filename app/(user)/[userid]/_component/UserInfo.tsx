@@ -9,9 +9,10 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { IProduct, User } from "../../_lib/type";
 import Image from "next/image";
-import Product from "../../_component/Product";
+import Product from "../../main/_component/Product";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import SkeletonProfile from "./SkeletonProfile";
 
 interface Props {
   userid: string;
@@ -20,19 +21,18 @@ interface Props {
 
 const UserInfo = ({ userid, session }: Props) => {
   const router = useRouter();
-  const { data: user, error } = useQuery<
-    User,
-    Object,
-    User,
-    [_1: string, _2: string]
-  >({
+  const {
+    data: user,
+    error,
+    isLoading: isUserLoading,
+  } = useQuery<User, Object, User, [_1: string, _2: string]>({
     queryKey: ["users", userid],
     queryFn: getUser,
     staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
     gcTime: 300 * 1000,
   });
   // 여기서 user마다 작성한 글과 하트 누른 게시글 불러와야함.
-  const { data: products } = useQuery<
+  const { data: products, isLoading: isProductsLoading } = useQuery<
     IProduct[],
     Object,
     IProduct[],
@@ -44,6 +44,9 @@ const UserInfo = ({ userid, session }: Props) => {
     gcTime: 300 * 1000,
   });
 
+  if(isProductsLoading || isUserLoading) {
+    return <SkeletonProfile />
+  }
   return (
     <div className="p-10">
       {/* 내 프로필 */}
