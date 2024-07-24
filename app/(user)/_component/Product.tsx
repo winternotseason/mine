@@ -14,16 +14,10 @@ const Product = ({ product }: { product: IProduct }) => {
   return (
     <Link
       href={`${process.env.NEXT_PUBLIC_URL}/product/${product._id.toString()}`}
-      prefetch={false}
     >
       <article className="flex p-4 hover:bg-black/10 transition-all duration-100 border-b-[1px]">
         <div className="w-40 h-40 rounded-lg overflow-hidden relative">
-          <Image
-            src={product.imageUri}
-            alt="image"
-            fill
-            loading="lazy"
-          />
+          <Image src={product.imageUri} alt="image" fill loading="lazy" />
         </div>
         <div className="flex flex-col h-40 justify-between ml-4">
           <div>
