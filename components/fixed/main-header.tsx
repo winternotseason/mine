@@ -7,8 +7,7 @@ import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
 import { PiUserPlusThin } from "react-icons/pi";
-import { signOut } from "next-auth/react";
-import MobileSearchModal from "../mobile-search-modal";
+
 import { PiQuestionThin } from "react-icons/pi";
 
 const MainHeader = () => {
@@ -74,7 +73,6 @@ const MainHeader = () => {
           </>
         </div>
       </div>
-      {searchModal && <MobileSearchModal setSearchModal={setSearchModal} />}
     </header>
   );
 };
