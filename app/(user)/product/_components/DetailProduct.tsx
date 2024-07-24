@@ -22,6 +22,9 @@ const DetailProduct = ({ productid }: { productid: string }) => {
   >({
     queryKey: ["users", productid],
     queryFn: getProduct,
+    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+    gcTime: 300 * 1000,
+    
   });
   const { data: user, isLoading: isUserLoading } = useQuery<
     User,
@@ -31,6 +34,8 @@ const DetailProduct = ({ productid }: { productid: string }) => {
   >({
     queryKey: ["users", product?.seller],
     queryFn: getUser,
+    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+    gcTime: 300 * 1000,
   });
 
   if (isProductLoading || isUserLoading) {
@@ -47,8 +52,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
             alt="productimage"
             fill
             priority
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            placeholder="blur"
+            
           />
         </div>
         {/* 상품 정보 */}

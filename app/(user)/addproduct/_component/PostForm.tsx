@@ -17,33 +17,25 @@ const PostForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState<File | null>();
+  const [image, setImage] = useState<File | null>(null);
   const { data: session } = useSession();
   const queryClient = useQueryClient();
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: async (e: FormEvent) => {
-      // form의 onSubmit에 mutation.mutate
-      console.log(image);
-      e.preventDefault();
+    mutationFn: async (productData: { title: string; price: string; content: string; image: File | null; seller: string }) => {
       const formData = new FormData();
-      formData.append("title", title);
-      formData.append("price", price);
-      formData.append("content", content);
-      formData.append("image", image);
-      formData.append("seller", session.user.id);
-      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/product`, {
+      formData.append("title", productData.title);
+      formData.append("price", productData.price);
+      formData.append("content", productData.content);
+      if (productData.image) formData.append("image", productData.image);
+      formData.append("seller", productData.seller);
+      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/products`, {
         method: "POST",
         body: formData,
       });
     },
-    // 성공적으로 DB에 입력되었을때
-    onSuccess: async (insertedProduct, variables) => {
-      console.log(insertedProduct);
-      // 성공하면?
-      // 서버에서 최신 데이터를 가져오도록 트리거 : queryClient.invalidateQueries({queryKey:['products']}) => 서버 요청 발생
-      // 현재 캐시에 있는 데이터를 직접 업데이트. 서버에 요청을 보내지 않고 로컬 캐시만 업데이트
+    onSuccess: async (insertedProduct) => {
       if (queryClient.getQueryData(["products"])) {
         queryClient.setQueryData(["products"], (prevdata: IProduct[]) => {
           const shallow = [...prevdata];
@@ -52,19 +44,27 @@ const PostForm = () => {
         });
       }
     },
-    onError: () => {
-      console.log("상품 업로드 오류");
+    onError: (error) => {
+      console.log("상품 업로드 오류", error);
     },
-    // 성공 실패 여부에 관계 없음
-    onSettled: (_, error) => {
-      if (error) return;
-      // error가 없다면 main 화면으로 redirect
+    onSettled: () => {
       router.push("/main");
     },
   });
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    mutation.mutate({
+      title,
+      price,
+      content,
+      image,
+      seller: session?.user.id || ""
+    });
+  };
+
   return (
-    <form onSubmit={mutation.mutate}>
+    <form onSubmit={handleSubmit}>
       {/* 이미지 업로드 */}
       <ImagePicker name="image" setImage={setImage} />
       {/* 제목 */}
@@ -76,9 +76,7 @@ const PostForm = () => {
           required
           placeholder="제목"
           className="border-[1px] p-3 rounded-md outline-none"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
         />
       </div>
       <div className="flex flex-col mt-3">
@@ -89,9 +87,7 @@ const PostForm = () => {
           required
           placeholder="가격을 입력해주세요"
           className="border-[1px] p-3 rounded-md outline-none"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setPrice(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPrice(e.target.value)}
         />
       </div>
       <div className="flex flex-col mt-3">
@@ -99,9 +95,7 @@ const PostForm = () => {
         <textarea
           name="content"
           className="h-40 resize-none border-[1px] p-2 outline-none"
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-            setContent(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
         />
       </div>
       <ProductFormSubmit isPending={mutation.isPending} />
@@ -110,3 +104,4 @@ const PostForm = () => {
 };
 
 export default PostForm;
+

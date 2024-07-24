@@ -28,18 +28,21 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("이미지 업로드 오류", error);
   }
-  const client = await connectDB();
-  const db = client.db("mine");
-  const insertData: IProduct = {
-    title,
-    price,
-    content,
-    imageUri,
-    seller,
-    Hearts: [],
-    createAt: new Date(),
-  };
-  await db.collection<IProduct>("products").insertOne(insertData);
-
-  return NextResponse.json(insertData);
+  try {
+    const client = await connectDB();
+    const db = client.db("mine");
+    const insertData: IProduct = {
+      title,
+      price,
+      content,
+      imageUri,
+      seller,
+      Hearts: [],
+      createAt: new Date(),
+    };
+    await db.collection<IProduct>("products").insertOne(insertData);
+    return NextResponse.json(insertData);
+  } catch (error) {
+    console.error(error);
+  }
 }

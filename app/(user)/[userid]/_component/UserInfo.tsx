@@ -46,7 +46,7 @@ const UserInfo = ({ userid, session }: Props) => {
 
   if(isProductsLoading || isUserLoading) {
     return <SkeletonProfile />
-  }
+  } 
   return (
     <div className="p-10">
       {/* 내 프로필 */}

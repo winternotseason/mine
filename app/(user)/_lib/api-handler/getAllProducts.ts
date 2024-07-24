@@ -1,15 +1,21 @@
 import { fetcher } from "@/lib/utils";
 
-export async function getAllProducts() {
-  const products = await fetcher(`${process.env.NEXT_PUBLIC_URL}api/product`, {
-    next: {
-      // revalidateTage('posts') : cache 초기화
-      tags: ["posts"],
-    },
-    cache: "no-store",
-  });
-
-  return products;
+export async function getAllProducts({ pageParam }: { pageParam?: number }) {
+  const response = await fetcher(
+    `${process.env.NEXT_PUBLIC_URL}api/products/${pageParam}`,
+    {
+      next: {
+        // revalidateTage('posts') : cache 초기화
+        tags: ["posts"],
+      },
+      cache: "no-store",
+    }
+  );
+  console.log(response)
+  return {
+    products: response.products,
+    nextCursor: parseInt(response.nextCursor),
+  };
 }
 
 export async function getProduct({ queryKey }: { queryKey: [string, string] }) {

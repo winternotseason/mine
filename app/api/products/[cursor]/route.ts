@@ -1,0 +1,42 @@
+import connectDB from "@/lib/db";
+import { NextResponse } from "next/server";
+
+export async function GET(
+  req: Request,
+  { params }: { params: { cursor: string } }
+) {
+  let { cursor } = params;
+  // 여기서 커서가 numbers임
+  // 기본값 설정
+  const limit = 5;
+  // 정수로 변환
+  const skip = parseInt(cursor);
+
+  // DB 연결
+  const client = await connectDB();
+  const db = client.db("mine");
+  const collection = db.collection("products");
+  console.log(skip);
+  // 데이터 가져오기
+  const products = await collection
+    .find({})
+    .sort({ _id: -1 })
+    .skip(skip)
+    .limit(limit)
+    .toArray();
+  console.log("프로덕트", products);
+  // 결과가 없을 경우 404 반환
+  if (products.length === 0) {
+    return NextResponse.json({
+      message: "해당 게시글이 존재하지 않습니다.",
+      status: 404,
+    });
+  }
+
+  // 다음 페이지의 cursor를 계산
+  // limit이 5고 skip 이 0인데 왜 nextCursor가 10임?
+  const nextCursor = products.length < limit ? null : skip + limit;
+  console.log('넥스트커서',skip,limit,nextCursor)
+
+  return NextResponse.json({ products, nextCursor });
+}

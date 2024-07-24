@@ -9,10 +9,11 @@ import Products from "./_component/Products";
 
 export default async function Home() {
   const queryClient = new QueryClient();
-  // prefetchQuery : SSR/SSG에서 서버 측에서 미리 데이터를 가져와 클라이언트에게 전달F
-  await queryClient.prefetchQuery({
+  // prefetchQuery : SSR/SSG에서 서버 측에서 미리 데이터를 가져와 클라이언트에게 전달
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ["products"],
-    queryFn: getAllProducts,   
+    queryFn: getAllProducts,
+    initialPageParam: 0,
   });
 
   const dehydratedState = dehydrate(queryClient);
