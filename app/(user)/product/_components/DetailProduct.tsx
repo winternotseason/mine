@@ -8,12 +8,13 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
+import Fallback from "../../addproduct/_component/Fallback";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
 const DetailProduct = ({ productid }: { productid: string }) => {
-  const { data: product } = useQuery<
+  const { data: product, isFetching } = useQuery<
     IProduct,
     Object,
     IProduct,
@@ -22,19 +23,32 @@ const DetailProduct = ({ productid }: { productid: string }) => {
     queryKey: ["users", productid],
     queryFn: getProduct,
   });
-  const { data: user } = useQuery<User, Object, User, [_1: string, _2: string]>(
-    {
-      queryKey: ["users", product?.seller],
-      queryFn: getUser,
-    }
-  );
+  const { data: user, isFetching: isUserFetching } = useQuery<
+    User,
+    Object,
+    User,
+    [_1: string, _2: string]
+  >({
+    queryKey: ["users", product?.seller],
+    queryFn: getUser,
+  });
+  if (isFetching || isUserFetching) {
+    return <Fallback />;
+  }
 
   return (
     <div className="w-full h-full">
       <div className="flex flex-col">
         {/* 상품 이미지 */}
-        <div className="w-full aspect-square relative">
-          <Image src={product?.imageUri} alt="productimage" fill />
+        <div className="w-full aspect-square relative overflow-hidden">
+          <Image
+            src={product?.imageUri}
+            alt="productimage"
+            fill
+            quality={40}
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            placeholder="blur"
+          />
         </div>
         {/* 상품 정보 */}
         <div className="p-5">
@@ -42,11 +56,14 @@ const DetailProduct = ({ productid }: { productid: string }) => {
 
           <div className="flex items-center">
             <Link href={`${process.env.NEXT_PUBLIC_URL}${product?.seller}`}>
-              <div className="w-20 h-20 relative rounded-full overflow-hidden">
+              <div className="w-full rounded-full overflow-hidden">
                 <Image
                   src={`/avatar${user?.selectedAvatar}.png`}
                   alt="avatar"
-                  fill
+                  width={80}
+                  height={80}
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                  placeholder="blur"
                 />
               </div>{" "}
             </Link>
