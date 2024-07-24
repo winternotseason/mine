@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 import { getProduct } from "../../_lib/api-handler/getAllProducts";
 import Image from "next/image";
 import DetailProduct from "../_components/DetailProduct";
@@ -16,7 +16,7 @@ const ProductPage = async ({ params }: { params: { productid: string } }) => {
 
   return (
     <>
-      <DetailProduct productid={productid}/>
+      <DetailProduct productid={productid} />
     </>
   );
 };

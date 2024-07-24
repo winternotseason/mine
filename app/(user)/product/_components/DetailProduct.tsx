@@ -8,13 +8,13 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
-import Fallback from "../../addproduct/_component/Fallback";
+import { Skeleton } from "./Skeleton";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
 const DetailProduct = ({ productid }: { productid: string }) => {
-  const { data: product, isFetching } = useQuery<
+  const { data: product, isLoading: isProductLoading } = useQuery<
     IProduct,
     Object,
     IProduct,
@@ -23,7 +23,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
     queryKey: ["users", productid],
     queryFn: getProduct,
   });
-  const { data: user, isFetching: isUserFetching } = useQuery<
+  const { data: user, isLoading: isUserLoading } = useQuery<
     User,
     Object,
     User,
@@ -32,8 +32,9 @@ const DetailProduct = ({ productid }: { productid: string }) => {
     queryKey: ["users", product?.seller],
     queryFn: getUser,
   });
-  if (isFetching || isUserFetching) {
-    return <Fallback />;
+
+  if (isProductLoading || isUserLoading) {
+    return <Skeleton />
   }
 
   return (
@@ -45,7 +46,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
             src={product?.imageUri}
             alt="productimage"
             fill
-            quality={40}
+            priority
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
             placeholder="blur"
           />
@@ -64,6 +65,7 @@ const DetailProduct = ({ productid }: { productid: string }) => {
                   height={80}
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                   placeholder="blur"
+                  priority
                 />
               </div>{" "}
             </Link>
