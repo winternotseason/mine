@@ -1,9 +1,9 @@
 "use client";
 
 import React, { ChangeEvent, FormEvent } from "react";
-import { IProduct } from "../../_lib/type";
+import { IPost } from "../../_lib/type";
 import ImagePicker from "./ImagePicker";
-import ProductFormSubmit from "./ProductFormSubmit";
+import PostFormSubmit from "./PostFormSubmit";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetcher } from "@/lib/utils";
@@ -20,7 +20,6 @@ const PostForm = () => {
   const { show, toggleModal } = useModalStore();
   const { address } = useAddressStore();
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [rating, setRating] = useState(0);
@@ -30,29 +29,31 @@ const PostForm = () => {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: async (productData: {
+    mutationFn: async (postData: {
       title: string;
-      price: string;
+      menu: string;
+      rating: number;
       content: string;
       image: File | null;
-      seller: string;
     }) => {
       const formData = new FormData();
-      formData.append("title", productData.title);
-      formData.append("price", productData.price);
-      formData.append("content", productData.content);
-      if (productData.image) formData.append("image", productData.image);
-      formData.append("seller", productData.seller);
-      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/products`, {
+      formData.append("title", postData.title);
+      formData.append("menu", postData.menu);
+      formData.append("rating", postData.rating.toString());
+      formData.append("content", postData.content);
+      formData.append("address", JSON.stringify(address));
+      if (postData.image) formData.append("image", postData.image);
+      formData.append("writer", session?.user.id);
+      return fetcher(`${process.env.NEXT_PUBLIC_URL}api/posts`, {
         method: "POST",
         body: formData,
       });
     },
-    onSuccess: async (insertedProduct) => {
-      if (queryClient.getQueryData(["products"])) {
-        queryClient.setQueryData(["products"], (prevdata: IProduct[]) => {
+    onSuccess: async (insertedPost) => {
+      if (queryClient.getQueryData(["posts"])) {
+        queryClient.setQueryData(["posts"], (prevdata: IPost[]) => {
           const shallow = [...prevdata];
-          shallow.unshift(insertedProduct);
+          shallow.unshift(insertedPost);
           return shallow;
         });
       }
@@ -69,10 +70,10 @@ const PostForm = () => {
     e.preventDefault();
     mutation.mutate({
       title,
-      price,
+      menu,
       content,
       image,
-      seller: session?.user.id || "",
+      rating,
     });
   };
 
@@ -109,18 +110,6 @@ const PostForm = () => {
           {address.place_name ? "변경" : "장소 검색"}
         </div>
       </div>
-      <div className="flex flex-col mt-7">
-        <label className={`${inputStyle}`}>가격</label>
-        <input
-          type="number"
-          name="price"
-          placeholder="가격을 입력해주세요"
-          className="border-[1px] p-3 rounded-md outline-none"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setPrice(e.target.value)
-          }
-        />
-      </div>
 
       <div className="flex flex-col mt-7">
         <label className={`${inputStyle}`}>메뉴</label>
@@ -130,7 +119,7 @@ const PostForm = () => {
           placeholder="메뉴를 입력해주세요"
           className="border-[1px] p-3 rounded-md outline-none"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setPrice(e.target.value)
+            setMenu(e.target.value)
           }
         />
       </div>
@@ -148,7 +137,7 @@ const PostForm = () => {
         <label className="font-semibold mr-2">별점</label>
         <StarRating rating={rating} onRatingChange={setRating} />
       </div>
-      <ProductFormSubmit isPending={mutation.isPending} />
+      <PostFormSubmit isPending={mutation.isPending} />
       {show && <MapSearchModal />}
     </form>
   );

@@ -6,20 +6,18 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
-import { IProduct } from "../../_lib/type";
+import { IPost } from "../../_lib/type";
 import { formatToKRW } from "../_lib/formatToKRW";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
-const Product = ({ product }: { product: IProduct }) => {
+const Post = ({ post }: { post: IPost }) => {
   return (
-    <Link
-      href={`${process.env.NEXT_PUBLIC_URL}/product/${product._id.toString()}`}
-    >
+    <Link href={`${process.env.NEXT_PUBLIC_URL}/post/${post._id.toString()}`}>
       <article className="flex p-6 hover:bg-black/10 transition-all duration-100 border-b-[1px]">
         <div className="w-40 h-40 rounded-lg overflow-hidden relative">
           <Image
-            src={product.imageUri}
+            src={post.imageUri}
             alt="image"
             fill
             loading="lazy"
@@ -29,12 +27,9 @@ const Product = ({ product }: { product: IProduct }) => {
         </div>
         <div className="flex flex-col h-40 justify-between ml-4">
           <div>
-            <p className="text-xl">{product.title}</p>
+            <p className="text-xl">{post.title}</p>
             <p className="text-gray-500">
-              {dayjs(product.createAt).fromNow(true)}
-            </p>
-            <p className="font-semibold text-lg">
-              {formatToKRW(parseInt(product.price))}원
+              {dayjs(post.createAt).fromNow(true)}
             </p>
           </div>
         </div>
@@ -43,4 +38,4 @@ const Product = ({ product }: { product: IProduct }) => {
   );
 };
 
-export default Product;
+export default Post;

@@ -6,21 +6,21 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   req: Request,
-  { params }: { params: { productid: string } }
+  { params }: { params: { postid: string } }
 ) {
-  const { productid } = params;
-  // db에서 해당 id 유저 찾음
+  const { postid } = params;
+
   const client = await connectDB();
   const db = client.db("mine");
-  const collection = db.collection("products");
-  const product = await collection.findOne({ _id: new ObjectId(productid) });
+  const collection = db.collection("posts");
+  const post = await collection.findOne({ _id: new ObjectId(postid) });
 
-  if (!product) {
+  if (!post) {
     return NextResponse.json({
       message: "해당 게시글이 존재하지 않습니다.",
       status: 404,
     });
   }
-   
-  return NextResponse.json(product);
+
+  return NextResponse.json(post);
 }

@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 const PlusButton = () => {
   return (
-    <Link href="/addproduct">
+    <Link href="/addpost">
       <div className={styles.plusButton}>
         <AiOutlinePlus size={20} color="#ffffff" />
         <p>상품등록하기</p>

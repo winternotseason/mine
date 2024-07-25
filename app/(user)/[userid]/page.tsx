@@ -5,7 +5,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import React from "react";
-import { getUser, getUserProducts } from "../_lib/api-handler/getAllProducts";
+import { getUser, getUserPosts } from "../_lib/api-handler/User";
 import UserInfo from "./_component/UserInfo";
 
 const Profile = async ({ params }: { params: { userid: string } }) => {
@@ -20,8 +20,8 @@ const Profile = async ({ params }: { params: { userid: string } }) => {
     queryFn: getUser,
   });
   await queryClient.prefetchQuery({
-    queryKey: ["products", "users", userid],
-    queryFn: getUserProducts,
+    queryKey: ["posts", "users", userid],
+    queryFn: getUserPosts,
   });
 
   const dehydratedState = dehydrate(queryClient);

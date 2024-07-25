@@ -2,14 +2,10 @@
 
 import { Session } from "next-auth";
 import React from "react";
-import {
-  getUser,
-  getUserProducts,
-} from "../../_lib/api-handler/getAllProducts";
+import { getUser, getUserPosts } from "../../_lib/api-handler/User";
 import { useQuery } from "@tanstack/react-query";
-import { IProduct, User } from "../../_lib/type";
+import { IPost, User } from "../../_lib/type";
 import Image from "next/image";
-import Product from "../../main/_component/Product";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import SkeletonProfile from "./SkeletonProfile";
@@ -32,21 +28,21 @@ const UserInfo = ({ userid, session }: Props) => {
     gcTime: 300 * 1000,
   });
   // 여기서 user마다 작성한 글과 하트 누른 게시글 불러와야함.
-  const { data: products, isLoading: isProductsLoading } = useQuery<
-    IProduct[],
+  const { data: posts, isLoading: ispostsLoading } = useQuery<
+    IPost[],
     Object,
-    IProduct[],
+    IPost[],
     [_1: string, _2: string, _3: string]
   >({
-    queryKey: ["products", "users", userid],
-    queryFn: getUserProducts,
+    queryKey: ["posts", "users", userid],
+    queryFn: getUserPosts,
     staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
     gcTime: 300 * 1000,
   });
 
-  if(isProductsLoading || isUserLoading) {
-    return <SkeletonProfile />
-  } 
+  if (ispostsLoading || isUserLoading) {
+    return <SkeletonProfile />;
+  }
   return (
     <div className="p-10">
       {/* 내 프로필 */}
@@ -71,14 +67,6 @@ const UserInfo = ({ userid, session }: Props) => {
         </div>
       </div>
       {/* 내가 올린 상품들 */}
-      <div>
-        <h1>판매중인 상품 : {products?.length}</h1>
-        <ul>
-          {products?.map((product) => (
-            <Product product={product} key={product._id.toString()} />
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };

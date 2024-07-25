@@ -1,13 +1,15 @@
+import { address } from "@/lib/store/mapStore";
 import { ObjectId } from "mongodb";
 
-export interface IProduct {
+export interface IPost {
   _id?: ObjectId;
-  seller: string;
+  writer: string;
   imageUri: string;
   title: string;
-  price: string;
+  menu: string;
   content: string;
-  Hearts: string[];
+  rating: number;
+  address: address;
   createAt: Date;
 }
 

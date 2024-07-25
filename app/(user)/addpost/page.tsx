@@ -2,7 +2,7 @@
 
 import PostForm from "./_component/PostForm";
 
-const AddProductPage = () => {
+const AddPostPage = () => {
   return (
     <div className="w-full h-full">
       <div className="pt-5 pb-20 px-4">
@@ -12,4 +12,4 @@ const AddProductPage = () => {
   );
 };
 
-export default AddProductPage;
+export default AddPostPage;

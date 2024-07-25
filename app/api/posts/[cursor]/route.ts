@@ -15,18 +15,18 @@ export async function GET(
   // DB 연결
   const client = await connectDB();
   const db = client.db("mine");
-  const collection = db.collection("products");
+  const collection = db.collection("posts");
   console.log(skip);
   // 데이터 가져오기
-  const products = await collection
+  const posts = await collection
     .find({})
     .sort({ _id: -1 })
     .skip(skip)
     .limit(limit)
     .toArray();
-  console.log("프로덕트", products);
+  console.log("프로덕트", posts);
   // 결과가 없을 경우 404 반환
-  if (products.length === 0) {
+  if (posts.length === 0) {
     return NextResponse.json({
       message: "해당 게시글이 존재하지 않습니다.",
       status: 404,
@@ -35,8 +35,8 @@ export async function GET(
 
   // 다음 페이지의 cursor를 계산
   // limit이 5고 skip 이 0인데 왜 nextCursor가 10임?
-  const nextCursor = products.length < limit ? null : skip + limit;
+  const nextCursor = posts.length < limit ? null : skip + limit;
   console.log('넥스트커서',skip,limit,nextCursor)
 
-  return NextResponse.json({ products, nextCursor });
+  return NextResponse.json({ posts, nextCursor });
 }
