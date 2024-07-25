@@ -23,14 +23,16 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["kakao.maps.d.ts"]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/session-provider.tss"
-, "app/(user)/service/[postid]/loading.tss"  ],
+    "components/session-provider.tss",
+    "app/(user)/service/[postid]/loading.tss"
+  ],
   "exclude": ["node_modules"]
 }

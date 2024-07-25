@@ -7,6 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
 import { IProduct } from "../../_lib/type";
+import { formatToKRW } from "../_lib/formatToKRW";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
@@ -32,11 +33,9 @@ const Product = ({ product }: { product: IProduct }) => {
             <p className="text-gray-500">
               {dayjs(product.createAt).fromNow(true)}
             </p>
-            <p className="font-semibold text-lg">{product.price}원</p>
-          </div>
-          <div className="flex items-center">
-            <GoHeart color="#949494" />
-            <p className="ml-1 text-gray-500">{product.Hearts.length}</p>
+            <p className="font-semibold text-lg">
+              {formatToKRW(parseInt(product.price))}원
+            </p>
           </div>
         </div>
       </article>

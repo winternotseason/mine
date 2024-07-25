@@ -52,7 +52,6 @@ const DetailProduct = ({ productid }: { productid: string }) => {
             alt="productimage"
             fill
             priority
-            
           />
         </div>
         {/* 상품 정보 */}
