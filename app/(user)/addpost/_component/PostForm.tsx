@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useEffect } from "react";
 import { IPost } from "../../_lib/type";
 import ImagePicker from "./ImagePicker";
 import PostFormSubmit from "./PostFormSubmit";
@@ -17,8 +17,8 @@ import StarRating from "./StarRating";
 const inputStyle = "font-semibold mb-2";
 
 const PostForm = () => {
-  const { show, toggleModal } = useModalStore();
-  const { address } = useAddressStore();
+  const { show, openModal } = useModalStore();
+  const { address,setAddress } = useAddressStore();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -42,6 +42,7 @@ const PostForm = () => {
       formData.append("rating", postData.rating.toString());
       formData.append("content", postData.content);
       formData.append("address", JSON.stringify(address));
+      setAddress({address_name:'', place_name:'', phone:'',location_x:'', location_y:'', category:''})
       if (postData.image) formData.append("image", postData.image);
       formData.append("writer", session?.user.id);
       return fetcher(`${process.env.NEXT_PUBLIC_URL}api/posts`, {
@@ -103,12 +104,13 @@ const PostForm = () => {
           </div>
         )}
 
-        <div
-          onClick={toggleModal}
+        <button
+          type="button"
+          onClick={openModal}
           className="bg-black/70 text-white text-xs px-2 py-1 rounded-md"
         >
           {address.place_name ? "변경" : "장소 검색"}
-        </div>
+        </button>
       </div>
 
       <div className="flex flex-col mt-7">

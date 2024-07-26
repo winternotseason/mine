@@ -1,7 +1,7 @@
 "use client";
 import { address, useAddressStore, useModalStore } from "@/lib/store/mapStore";
 import useKakaoLoader from "../../_component/use-kakao-loader";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Map } from "react-kakao-maps-sdk";
 
 interface Market {
@@ -10,12 +10,14 @@ interface Market {
   phone: string;
   place_name: string;
   road_address_name: string;
+  category_name: string;
   x: string;
   y: string;
 }
+
 const MapSearchModal = () => {
   useKakaoLoader();
-  const { toggleModal } = useModalStore();
+  const { closeModal } = useModalStore();
   const { setAddress } = useAddressStore();
   const [market, setMarket] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -23,8 +25,11 @@ const MapSearchModal = () => {
     const ps = new kakao.maps.services.Places();
     ps.keywordSearch(market, (data, status) => {
       if (status === kakao.maps.services.Status.OK) {
-        console.log(data);
-        setSearchResult(data);
+        const restaurant = data.filter((item) =>
+          item.category_name.startsWith("음식점")
+        );
+        console.log(restaurant)
+        setSearchResult(restaurant);
       }
     });
   };
@@ -35,10 +40,20 @@ const MapSearchModal = () => {
       x: location_x,
       y: location_y,
       place_name,
+      category_name,
     } = market;
-    setAddress({ address_name, phone, location_x, location_y, place_name });
-    toggleModal();
+    const category = category_name.split(" > ")[1];
+    setAddress({
+      address_name,
+      phone,
+      location_x,
+      location_y,
+      place_name,
+      category,
+    });
+    closeModal();
   };
+
   return (
     <>
       <div className="bg-black/30 absolute w-dvw h-dvh top-0 left-0 z-20" />
@@ -84,7 +99,7 @@ const MapSearchModal = () => {
               </div>
             ))}
           </div>
-          <div onClick={toggleModal}>모달 닫기</div>
+          <div onClick={closeModal}>모달 닫기</div>
         </div>
       </div>
     </>

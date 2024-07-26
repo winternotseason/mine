@@ -25,6 +25,7 @@ export async function POST(req: Request) {
   const writer = data.get("writer") as string;
   const address = JSON.parse(data.get("address") as string); // JSON 문자열을 객체로 변환
   const rating = parseFloat(data.get("rating") as string);
+  console.log(address)
   let imageUri: string | undefined;
   try {
     imageUri = await uploadImage(image);

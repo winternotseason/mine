@@ -1,4 +1,3 @@
-import PlusButton from "@/components/plusbutton";
 import { getAllPosts } from "../_lib/api-handler/Post";
 import {
   dehydrate,
@@ -6,6 +5,8 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import Posts from "./_component/Posts";
+import PostBtn from "./_component/PostBtn";
+
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -22,7 +23,9 @@ export default async function Home() {
       <HydrationBoundary state={dehydratedState}>
         <Posts />
       </HydrationBoundary>
-      <PlusButton />
+      <PostBtn />
     </div>
   );
 }
+`567890-\
+`
