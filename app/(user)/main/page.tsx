@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-query";
 import Posts from "./_component/Posts";
 import PostBtn from "./_component/PostBtn";
-
+import { getCategories } from "../_lib/api-handler/Categories";
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -15,6 +15,10 @@ export default async function Home() {
     queryKey: ["posts"],
     queryFn: getAllPosts,
     initialPageParam: 0,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ["categories"],
+    queryFn: getCategories,
   });
 
   const dehydratedState = dehydrate(queryClient);
@@ -28,4 +32,4 @@ export default async function Home() {
   );
 }
 `567890-\
-`
+`;
