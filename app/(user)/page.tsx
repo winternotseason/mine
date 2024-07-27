@@ -29,10 +29,9 @@ export default async function Home() {
     queryFn: getRegion,
   });
 
-
   const dehydratedState = dehydrate(queryClient);
   return (
-    <div className="w-full h-full overflow-auto mt-3">
+    <div className="w-full h-full overflow-auto pt-20 px-7">
       <HydrationBoundary state={dehydratedState}>
         <FiliterList />
         <Posts />

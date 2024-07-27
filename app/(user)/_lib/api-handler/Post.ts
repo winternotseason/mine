@@ -19,6 +19,20 @@ export async function getAllPosts({ pageParam }: { pageParam?: number }) {
   };
 }
 
+export async function getPostsByCategory({ queryKey }: { queryKey: [string, string,string] }) {
+  const [_1, _2, name] = queryKey;
+  const posts = await fetcher(
+    `${process.env.NEXT_PUBLIC_URL}api/posts/category/${name}`,
+    {
+      next: {
+        tags: ["posts", "category"],
+      },
+      cache: "no-store",
+    }
+  );
+  return posts;
+}
+
 export async function getPost({ queryKey }: { queryKey: [string, string] }) {
   const [_, postid] = queryKey;
   const post = await fetcher(

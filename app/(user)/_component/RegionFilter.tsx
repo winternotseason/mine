@@ -41,7 +41,7 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
               <h2 className="text-lg font-semibold mb-3 flex items-center text-black/70">
                 {region.state}
               </h2>
-              <div>
+              <div className="space-y-2">
                 {region.cites.map((city) => (
                   <div
                     key={city.cityname}

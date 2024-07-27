@@ -15,11 +15,15 @@ const Header = () => {
 
   return (
     <div className="relative">
-      <div className="fixed z-10 w-full top-0 right-0 p-4 flex justify-between border-b-[1px] bg-white items-center">
-        <div className="w-10 h-10 relative cursor-pointer" onClick={() => {
-          router.replace('/')
-        }}>
-          <Image src="/icon.PNG" fill alt="logo" priority />
+      <div className="fixed z-10 w-full top-0 right-0 px-4 py-5 flex justify-between  bg-white items-center">
+        <div
+          className="relative cursor-pointer flex items-center text-2xl"
+          onClick={() => {
+            router.replace("/");
+          }}
+        >
+          <p className="text-green-500 font-bold">#</p>
+          <p className="font-bold">MINE</p>
         </div>
         <RiMenuSearchLine
           size={25}

@@ -17,7 +17,7 @@ const FiliterList = () => {
   };
 
   return (
-    <div className="flex px-3 space-x-3">
+    <div className="flex space-x-3">
       <div
         className={style}
         onClick={() => {
@@ -34,7 +34,7 @@ const FiliterList = () => {
         }}
       >
         <MdPlace size={15} />
-        <p>지역</p>
+        <p>지역별</p>
       </div>
       {/* 카테고리 */}
       <CategoriesFilter

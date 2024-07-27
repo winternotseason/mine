@@ -28,10 +28,19 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                   {session.user.name}님 환영합니다!
                 </p>
                 <div className="flex space-x-3 text-white/80 text-sm">
-                  <p>마이페이지</p>
                   <p
                     onClick={() => {
-                      signOut();
+                      router.push(`/${session.user.id}`);
+                      setIsSearchOpen(false);
+                    }}
+                  >
+                    마이페이지
+                  </p>
+                  <p
+                    onClick={() => {
+                    
+                      signOut({ redirect: false });
+                      setIsSearchOpen(false)
                     }}
                   >
                     로그아웃
@@ -44,7 +53,7 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                   로그인이 필요합니다.
                 </p>
                 <div className="flex space-x-3 text-white/80 text-sm">
-                  <p onClick={() => router.push('/login')}>로그인</p>
+                  <p onClick={() => router.push("/login")}>로그인</p>
                   <p>회원가입</p>
                 </div>
               </div>

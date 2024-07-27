@@ -30,7 +30,7 @@ const Posts: React.FC = () => {
       if (isNaN(lastPage.nextCursor)) {
         return undefined;
       }
-      console.log(lastPage)
+
       return lastPage.nextCursor;
     },
   });
@@ -44,9 +44,10 @@ const Posts: React.FC = () => {
       !isFetching && hasNextPage && fetchNextPage();
     }
   }, [inView, fetchNextPage, hasNextPage, isFetching]);
-  console.log(data);
+
   return (
-    <>
+    <div className="mt-5">
+      <h1 className="font-semibold text-2xl my-5">🔥 최근순 HOT 리뷰</h1>
       {data && data.pages && "posts" in data.pages[0] ? (
         data.pages.map((page, index) => (
           <React.Fragment key={index}>
@@ -64,16 +65,8 @@ const Posts: React.FC = () => {
       </div>
 
       <div ref={ref} className="h-12" />
-    </>
+    </div>
   );
 };
 
 export default Posts;
-
-/*   const data = {
-pageParamas: [{0 : 0}],
-pages: [{
-nextCursor : NaN,}]
-
-
-} */
