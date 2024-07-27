@@ -4,10 +4,10 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const client = await connectDB();
   const db = client.db("mine");
-  const categories = await db
-    .collection("categories")
-    .find({}, { projection: { _id: 0, category: 1, count:1 } })
-    .sort({count:1})
+  const region = await db
+    .collection("region")
+    .find({})
+
     .toArray();
-  return NextResponse.json(categories);
+  return NextResponse.json(region);
 }

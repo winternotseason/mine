@@ -19,3 +19,19 @@ export interface User {
   name: string;
   selectedAvatar: number;
 }
+
+export interface Category {
+  category: string;
+  count:number
+}
+
+export interface Region {
+  _id?:ObjectId;
+  state: string;
+  cites: City[];
+}
+
+export interface City {
+  cityname: string;
+  count: number
+}

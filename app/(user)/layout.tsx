@@ -7,7 +7,7 @@ import Nav from "./_component/Nav";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full h-full">
-      <div className="w-full h-full pt-16 pb-16 flex flex-col items-center">
+      <div className="w-full h-full pt-20 pb-16 flex flex-col items-center">
         <RQProvider>
           <Header />
           <div className="w-full max-w-[40rem]"> {children}</div>
