@@ -13,7 +13,7 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { Skeleton } from "./Skeleton";
 import { FaStar } from "react-icons/fa";
 import { MdEditNote } from "react-icons/md";
-import useKakaoLoader from "../../_component/use-kakao-loader";
+import useKakaoLoader from "../../../_component/use-kakao-loader";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
@@ -102,7 +102,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
         <div className="my-4">{post.content}</div>
         {/* 이미지 */}
         <div className="w-full aspect-square relative flex justify-center">
-          <Image src={post.imageUri} alt="image" fill sizes="100%" />
+          <Image src={post.imageUri} alt="image" fill sizes="100%" objectFit="cover"/>
         </div>
         <div className="border-[1px] rounded-3xl overflow-hidden mt-4">
           <div>

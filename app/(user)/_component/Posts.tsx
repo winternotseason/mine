@@ -3,9 +3,9 @@
 
 import { InfiniteData, useInfiniteQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
-import { getAllPosts } from "../../_lib/api-handler/Post";
+import { getAllPosts } from "../_lib/api-handler/Post";
 import Post from "./Post";
-import { IPost } from "../../_lib/type";
+import { IPost } from "../_lib/type";
 import { useInView } from "react-intersection-observer";
 import { ClipLoader } from "react-spinners";
 
@@ -30,7 +30,7 @@ const Posts: React.FC = () => {
       if (isNaN(lastPage.nextCursor)) {
         return undefined;
       }
-
+      console.log(lastPage)
       return lastPage.nextCursor;
     },
   });
@@ -47,7 +47,7 @@ const Posts: React.FC = () => {
   console.log(data);
   return (
     <>
-      {data && data.pages && 'posts' in data.pages[0] ? (
+      {data && data.pages && "posts" in data.pages[0] ? (
         data.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.posts.map((post) => (
@@ -62,7 +62,7 @@ const Posts: React.FC = () => {
         {isFetching && hasNextPage && <ClipLoader size={50} color="#000000" />}{" "}
         {/* 스피너 표시 */}
       </div>
-      {/* ref를 데이터 리스트의 마지막에 위치시킵니다 */}
+
       <div ref={ref} className="h-12" />
     </>
   );

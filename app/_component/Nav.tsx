@@ -11,7 +11,7 @@ const Nav = () => {
   const { data: session } = useSession();
   // href={`/${session?.user?.id}`}
   return (
-    <div className="fixed z-10  w-full max-w-[40rem] bottom-0 py-2 px-8 flex justify-between border-b-[1px] bg-white items-center">
+    <div className="fixed z-10  w-full bottom-0 py-2 px-8 flex justify-between border-b-[1px] bg-white items-center">
       <div className={iconStyle} onClick={() => router.back()}>
         <RiArrowGoBackFill size={25} />
         <p className="text-sm">뒤로가기</p>

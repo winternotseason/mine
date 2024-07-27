@@ -73,7 +73,7 @@ const PostForm = () => {
       console.log("상품 업로드 오류", error);
     },
     onSettled: () => {
-      router.push("/main");
+      router.replace("/");
     },
   });
 

@@ -1,6 +1,6 @@
 "use client";
 import { address, useAddressStore, useModalStore } from "@/lib/store/mapStore";
-import useKakaoLoader from "../../_component/use-kakao-loader";
+import useKakaoLoader from "../../../_component/use-kakao-loader";
 import React, { useState } from "react";
 import { Map } from "react-kakao-maps-sdk";
 

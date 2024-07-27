@@ -1,4 +1,4 @@
-import { getAllPosts } from "../_lib/api-handler/Post";
+import { getAllPosts } from "./_lib/api-handler/Post";
 import {
   dehydrate,
   HydrationBoundary,
@@ -7,8 +7,8 @@ import {
 import Posts from "./_component/Posts";
 import PostBtn from "./_component/PostBtn";
 import FiliterList from "./_component/FiliterList";
-import { getCategories } from "../_lib/api-handler/Categories";
-import { getRegion } from "../_lib/api-handler/Region";
+import { getCategories } from "./_lib/api-handler/Categories";
+import { getRegion } from "./_lib/api-handler/Region";
 
 export default async function Home() {
   const queryClient = new QueryClient();

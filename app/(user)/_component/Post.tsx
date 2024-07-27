@@ -6,8 +6,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
-import { IPost } from "../../_lib/type";
-import { formatToKRW } from "../_lib/formatToKRW";
+import { IPost } from "../_lib/type";
 import { MdPlace } from "react-icons/md";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
@@ -51,6 +50,7 @@ const Post = ({ post }: { post: IPost }) => {
             loading="lazy"
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
             placeholder="blur"
+            objectFit="cover"
           />
         </div>
       </article>

@@ -1,6 +1,7 @@
 import { fetcher } from "@/lib/utils";
 
 export async function getAllPosts({ pageParam }: { pageParam?: number }) {
+  console.log("페이지파람", pageParam);
   const response = await fetcher(
     `${process.env.NEXT_PUBLIC_URL}api/posts/${pageParam}`,
     {
@@ -11,7 +12,7 @@ export async function getAllPosts({ pageParam }: { pageParam?: number }) {
       cache: "no-store",
     }
   );
-  console.log(response);
+
   return {
     posts: response.posts,
     nextCursor: parseInt(response.nextCursor),

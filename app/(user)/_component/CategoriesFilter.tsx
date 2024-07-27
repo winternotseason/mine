@@ -2,8 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 import React, { Dispatch, SetStateAction } from "react";
-import { getCategories } from "../../_lib/api-handler/Categories";
-import { Category } from "../../_lib/type";
+import { getCategories } from "../_lib/api-handler/Categories";
+import { Category } from "../_lib/type";
 import { MdNoMeals } from "react-icons/md";
 interface Props {
   isCategoryOpen: boolean;
@@ -20,7 +20,7 @@ const CategoriesFilter = ({ isCategoryOpen, setIsCategoryOpen }: Props) => {
   console.log(data);
   return (
     <div
-      className={`fixed z-50 top-0 left-0 h-full bg-white  transition-transform duration-300 ease-in-out ${
+      className={`fixed z-50 top-0 -left-5 h-full bg-white  transition-transform duration-300 ease-in-out ${
         isCategoryOpen ? "translate-x-0" : "-translate-x-full"
       }`}
       style={{ width: "100vw" }}
