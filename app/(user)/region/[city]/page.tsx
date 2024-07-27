@@ -1,22 +1,21 @@
-
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
 import React from "react";
-import { getPostsByCategory } from "../../_lib/api-handler/Post";
+import { getPostsByRegion } from "../../_lib/api-handler/Post";
 import FiliterList from "../../_component/FiliterList";
-import CategoryPosts from "../_component/CategoryPosts";
+import RegionPosts from "../_component/RegionPosts";
 
-const CategroyPosts = async ({ params }: { params: { name: string } }) => {
-  const { name } = params;
+const CategroyPosts = async ({ params }: { params: { city: string } }) => {
+  const { city } = params;
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["posts", "category", name],
-    queryFn: getPostsByCategory,
+    queryKey: ["posts", "region", city],
+    queryFn: getPostsByRegion,
   });
 
   const dehydratedState = dehydrate(queryClient);
@@ -24,7 +23,7 @@ const CategroyPosts = async ({ params }: { params: { name: string } }) => {
     <div className="w-full h-full overflow-auto pt-20 px-7">
       <HydrationBoundary state={dehydratedState}>
         <FiliterList />
-        <CategoryPosts name={name}/>
+        <RegionPosts city={city}/>
       </HydrationBoundary>
     </div>
   );

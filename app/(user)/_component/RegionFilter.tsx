@@ -5,6 +5,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { getRegion } from "../_lib/api-handler/Region";
 import { Region } from "../_lib/type";
 import { MdPlace } from "react-icons/md";
+import Link from "next/link";
 interface Props {
   isRegionOpen: boolean;
   setIsRegionOpen: Dispatch<SetStateAction<boolean>>;
@@ -43,17 +44,16 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
               </h2>
               <div className="space-y-2">
                 {region.cites.map((city) => (
-                  <div
-                    key={city.cityname}
-                    className="flex space-x-1 bg-black/10 w-fit py-2 px-4 text-sm rounded-3xl items-center"
-                  >
-                    <div className="flex items-center space-x-1">
-                      <MdPlace />
-                      <p>{city.cityname}</p>
-                    </div>
+                  <Link key={city.cityname} href={`/region/${region.state} ${city.cityname}`}>
+                    <div className="flex space-x-1 bg-black/10 w-fit py-2 px-4 text-sm rounded-3xl items-center">
+                      <div className="flex items-center space-x-1">
+                        <MdPlace />
+                        <p>{city.cityname}</p>
+                      </div>
 
-                    <p>{city.count}</p>
-                  </div>
+                      <p>{city.count}</p>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>

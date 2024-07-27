@@ -33,6 +33,21 @@ export async function getPostsByCategory({ queryKey }: { queryKey: [string, stri
   return posts;
 }
 
+export async function getPostsByRegion({ queryKey }: { queryKey: [string, string,string] }) {
+  const [_1, _2, city] = queryKey;
+  const posts = await fetcher(
+    `${process.env.NEXT_PUBLIC_URL}api/posts/region/${city}`,
+    {
+      next: {
+        tags: ["posts", "region"],
+      },
+      cache: "no-store",
+    }
+  );
+  return posts;
+}
+
+
 export async function getPost({ queryKey }: { queryKey: [string, string] }) {
   const [_, postid] = queryKey;
   const post = await fetcher(
