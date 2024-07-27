@@ -2,9 +2,9 @@
 
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { getPostsByCategory } from "../../_lib/api-handler/Post";
-import { IPost } from "../../_lib/type";
-import Post from "../../_component/Post";
+import { getPostsByCategory } from "../../../_lib/api-handler/Post";
+import { IPost } from "../../../_lib/type";
+import Post from "../../../_component/Post";
 
 const CategoryPosts = ({ name }: { name: string }) => {
   const { data: posts } = useQuery<

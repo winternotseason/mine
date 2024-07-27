@@ -1,14 +1,14 @@
-import { getAllPosts } from "./_lib/api-handler/Post";
+import { getAllPosts } from "../_lib/api-handler/Post";
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import Posts from "./_component/Posts";
-import PostBtn from "./_component/PostBtn";
-import FiliterList from "./_component/FiliterList";
-import { getCategories } from "./_lib/api-handler/Categories";
-import { getRegion } from "./_lib/api-handler/Region";
+import Posts from "../_component/Posts";
+
+import { getCategories } from "../_lib/api-handler/Categories";
+import { getRegion } from "../_lib/api-handler/Region";
+import FilterList from "../_component/FilterList";
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -33,10 +33,9 @@ export default async function Home() {
   return (
     <div className="w-full h-full overflow-auto pt-20 px-7">
       <HydrationBoundary state={dehydratedState}>
-        <FiliterList />
+        <FilterList/>
         <Posts />
       </HydrationBoundary>
-      <PostBtn />
     </div>
   );
 }

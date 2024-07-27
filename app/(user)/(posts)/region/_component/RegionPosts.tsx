@@ -2,9 +2,9 @@
 
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { getPostsByRegion } from "../../_lib/api-handler/Post";
-import { IPost } from "../../_lib/type";
-import Post from "../../_component/Post";
+import { getPostsByRegion } from "../../../_lib/api-handler/Post";
+import { IPost } from "../../../_lib/type";
+import Post from "../../../_component/Post";
 
 const RegionPosts = ({ city }: { city: string }) => {
   const { data: posts } = useQuery<

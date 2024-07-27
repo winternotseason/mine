@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import SessionProviderWrapper from "@/components/session-provider";
+import SessionProviderWrapper from "@/app/(user)/_component/session-provider";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({

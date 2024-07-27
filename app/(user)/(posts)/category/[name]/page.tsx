@@ -1,13 +1,12 @@
-
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
 import React from "react";
-import { getPostsByCategory } from "../../_lib/api-handler/Post";
-import FiliterList from "../../_component/FiliterList";
+import { getPostsByCategory } from "../../../_lib/api-handler/Post";
 import CategoryPosts from "../_component/CategoryPosts";
+import FilterList from "../../../_component/FilterList";
 
 const CategroyPosts = async ({ params }: { params: { name: string } }) => {
   const { name } = params;
@@ -23,8 +22,8 @@ const CategroyPosts = async ({ params }: { params: { name: string } }) => {
   return (
     <div className="w-full h-full overflow-auto pt-20 px-7">
       <HydrationBoundary state={dehydratedState}>
-        <FiliterList />
-        <CategoryPosts name={name}/>
+        <FilterList />
+        <CategoryPosts name={name} />
       </HydrationBoundary>
     </div>
   );

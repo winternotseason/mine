@@ -4,9 +4,9 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import React from "react";
-import { getPostsByRegion } from "../../_lib/api-handler/Post";
-import FiliterList from "../../_component/FiliterList";
+import { getPostsByRegion } from "../../../_lib/api-handler/Post";
 import RegionPosts from "../_component/RegionPosts";
+import FilterList from "../../../_component/FilterList";
 
 const CategroyPosts = async ({ params }: { params: { city: string } }) => {
   const { city } = params;
@@ -22,8 +22,8 @@ const CategroyPosts = async ({ params }: { params: { city: string } }) => {
   return (
     <div className="w-full h-full overflow-auto pt-20 px-7">
       <HydrationBoundary state={dehydratedState}>
-        <FiliterList />
-        <RegionPosts city={city}/>
+        <FilterList />
+        <RegionPosts city={city} />
       </HydrationBoundary>
     </div>
   );

@@ -8,7 +8,7 @@ import RegionFilter from "./RegionFilter";
 const style =
   "flex items-center bg-black/10 py-2 px-3 rounded-3xl text-sm space-x-1";
 
-const FiliterList = () => {
+const FilterList = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isRegionOpen, setIsRegionOpen] = useState(false);
 
@@ -50,4 +50,4 @@ const FiliterList = () => {
   );
 };
 
-export default FiliterList;
+export default FilterList;
