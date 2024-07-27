@@ -18,7 +18,7 @@ const inputStyle = "font-semibold mb-2";
 
 const PostForm = () => {
   const { show, openModal } = useModalStore();
-  const { address,setAddress } = useAddressStore();
+  const { address, setAddress } = useAddressStore();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -42,7 +42,14 @@ const PostForm = () => {
       formData.append("rating", postData.rating.toString());
       formData.append("content", postData.content);
       formData.append("address", JSON.stringify(address));
-      setAddress({address_name:'', place_name:'', phone:'',location_x:'', location_y:'', category:''})
+      setAddress({
+        address_name: "",
+        place_name: "",
+        phone: "",
+        location_x: "",
+        location_y: "",
+        category: "",
+      });
       if (postData.image) formData.append("image", postData.image);
       formData.append("writer", session?.user.id);
       return fetcher(`${process.env.NEXT_PUBLIC_URL}api/posts`, {
@@ -52,9 +59,12 @@ const PostForm = () => {
     },
     onSuccess: async (insertedPost) => {
       if (queryClient.getQueryData(["posts"])) {
-        queryClient.setQueryData(["posts"], (prevdata: IPost[]) => {
-          const shallow = [...prevdata];
-          shallow.unshift(insertedPost);
+        queryClient.setQueryData(["posts"], (prevdata: any) => {
+          console.log("이전데이터", prevdata);
+          const shallow = { ...prevdata };
+          shallow.pages[0].posts.unshift(insertedPost);
+
+          //shallow.unshift(insertedPost);
           return shallow;
         });
       }
@@ -146,3 +156,6 @@ const PostForm = () => {
 };
 
 export default PostForm;
+
+/* data = { pageParmas : [0] , pages: [{nextCursor : NaN , posts : [ {데이터들} , {데이터들} , {데이터들} ]}] 
+} */

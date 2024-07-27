@@ -8,9 +8,9 @@ export async function GET(
   let { cursor } = params;
   // 여기서 커서가 numbers임
   // 기본값 설정
-  const limit = 5;
+  const limit = 10;
   // 정수로 변환
-  const skip = parseInt(cursor);
+  const skip = parseInt(cursor) || 0;
 
   // DB 연결
   const client = await connectDB();

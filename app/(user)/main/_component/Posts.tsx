@@ -38,21 +38,26 @@ const Posts: React.FC = () => {
     threshold: 0,
     delay: 10,
   });
+
   useEffect(() => {
     if (inView) {
       !isFetching && hasNextPage && fetchNextPage();
     }
   }, [inView, fetchNextPage, hasNextPage, isFetching]);
-
+  console.log(data);
   return (
     <>
-      {data?.pages.map((page, index) => (
-        <React.Fragment key={index}>
-          {page.posts.map((post) => (
-            <Post post={post} key={post._id.toString()} />
-          ))}
-        </React.Fragment>
-      ))}
+      {data && data.pages && 'posts' in data.pages[0] ? (
+        data.pages.map((page, index) => (
+          <React.Fragment key={index}>
+            {page.posts.map((post) => (
+              <Post post={post} key={post._id.toString()} />
+            ))}
+          </React.Fragment>
+        ))
+      ) : (
+        <div>게시물이 없습니다.</div>
+      )}
       <div className="fixed bottom-0 left-0 w-full">
         {isFetching && hasNextPage && <ClipLoader size={50} color="#000000" />}{" "}
         {/* 스피너 표시 */}
@@ -64,3 +69,11 @@ const Posts: React.FC = () => {
 };
 
 export default Posts;
+
+/*   const data = {
+pageParamas: [{0 : 0}],
+pages: [{
+nextCursor : NaN,}]
+
+
+} */
