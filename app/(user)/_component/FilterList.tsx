@@ -12,10 +12,6 @@ const FilterList = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isRegionOpen, setIsRegionOpen] = useState(false);
 
-  const toggleSearch = () => {
-    setIsCategoryOpen(!isCategoryOpen);
-  };
-
   return (
     <div className="flex space-x-3">
       <div

@@ -21,7 +21,7 @@ const RegionPosts = ({ city }: { city: string }) => {
 
   return (
     <div className="mt-5">
-      <h1 className="font-semibold text-2xl my-5">
+      <h1 className="font-semibold text-2xl my-5 ">
         📍 {decodeURIComponent(city)}
       </h1>
       {posts &&

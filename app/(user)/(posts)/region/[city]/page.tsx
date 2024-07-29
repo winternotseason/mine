@@ -20,7 +20,7 @@ const CategroyPosts = async ({ params }: { params: { city: string } }) => {
 
   const dehydratedState = dehydrate(queryClient);
   return (
-    <div className="w-full h-full overflow-auto pt-20 px-7">
+    <div className="w-full h-full overflow-auto pt-20 px-7 bg-white">
       <HydrationBoundary state={dehydratedState}>
         <FilterList />
         <RegionPosts city={city} />

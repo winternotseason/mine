@@ -1,6 +1,6 @@
 import React from "react";
-import FilterList from "../_component/FilterList";
 import PostBtn from "../_component/PostBtn";
+import Header from "@/app/_component/Header";
 
 interface Props {
   children: React.ReactNode;
@@ -8,10 +8,11 @@ interface Props {
 
 const PostsLayout = ({ children }: Props) => {
   return (
-    <>
+    <div className="bg-gradient-to-r from-indigo-300 to-green-200">
+      <Header />
       {children}
       <PostBtn />
-    </>
+    </div>
   );
 };
 

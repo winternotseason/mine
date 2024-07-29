@@ -26,7 +26,7 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
       }`}
       style={{ width: "100vw" }}
     >
-      <div className="p-5">
+      <div className="p-10">
         <div
           onClick={() => setIsRegionOpen(false)}
           className="mt-2 cursor-pointer w-fit"
@@ -42,15 +42,14 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
               <h2 className="text-lg font-semibold mb-3 flex items-center text-black/70">
                 {region.state}
               </h2>
-              <div className="space-y-2">
+              <div>
                 {region.cites.map((city) => (
                   <Link key={city.cityname} href={`/region/${region.state} ${city.cityname}`}>
-                    <div className="flex space-x-1 bg-black/10 w-fit py-2 px-4 text-sm rounded-3xl items-center">
+                    <div className="flex space-x-1 bg-black/10 w-fit py-2 px-4 text-sm rounded-3xl items-center mb-3">
                       <div className="flex items-center space-x-1">
                         <MdPlace />
                         <p>{city.cityname}</p>
                       </div>
-
                       <p>{city.count}</p>
                     </div>
                   </Link>

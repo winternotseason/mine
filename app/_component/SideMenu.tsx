@@ -40,7 +40,8 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                     onClick={() => {
                     
                       signOut({ redirect: false });
-                      setIsSearchOpen(false)
+                      router.refresh()
+                      router.push('/')
                     }}
                   >
                     로그아웃

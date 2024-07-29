@@ -7,8 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="w-full h-full">
       <div className="w-full h-full flex flex-col items-center">
         <RQProvider>
-          <Header />
-          <div className="w-full h-full "> {children}</div>
+          <div className="w-full h-full"> {children}</div>
         </RQProvider>
       </div>
     </div>

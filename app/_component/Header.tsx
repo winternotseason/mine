@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import React, { useState } from "react";
 import { RiMenuSearchLine } from "react-icons/ri";
 import SideMenu from "./SideMenu";
@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <div className="relative">
-      <div className="fixed z-10 w-full top-0 right-0 px-4 py-5 flex justify-between  bg-white items-center">
+      <div className="fixed z-10 w-full top-0 right-0 px-4 py-5 flex justify-between  items-center backdrop-blur-sm">
         <div
           className="relative cursor-pointer flex items-center text-2xl"
           onClick={() => {

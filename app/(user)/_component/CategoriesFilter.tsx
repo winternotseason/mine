@@ -26,7 +26,7 @@ const CategoriesFilter = ({ isCategoryOpen, setIsCategoryOpen }: Props) => {
       }`}
       style={{ width: "100vw" }}
     >
-      <div className="p-5">
+      <div className="p-10">
         <div
           onClick={() => setIsCategoryOpen(false)}
           className="mt-2 cursor-pointer"

@@ -59,8 +59,8 @@ const Posts: React.FC = () => {
       ) : (
         <div>게시물이 없습니다.</div>
       )}
-      <div className="fixed bottom-0 left-0 w-full">
-        {isFetching && hasNextPage && <ClipLoader size={50} color="#000000" />}{" "}
+      <div className="fixed bottom-0 left-0 w-full flex justify-center items-center py-2">
+        {isFetching && hasNextPage && <ClipLoader size={30} color="#000000" />}{" "}
         {/* 스피너 표시 */}
       </div>
 

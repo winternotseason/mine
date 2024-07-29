@@ -16,6 +16,7 @@ const PostPage = async ({ params }: { params: { postid: string } }) => {
 
   return (
     <>
+     
       <DetailPost postid={postid} />
     </>
   );

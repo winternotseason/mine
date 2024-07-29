@@ -13,12 +13,17 @@ dayjs.locale("ko");
 const Post = ({ post }: { post: IPost }) => {
   return (
     <Link href={`${process.env.NEXT_PUBLIC_URL}/post/${post._id.toString()}`}>
-      <article className="flex px-8 py-10 mb-10 rounded-3xl shadow-lg border-[1px] hover:border-green-700 transition-all duration-100 ">
+      <article className="flex px-5 py-6 mb-10 rounded-3xl shadow-lg border-[1px] hover:border-green-700 transition-all duration-100 ">
         <div className="flex flex-col flex-1 self-stretch ">
           <div className="flex-1  flex flex-col space-y-1 justify-center">
             <div>
-              <p className="text-2xl font-semibold">{post.title}</p>
-              <div className="flex text-black/50 text-md">
+              <p className="text-xl font-semibold">
+                {" "}
+                {post.title.length > 10
+                  ? post.title.slice(0, 10) + "..."
+                  : post.title}
+              </p>
+              <div className="flex text-black/50 text-sm">
                 <p className="flex items-center text-black/80 mr-1">
                   <MdPlace />
                   {post.address.place_name}
@@ -42,7 +47,7 @@ const Post = ({ post }: { post: IPost }) => {
             </div>
           </div>
         </div>
-        <div className="w-40 h-40 rounded-lg overflow-hidden relative ">
+        <div className="w-24 h-24 rounded-lg overflow-hidden relative ">
           <Image
             src={post.imageUri}
             alt="image"
