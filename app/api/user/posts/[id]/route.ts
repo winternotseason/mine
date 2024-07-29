@@ -12,8 +12,8 @@ export async function GET(
   const client = await connectDB();
   const db = client.db("mine");
   const collection = db.collection("posts");
-  const posts = await collection.find({ seller: id }).toArray();
-  console.log("내가 쓴 글들!", posts);
+  const posts = await collection.find({ writer: id }).toArray();
+
   if (!posts) {
     return NextResponse.json({
       message: "작성한 글이 존재하지 않습니다.",

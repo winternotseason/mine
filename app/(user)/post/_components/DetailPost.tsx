@@ -16,6 +16,7 @@ import { MdEditNote } from "react-icons/md";
 import useKakaoLoader from "../../../_component/use-kakao-loader";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useRouter } from "next/navigation";
+import MainBanner from "../../_component/MainBanner";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
@@ -49,22 +50,26 @@ const DetailPost = ({ postid }: { postid: string }) => {
   if (isPostLoading || isUserLoading) {
     return <Skeleton />;
   }
-  console.log(user, post);
+  
   return (
     <>
-    {/* 헤더 */}
-      <div className="w-full p-5 fixed top-0 flex justify-between bg-white">
-        <p onClick={() => router.back()}>ᐸ</p>
+      {/* 모바일 헤더 */}
+      <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0 flex justify-between bg-white md:hidden">
+        <p onClick={() => router.back()} className="cursor-pointer">
+          ᐸ
+        </p>
         <p className="text-lg font-semibold flex-1 text-center">리뷰 상세</p>
       </div>
-      <div className="w-full h-full mt-12">
-        <div className="pt-5 pb-24 px-5">
-          <div className="bg-black/10 w-fit px-3 py-1 rounded-3xl text-black/80 flex items-center">
+      {/* 데스크탑 헤더 */}
+     <MainBanner title={post.title}/>
+      <div className="w-full h-full mt-12 md:mt-0">
+        <div className="w-full py-5 px-5  flex flex-col items-center">
+          <div className="bg-black/10 w-fit px-3 py-1 rounded-3xl text-black/80 flex items-center self-start">
             <MdEditNote className="mr-1" />
             {post.address.category}
           </div>
           {/* 작성자 프로필 */}
-          <div className="flex items-center my-4">
+          <div className="flex items-center my-4 self-start">
             <div>
               <Image
                 src={`/avatar${user.selectedAvatar}.png`}
@@ -81,9 +86,9 @@ const DetailPost = ({ postid }: { postid: string }) => {
               </p>
             </div>
           </div>
-          <div className="font-semibold text-2xl">{post.title}</div>
+          <div className="font-semibold text-2xl self-start">{post.title}</div>
           {/* 장소 / 메뉴 / 별점 */}
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-3 self-start">
             <div className="flex items-center">
               <p className="bg-black/10 px-2 py-1 text-sm rounded-3xl flex items-center">
                 <FaRegBuilding className="mr-1" />
@@ -109,7 +114,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
           {/* 글 내용 */}
           <div className="my-4">{post.content}</div>
           {/* 이미지 */}
-          <div className="w-full aspect-square relative flex justify-center">
+          <div className="w-full max-w-[40rem] aspect-square relative flex justify-center">
             <Image
               src={post.imageUri}
               alt="image"
@@ -118,7 +123,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
               objectFit="cover"
             />
           </div>
-          <div className="border-[1px] rounded-3xl overflow-hidden mt-4">
+          <div className="w-full max-w-[40rem] border-[1px] rounded-3xl overflow-hidden mt-4">
             <div>
               <Map // 지도를 표시할 Container
                 center={{

@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { cursor: string } }
 ) {
   let { cursor } = params;
-  const limit = 10;
+  const limit = 12; // 10개씩 불러옴
   const skip = parseInt(cursor) || 0;
 
   const client = await connectDB();

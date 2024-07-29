@@ -89,7 +89,7 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mt-10">
       {/* 이미지 업로드 */}
       <ImagePicker name="image" setImage={setImage} />
       {/* 제목 */}
@@ -136,7 +136,7 @@ const PostForm = () => {
         />
       </div>
       <div className="flex flex-col mt-7">
-        <label className={`${inputStyle}`}>상품설명</label>
+        <label className={`${inputStyle}`}>설명</label>
         <textarea
           name="content"
           className="h-40 resize-none border-[1px] p-2 outline-none"

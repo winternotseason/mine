@@ -1,8 +1,11 @@
-import { QueryClient } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import React from "react";
 import { getPost } from "../../_lib/api-handler/Post";
 import DetailPost from "../_components/DetailPost";
-
 
 const PostPage = async ({ params }: { params: { postid: string } }) => {
   const { postid } = params;
@@ -14,11 +17,15 @@ const PostPage = async ({ params }: { params: { postid: string } }) => {
     queryFn: getPost,
   });
 
+  const dehydratedState = dehydrate(queryClient);
   return (
-    <>
-     
-      <DetailPost postid={postid} />
-    </>
+    <div className="w-full h-full flex justify-center">
+      <div className="w-full max-w-[60rem]">
+        <HydrationBoundary state={dehydratedState}>
+          <DetailPost postid={postid} />
+        </HydrationBoundary>
+      </div>
+    </div>
   );
 };
 

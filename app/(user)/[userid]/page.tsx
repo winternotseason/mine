@@ -7,6 +7,7 @@ import {
 import React from "react";
 import { getUser, getUserPosts } from "../_lib/api-handler/User";
 import UserInfo from "./_component/UserInfo";
+import MainBanner from "../_component/MainBanner";
 
 const Profile = async ({ params }: { params: { userid: string } }) => {
   const { userid } = params;
@@ -28,7 +29,10 @@ const Profile = async ({ params }: { params: { userid: string } }) => {
   return (
     <div>
       <HydrationBoundary state={dehydratedState}>
-        <UserInfo userid={userid} session={session} />
+        <div>
+          <MainBanner title="마이페이지"/>
+          <UserInfo userid={userid} session={session} />
+        </div>
       </HydrationBoundary>
     </div>
   );

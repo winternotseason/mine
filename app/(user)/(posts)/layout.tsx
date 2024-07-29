@@ -8,7 +8,7 @@ interface Props {
 
 const PostsLayout = ({ children }: Props) => {
   return (
-    <div className="bg-gradient-to-r from-indigo-300 to-green-200">
+    <div className="max-w-[100rem]">
       <Header />
       {children}
       <PostBtn />

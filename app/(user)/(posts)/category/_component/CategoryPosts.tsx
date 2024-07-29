@@ -21,10 +21,12 @@ const CategoryPosts = ({ name }: { name: string }) => {
 
   return (
     <div className="mt-5">
+      
      <h1 className="font-semibold text-2xl my-5">🍴 {decodeURIComponent(name)}</h1>
+     <div className="md:grid md:grid-cols-3 lg:grid-cols-4 gap-x-5">
       {posts && posts?.map((post) => (
         <Post key={post._id.toString()} post={post} />
-      ))}
+      ))}</div>
     </div>
   );
 };

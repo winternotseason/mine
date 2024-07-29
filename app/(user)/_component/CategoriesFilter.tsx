@@ -29,7 +29,7 @@ const CategoriesFilter = ({ isCategoryOpen, setIsCategoryOpen }: Props) => {
       <div className="p-10">
         <div
           onClick={() => setIsCategoryOpen(false)}
-          className="mt-2 cursor-pointer"
+          className="mt-2 cursor-pointer w-fit"
         >
           ᐸ
         </div>

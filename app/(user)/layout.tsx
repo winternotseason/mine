@@ -4,14 +4,15 @@ import Header from "../_component/Header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="w-full h-full">
-      <div className="w-full h-full flex flex-col items-center">
-        <RQProvider>
-          <div className="w-full h-full"> {children}</div>
-        </RQProvider>
-      </div>
+    <div className="w-full h-full flex justify-center">
+      <RQProvider>
+        <div className="w-full h-full max-w-[80rem]">{children}</div>
+      </RQProvider>
     </div>
   );
 };
 
 export default Layout;
+
+
+// md:flex lg:flex md:justify-center lg:justify-center

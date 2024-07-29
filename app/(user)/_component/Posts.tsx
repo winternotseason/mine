@@ -48,17 +48,19 @@ const Posts: React.FC = () => {
   return (
     <div className="mt-5">
       <h1 className="font-semibold text-2xl my-5">🔥 최근순 HOT 리뷰</h1>
-      {data && data.pages && "posts" in data.pages[0] ? (
-        data.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.posts.map((post) => (
-              <Post post={post} key={post._id.toString()} />
-            ))}
-          </React.Fragment>
-        ))
-      ) : (
-        <div>게시물이 없습니다.</div>
-      )}
+      <div className="md:grid md:grid-cols-3 lg:grid-cols-4 gap-x-5">
+        {data && data.pages && "posts" in data.pages[0] ? (
+          data.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.posts.map((post) => (
+                <Post post={post} key={post._id.toString()} />
+              ))}
+            </React.Fragment>
+          ))
+        ) : (
+          <div>게시물이 없습니다.</div>
+        )}
+      </div>
       <div className="fixed bottom-0 left-0 w-full flex justify-center items-center py-2">
         {isFetching && hasNextPage && <ClipLoader size={30} color="#000000" />}{" "}
         {/* 스피너 표시 */}

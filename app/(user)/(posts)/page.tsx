@@ -31,16 +31,29 @@ export default async function Home() {
 
   const dehydratedState = dehydrate(queryClient);
   return (
-    <div className="w-full h-full overflow-auto pt-14">
-      <div className="h-80 py-8 flex justify-center px-7">
-        <div className="bg-white w-full md:w-2/3 h-full rounded-3xl flex flex-col items-center justify-center">
-          <h1 className="text-xl font-bold mb-3">
-            <span className="text-green-500">#</span>MINE
-          </h1>
-          <h2 className="text-lg md:text-2xl font-bold">감명 깊었던 전국 맛집,</h2>
-          <h2 className="text-lg md:text-2xl font-bold">함께 공유하고 즐겨보세요!</h2>
-          <p className="mt-5">🍜 🍚 🍭 🍕 🍩</p>
+    <div className="w-full h-full overflow-auto pt-20 md:pt-0">
+      {/* 모바일 배너 */}
+      <div className="relative first:h-80 py-8 flex justify-center px-7 md:hidden bg-banner bg-cover">
+        <div className="absolute inset-0 bg-black opacity-50" />
+        <div className="w-full h-full  flex flex-col items-center justify-center relative z-10 text-white">
+          <h2 className="text-2xl  font-bold">
+            <span className="text-green-500">감명</span> 깊었던 전국 맛집,
+          </h2>
+          <h2 className="text-2xl font-bold">
+            함께 <span className="text-green-500">공유</span>하고 즐겨보세요!
+          </h2>
         </div>
+      </div>
+      {/* pc 배너 */}
+      <div className="relative h-96 lg:flex md:flex flex-col justify-center pl-10 text-white bg-banner bg-cover hidden">
+        <div className="absolute inset-0 bg-black opacity-50" />
+        <h1 className="font-bold text-5xl relative z-10">
+          <span className="text-green-500">맛</span>의 즐거움,
+          <span className="text-green-500">공유</span>의 행복
+        </h1>
+        <p className="mt-2 relative z-10 font-light">
+          후기를 통해 맛을 공유해보세요!
+        </p>
       </div>
       <div className="pt-4 px-7 bg-white">
         <HydrationBoundary state={dehydratedState}>
