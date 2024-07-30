@@ -44,6 +44,12 @@ const UserInfo = ({ userid, session }: Props) => {
   if (ispostsLoading || isUserLoading) {
     return <SkeletonProfile />;
   }
+
+  if (user) {
+    <div className="flex justify-center items-center w-full h-full">
+      <p className="text-lg font-bold">존재하지 않는 유저입니다.</p>
+    </div>;
+  }
   return (
     <div className="p-10">
       {/* 내 프로필 */}
@@ -63,7 +69,7 @@ const UserInfo = ({ userid, session }: Props) => {
                   router.push("/");
                 });
               }}
-              className="text-sm font-light text-black/50" 
+              className="text-sm font-light text-black/50"
             >
               로그아웃
             </button>
