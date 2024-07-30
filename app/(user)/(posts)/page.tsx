@@ -31,7 +31,7 @@ export default async function Home() {
 
   const dehydratedState = dehydrate(queryClient);
   return (
-    <div className="w-full h-full overflow-auto pt-20 md:pt-0">
+    <div className="w-full h-full overflow-auto pt-[63px] md:pt-0">
       {/* 모바일 배너 */}
       <div className="relative first:h-80 py-8 flex justify-center px-7 md:hidden bg-banner bg-cover">
         <div className="absolute inset-0 bg-black opacity-50" />

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import SkeletonProfile from "./SkeletonProfile";
+import Post from "../../_component/Post";
 
 interface Props {
   userid: string;
@@ -67,6 +68,12 @@ const UserInfo = ({ userid, session }: Props) => {
         </div>
       </div>
       {/* 내가 올린 상품들 */}
+      <h1 className="my-5 text-lg font-semibold">{session?.user.id === userid ? '📄 내가 업로드한 리뷰' : `📄 ${userid} 님이 업로드한 리뷰`}</h1>
+      <div className=" md:grid md:grid-cols-3 lg:grid-cols-4">
+        {posts?.map((post) => (
+          <Post post={post} key={post._id.toString()} />
+        ))}
+      </div>
     </div>
   );
 };

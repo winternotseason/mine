@@ -16,11 +16,14 @@ const Header = () => {
     setIsSearchOpen(!isSearchOpen);
   };
 
+  const accordian =
+    "bg-black w-6 h-1 rounded-3xl transition-all duration-100 ease-in-out ";
+
   return (
     <>
       {/* 모바일 헤더 */}
       <div className="relative md:hidden ">
-        <div className="fixed z-10 w-full bg-white top-0 right-0 px-4 py-5 flex justify-between  items-center backdrop-blur-sm">
+        <div className="fixed z-10 w-full bg-white top-0 right-0 px-4 py-5 flex justify-between items-center backdrop-blur-sm">
           <div
             className="relative cursor-pointer flex items-center text-2xl"
             onClick={() => {
@@ -30,14 +33,26 @@ const Header = () => {
             <p className="text-green-500 font-bold">#</p>
             <p className="font-bold">MINE</p>
           </div>
-          <RiMenuSearchLine
-            size={25}
-            onClick={toggleSearch}
-            className="cursor-pointer"
-          />
+
+          <div className="flex flex-col space-y-1" onClick={toggleSearch}>
+            <span
+              className={`${accordian} ${
+                isSearchOpen && "translate-y-2 rotate-45"
+              } `}
+            ></span>
+            <span
+              className={`${accordian} ${isSearchOpen && "opacity-0"} `}
+            ></span>
+            <span
+              className={`${accordian} ${
+                isSearchOpen && "-translate-y-2 -rotate-45"
+              } `}
+            ></span>
+          </div>
         </div>
 
         {/* 사이드 아코디언 메뉴 */}
+
         <SideMenu
           setIsSearchOpen={setIsSearchOpen}
           isSearchOpen={isSearchOpen}

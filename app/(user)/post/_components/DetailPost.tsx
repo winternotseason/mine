@@ -17,6 +17,7 @@ import useKakaoLoader from "../../../_component/use-kakao-loader";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useRouter } from "next/navigation";
 import MainBanner from "../../_component/MainBanner";
+import Link from "next/link";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
@@ -50,7 +51,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
   if (isPostLoading || isUserLoading) {
     return <Skeleton />;
   }
-  
+
   return (
     <>
       {/* 모바일 헤더 */}
@@ -61,7 +62,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
         <p className="text-lg font-semibold flex-1 text-center">리뷰 상세</p>
       </div>
       {/* 데스크탑 헤더 */}
-     <MainBanner title={post.title}/>
+      <MainBanner title={post.title} />
       <div className="w-full h-full mt-12 md:mt-0">
         <div className="w-full py-5 px-5  flex flex-col items-center">
           <div className="bg-black/10 w-fit px-3 py-1 rounded-3xl text-black/80 flex items-center self-start">
@@ -78,13 +79,15 @@ const DetailPost = ({ postid }: { postid: string }) => {
                 height={50}
               />
             </div>
-            <div className="ml-2">
-              <p className="font-semibold">{user.name}</p>
-              <p className="text-black/40 text-sm">
-                {" "}
-                {dayjs(post.createAt).fromNow(false)}
-              </p>
-            </div>
+            <Link href={`/${user.id}`}>
+              <div className="ml-2">
+                <p className="font-semibold">{user.name}</p>
+                <p className="text-black/40 text-sm">
+                  {" "}
+                  {dayjs(post.createAt).fromNow(false)}
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="font-semibold text-2xl self-start">{post.title}</div>
           {/* 장소 / 메뉴 / 별점 */}
