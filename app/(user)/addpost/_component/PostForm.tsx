@@ -57,15 +57,9 @@ const PostForm = () => {
         body: formData,
       });
     },
-    onSuccess: async (insertedPost: IPost) => {
-      if (queryClient.getQueryData(["posts"])) {
-        queryClient.setQueryData(["posts"], (prevdata: any) => {
-          // console.log("prevData", prevdata);
-          const shallow = { ...prevdata };
-          shallow.pages[0].posts.unshift(insertedPost);
-          return shallow;
-        });
-      }
+    onSuccess: async () => {
+      // posts 업데이트
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
       // 카테고리 카운트 업데이트
       queryClient.invalidateQueries({ queryKey: ["categories"] });
       // 지역 업데이트
