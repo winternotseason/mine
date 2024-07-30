@@ -1,7 +1,7 @@
 import { fetcher } from "@/lib/utils";
 
 export async function getAllPosts({ pageParam }: { pageParam?: number }) {
-  console.log("페이지파람", pageParam);
+  // console.log("pageParma:", pageParam);
   const response = await fetcher(
     `${process.env.NEXT_PUBLIC_URL}api/posts/${pageParam}`,
     {

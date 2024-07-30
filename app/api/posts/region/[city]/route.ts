@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { city: string } }
 ) {
   const { city } = params;
-console.log(city)
+ // console.log(city)
   // city = 서울 중구
   const client = await connectDB();
   const db = client.db("mine");

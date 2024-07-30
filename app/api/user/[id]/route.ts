@@ -20,6 +20,6 @@ export async function GET(
       status: 404,
     });
   }
-  console.log(user)
+  // console.log(user)
   return NextResponse.json(user);
 }

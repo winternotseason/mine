@@ -28,7 +28,7 @@ const MapSearchModal = () => {
         const restaurant = data.filter((item) =>
           item.category_name.startsWith("음식점")
         );
-        console.log(restaurant)
+        //  console.log(restaurant)
         setSearchResult(restaurant);
       }
     });

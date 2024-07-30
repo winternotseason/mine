@@ -60,10 +60,9 @@ const PostForm = () => {
     onSuccess: async (insertedPost: IPost) => {
       if (queryClient.getQueryData(["posts"])) {
         queryClient.setQueryData(["posts"], (prevdata: any) => {
-          console.log("이전데이터", prevdata);
+          // console.log("prevData", prevdata);
           const shallow = { ...prevdata };
           shallow.pages[0].posts.unshift(insertedPost);
-          //shallow.unshift(insertedPost);
           return shallow;
         });
       }
@@ -115,7 +114,7 @@ const PostForm = () => {
       }
     },
     onError: (error) => {
-      console.log("상품 업로드 오류", error);
+      console.error("상품 업로드 오류", error);
     },
     onSettled: () => {
       router.replace("/");
