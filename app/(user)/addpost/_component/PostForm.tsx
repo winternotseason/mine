@@ -67,51 +67,9 @@ const PostForm = () => {
         });
       }
       // 카테고리 카운트 업데이트
-      if (queryClient.getQueryData(["categories"])) {
-        queryClient.setQueryData(["categories"], (prevData: Category[]) => {
-          const shallow = [...prevData];
-          const existingCategory = shallow.find(
-            (category: Category) =>
-              category.category === insertedPost.address.category
-          );
-          // {category: '간식', count:1}
-          if (existingCategory) {
-            existingCategory.count += 1;
-          } else {
-            shallow.push({ category: insertedPost.address.category, count: 1 });
-          }
-          return shallow;
-        });
-      }
+      queryClient.invalidateQueries({ queryKey: ["categories"] });
       // 지역 업데이트
-      if (queryClient.getQueryData(["region"])) {
-        queryClient.setQueryData(["region"], (prevData: Region[]) => {
-          const shallow = [...prevData];
-          // 서울, 부산.... state가 존재하는지?
-          const state = insertedPost.address.address_name.split(" ")[0]; // 서울
-          const city = insertedPost.address.address_name.split(" ")[1]; // 중구
-          const existingState = shallow.find(
-            (region) => region.state === state
-          );
-          if (existingState) {
-            // 서울이 존재
-            const existingCity = existingState.cites.find(
-              (cityObj) => cityObj.cityname === city
-            );
-            if (existingCity) {
-              // 중구도 존재
-              existingCity.count += 1;
-            } else {
-              // 서울은 있는데 중구는 없음
-              existingState.cites.push({ cityname: city, count: 1 });
-            }
-          } else {
-            // 서울조차 없음
-            shallow.push({ state, cites: [{ cityname: city, count: 1 }] });
-          }
-          return shallow;
-        });
-      }
+      queryClient.invalidateQueries({ queryKey: ["region"] });
     },
     onError: (error) => {
       console.error("상품 업로드 오류", error);
