@@ -63,7 +63,7 @@ const UserInfo = ({ userid, session }: Props) => {
                   router.push("/");
                 });
               }}
-              className="text-sm font-light text-black/50"
+              className="text-sm font-light text-black/50" 
             >
               로그아웃
             </button>
