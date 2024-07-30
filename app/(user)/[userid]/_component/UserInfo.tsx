@@ -45,10 +45,12 @@ const UserInfo = ({ userid, session }: Props) => {
     return <SkeletonProfile />;
   }
 
-  if (user) {
-    <div className="flex justify-center items-center w-full h-full">
-      <p className="text-lg font-bold">존재하지 않는 유저입니다.</p>
-    </div>;
+  if (user.status === 404) {
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <p className="text-lg font-bold">존재하지 않는 유저입니다.</p>
+      </div>
+    );
   }
   return (
     <div className="p-10">

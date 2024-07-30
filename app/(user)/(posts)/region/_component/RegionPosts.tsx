@@ -18,16 +18,16 @@ const RegionPosts = ({ city }: { city: string }) => {
     staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
     gcTime: 300 * 1000,
   });
-
   return (
     <div className="mt-5">
       <h1 className="font-semibold text-2xl my-5 ">
         📍 {decodeURIComponent(city)}
       </h1>
       <div className="md:grid md:grid-cols-3 lg:grid-cols-4 gap-x-5">
-      {posts &&
-        posts?.map((post) => <Post key={post._id.toString()} post={post} />)}
-        </div>
+      {posts.length === 0 && <p>리뷰가 존재하지 않습니다.</p>}
+        {posts &&
+          posts?.map((post) => <Post key={post._id.toString()} post={post} />)}
+      </div>
     </div>
   );
 };

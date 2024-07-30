@@ -24,6 +24,7 @@ const CategoryPosts = ({ name }: { name: string }) => {
       
      <h1 className="font-semibold text-2xl my-5">🍴 {decodeURIComponent(name)}</h1>
      <div className="md:grid md:grid-cols-3 lg:grid-cols-4 gap-x-5">
+     {posts.length === 0 && <p>리뷰가 존재하지 않습니다.</p>}
       {posts && posts?.map((post) => (
         <Post key={post._id.toString()} post={post} />
       ))}</div>

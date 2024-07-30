@@ -18,6 +18,7 @@ export interface User {
   id: string;
   name: string;
   selectedAvatar: number;
+  status?:number
 }
 
 export interface Category {

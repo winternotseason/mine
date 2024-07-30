@@ -31,7 +31,7 @@ const Profile = async ({ params }: { params: { userid: string } }) => {
     <div>
       <HydrationBoundary state={dehydratedState}>
         <Header />
-        <div className="mt-10 md:mt-0">
+        <div className="w-full h-full mt-10 md:mt-0">
           <UserInfo userid={userid} session={session} />
         </div>
       </HydrationBoundary>
