@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { RiMenuSearchLine } from "react-icons/ri";
 import SideMenu from "./SideMenu";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

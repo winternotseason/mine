@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SessionProviderWrapper from "@/app/(user)/_component/session-provider";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Nanum_Gothic } from "next/font/google";
 
-const montserrat = Montserrat({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+
+
+const nanum_gothic = Nanum_Gothic({
+  weight: ["400", "700", "800"],
   subsets: ["latin"],
+  variable: "--font-nanum-gothic",
 });
 
 export const metadata: Metadata = {
@@ -29,8 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={montserrat.className}>
+    <html
+      lang="ko"
+      className={nanum_gothic.className}
+    >
+      <body className="font-gothic">
         <SessionProviderWrapper>{children}</SessionProviderWrapper>
       </body>
     </html>

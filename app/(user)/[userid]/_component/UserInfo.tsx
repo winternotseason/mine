@@ -51,9 +51,11 @@ const UserInfo = ({ userid, session }: Props) => {
         <div className="w-40 h-40 relative">
           <Image src={`/avatar${user?.selectedAvatar}.png`} alt="avatar" fill />
         </div>
-        <div>
-          <p>{user?.name}</p>
-          <p>{user?.id}</p>
+        <div className="flex flex-col justify-between">
+          <div>
+            <p>{user?.name}</p>
+            <p>{user?.id}</p>
+          </div>
           {session?.user.id === userid && (
             <button
               onClick={() => {
@@ -61,6 +63,7 @@ const UserInfo = ({ userid, session }: Props) => {
                   router.push("/");
                 });
               }}
+              className="text-sm font-light text-black/50"
             >
               로그아웃
             </button>
@@ -68,8 +71,12 @@ const UserInfo = ({ userid, session }: Props) => {
         </div>
       </div>
       {/* 내가 올린 상품들 */}
-      <h1 className="my-5 text-lg font-semibold">{session?.user.id === userid ? '📄 내가 업로드한 리뷰' : `📄 ${userid} 님이 업로드한 리뷰`}</h1>
-      <div className=" md:grid md:grid-cols-3 lg:grid-cols-4">
+      <h1 className="my-5 text-lg font-semibold">
+        {session?.user.id === userid
+          ? "📄 내가 업로드한 리뷰"
+          : `📄 ${userid} 님이 업로드한 리뷰`}
+      </h1>
+      <div className=" md:grid md:grid-cols-3 lg:grid-cols-4 gap-3">
         {posts?.map((post) => (
           <Post post={post} key={post._id.toString()} />
         ))}

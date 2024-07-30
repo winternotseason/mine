@@ -1,6 +1,8 @@
 // components/AuthForm.js
 import React from "react";
 import Link from "next/link";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 interface Props {
   children: React.ReactNode;
@@ -8,10 +10,14 @@ interface Props {
   linkText: string;
 }
 
-const AuthForm = ({ children, linkHref, linkText }: Props) => {
+const AuthForm = async ({ children, linkHref, linkText }: Props) => {
+  const session = await auth();
+  if(session) {
+    redirect('/')
+  }
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <h1 className="text-3xl font-semibold">MINE</h1>
+      <Link href="/"><h1 className="text-3xl font-semibold"><span className="text-green-500">#</span>MINE</h1></Link>
       {children}
       <Link href={linkHref} className="text-gray-500 text-sm">
         {linkText}

@@ -61,8 +61,51 @@ const DetailPost = ({ postid }: { postid: string }) => {
         </p>
         <p className="text-lg font-semibold flex-1 text-center">리뷰 상세</p>
       </div>
-      {/* 데스크탑 헤더 */}
-      <MainBanner title={post.title} />
+      {/* 데스크탑, 태블릿 헤더*/}
+      <div className="hidden md:block">
+        <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0  justify-between bg-white hidden md:flex items-center">
+          <div
+            className="flex font-bold text-2xl cursor-pointer"
+            onClick={() => router.push("/")}
+          >
+            <p className="text-green-500">#</p>MINE
+          </div>
+          <p className="text-lg font-semibold flex-1 text-center">
+            {post.title}
+          </p>
+        </div>{" "}
+        <div className="relative">
+          <Map // 지도를 표시할 Container
+            center={{
+              // 지도의 중심좌표
+              lat: parseFloat(post.address.location_y),
+              lng: parseFloat(post.address.location_x),
+            }}
+            style={{
+              // 지도의 크기
+              width: "100%",
+              height: "400px",
+            }}
+            level={2} // 지도의 확대 레벨
+          >
+            <MapMarker
+              position={{
+                lat: parseFloat(post.address.location_y),
+                lng: parseFloat(post.address.location_x),
+              }}
+            />
+          </Map>
+          <div className="z-10 absolute -bottom-2 p-4 bg-white/80">
+            <div className="flex items-center">
+              <p>{post.address.place_name}</p>
+              <p className="text-black/50 text-sm ml-2">
+                {post.address.category}
+              </p>
+            </div>
+            <p className="text-black/50">{post.address.address_name}</p>
+          </div>
+        </div>
+      </div>
       <div className="w-full h-full mt-12 md:mt-0">
         <div className="w-full py-5 px-5  flex flex-col items-center">
           <div className="bg-black/10 w-fit px-3 py-1 rounded-3xl text-black/80 flex items-center self-start">
@@ -114,19 +157,8 @@ const DetailPost = ({ postid }: { postid: string }) => {
               <p className="ml-2">{post.rating}.0</p>
             </div>
           </div>
-          {/* 글 내용 */}
-          <div className="my-4">{post.content}</div>
-          {/* 이미지 */}
-          <div className="w-full max-w-[40rem] aspect-square relative flex justify-center">
-            <Image
-              src={post.imageUri}
-              alt="image"
-              fill
-              sizes="100%"
-              objectFit="cover"
-            />
-          </div>
-          <div className="w-full max-w-[40rem] border-[1px] rounded-3xl overflow-hidden mt-4">
+          {/* 지도 */}
+          <div className="w-full max-w-[40rem] border-[1px] rounded-3xl overflow-hidden mt-4 md:hidden">
             <div>
               <Map // 지도를 표시할 Container
                 center={{
@@ -158,6 +190,18 @@ const DetailPost = ({ postid }: { postid: string }) => {
               </div>
               <p className="text-black/50">{post.address.address_name}</p>
             </div>
+          </div>
+          {/* 글 내용 */}
+          <div className="my-4">{post.content}</div>
+          {/* 이미지 */}
+          <div className="w-full max-w-[40rem] aspect-square relative flex justify-center">
+            <Image
+              src={post.imageUri}
+              alt="image"
+              fill
+              sizes="100%"
+              objectFit="cover"
+            />
           </div>
         </div>
       </div>
