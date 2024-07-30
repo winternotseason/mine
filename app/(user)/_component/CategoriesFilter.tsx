@@ -12,6 +12,7 @@ interface Props {
 }
 
 const CategoriesFilter = ({ isCategoryOpen, setIsCategoryOpen }: Props) => {
+  
   const { data, isLoading } = useQuery<Category[], Object, Category[]>({
     queryKey: ["categories"],
     queryFn: getCategories,
