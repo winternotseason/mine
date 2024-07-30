@@ -71,18 +71,18 @@ const UserInfo = ({ userid, session }: Props) => {
                   router.push("/");
                 });
               }}
-              className="text-sm font-light text-black/50"
+              className="text-sm font-light text-black/50 w-fit"
             >
               로그아웃
             </button>
           )}
         </div>
       </div>
-      {/* 내가 올린 상품들 */}
+      {/* 내가 올린 글들 */}
       <h1 className="my-5 text-lg font-semibold">
         {session?.user.id === userid
-          ? "📄 내가 업로드한 리뷰"
-          : `📄 ${userid} 님이 업로드한 리뷰`}
+          ? `📄 내가 업로드한 리뷰 ${posts.length}`
+          : `📄 ${userid} 님이 업로드한 리뷰 ${posts.length}`}
       </h1>
       <div className=" md:grid md:grid-cols-3 lg:grid-cols-4 gap-3">
         {posts?.map((post) => (

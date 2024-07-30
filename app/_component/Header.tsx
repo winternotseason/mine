@@ -77,7 +77,7 @@ const Header = () => {
               <input
                 type="text"
                 className="w-full px-5 py-2 outline-none bg-inherit"
-                placeholder="🔍 상호명으로 검색해보세요"
+                placeholder="🔍  상호명으로 검색해보세요"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

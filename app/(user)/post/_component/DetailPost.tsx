@@ -181,7 +181,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
             </div>
           </div>
           {/* 글 내용 */}
-          <div className="my-4">{post.content}</div>
+          <div className="my-4 font-light">{post.content}</div>
           {/* 이미지 */}
           <div className="w-full max-w-[40rem] aspect-square relative flex justify-center">
             <Image

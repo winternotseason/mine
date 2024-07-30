@@ -13,7 +13,7 @@ dayjs.locale("ko");
 const Post = ({ post }: { post: IPost }) => {
   return (
     <Link href={`${process.env.NEXT_PUBLIC_URL}/post/${post._id.toString()}`}>
-      <article className="flex md:items-center px-5 py-6 mb-10 rounded-3xl shadow-lg border-[1px] md:flex-col md:hover:scale-105 transition-all duration-200">
+      <article className="flex md:items-center px-5 py-6 mb-5  rounded-3xl shadow-lg border-[1px] md:flex-col hover:scale-105 transition-all duration-200">
         <div className="w-24 h-24 md:w-40 md:h-40  rounded-lg overflow-hidden relative ">
           <Image
             src={post.imageUri}
