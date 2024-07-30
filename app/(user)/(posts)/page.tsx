@@ -8,7 +8,7 @@ import Posts from "../_component/Posts";
 
 import { getCategories } from "../_lib/api-handler/Categories";
 import { getRegion } from "../_lib/api-handler/Region";
-import FilterList from "../_component/FilterList";
+import FilterList from "../_component/Filter/FilterList";
 
 export default async function Home() {
   const queryClient = new QueryClient();

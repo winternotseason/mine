@@ -1,0 +1,61 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import React, { Dispatch, SetStateAction } from "react";
+import { getCategories } from "../../_lib/api-handler/Categories";
+import { Category } from "../../_lib/type";
+import { MdNoMeals } from "react-icons/md";
+import Link from "next/link";
+interface Props {
+  isCategoryOpen: boolean;
+  setIsCategoryOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const CategoriesFilter = ({ isCategoryOpen, setIsCategoryOpen }: Props) => {
+  const { data, isLoading } = useQuery<Category[], Object, Category[]>({
+    queryKey: ["categories"],
+    queryFn: getCategories,
+    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+    gcTime: 300 * 1000,
+  });
+
+  return (
+    <>
+      {isCategoryOpen && <div className="w-full h-full absolute top-0 left-0 bg-black/40 z-50" />}
+      <div
+        className={`fixed z-50 top-0 -left-5 w-3/4 md:w-1/3 h-full  bg-white  transition-transform duration-300 ease-in-out overflow-auto ${
+          isCategoryOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-10">
+          <div
+            onClick={() => setIsCategoryOpen(false)}
+            className="mt-2 cursor-pointer w-fit"
+          >
+            ᐸ
+          </div>
+          <div className="mt-5 space-y-3">
+            <p className="text-sm font-light text-center mb-7">
+              올라온 리뷰들의 카테고리만 표시됩니다.
+            </p>
+            {data?.map((category) => (
+              <Link
+                href={`/category/${category.category}`}
+                key={category.category}
+                className="flex space-x-2 bg-black/10 rounded-3xl text-sm w-fit py-2 px-4"
+              >
+                <div className="flex items-center space-x-1">
+                  <MdNoMeals />
+                  <p>{category.category}</p>
+                </div>
+                <p>{category.count}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default CategoriesFilter;

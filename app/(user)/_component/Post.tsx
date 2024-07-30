@@ -36,8 +36,8 @@ const Post = ({ post }: { post: IPost }) => {
               <div className="flex text-black/50 text-xs">
                 <p className="flex items-center text-black/80 mr-1">
                   <MdPlace />
-                  {post.address.place_name.length > 15
-                    ? post.address.place_name.slice(0, 15) + "..."
+                  {post.address.place_name.length > 7
+                    ? post.address.place_name.slice(0, 7) + "..."
                     : post.address.place_name}
                 </p>
                 |

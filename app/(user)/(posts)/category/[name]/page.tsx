@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { getPostsByCategory } from "../../../_lib/api-handler/Post";
 import CategoryPosts from "../_component/CategoryPosts";
-import FilterList from "../../../_component/FilterList";
+import FilterList from "../../../_component/Filter/FilterList";
 
 const CategroyPosts = async ({ params }: { params: { name: string } }) => {
   const { name } = params;

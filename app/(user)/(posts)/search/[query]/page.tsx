@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { getPostsByQuery } from "../../../_lib/api-handler/Post";
 import SearchResult from "../_component/SearchResult";
-import FilterList from "@/app/(user)/_component/FilterList";
+import FilterList from "@/app/(user)/_component/Filter/FilterList";
 
 const PostPage = async ({ params }: { params: { query: string } }) => {
   const { query } = params;

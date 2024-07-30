@@ -4,11 +4,12 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 import { getUser, getUserPosts } from "../_lib/api-handler/User";
 import UserInfo from "./_component/UserInfo";
 import MainBanner from "../_component/MainBanner";
 import Header from "@/app/_component/Header";
+import SkeletonProfile from "./_component/SkeletonProfile";
 
 const Profile = async ({ params }: { params: { userid: string } }) => {
   const { userid } = params;
@@ -31,9 +32,11 @@ const Profile = async ({ params }: { params: { userid: string } }) => {
     <div>
       <HydrationBoundary state={dehydratedState}>
         <Header />
-        <div className="w-full h-full mt-10 md:mt-0">
-          <UserInfo userid={userid} session={session} />
-        </div>
+        <Suspense fallback={<SkeletonProfile />}>
+          <div className="w-full h-full mt-10 md:mt-0">
+            <UserInfo userid={userid} session={session} />
+          </div>
+        </Suspense>
       </HydrationBoundary>
     </div>
   );

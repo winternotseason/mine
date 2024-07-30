@@ -36,7 +36,7 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                   </p>
                   <div className="flex space-x-3 text-sm font-light">
                     <p
-                    className="cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         router.push(`/${session.user.id}`);
                         setIsSearchOpen(false);
@@ -45,10 +45,9 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                       마이페이지
                     </p>
                     <p
-                    className="cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         signOut({ redirect: false });
-                        router.refresh();
                         router.push("/");
                         setIsSearchOpen(false);
                       }}
@@ -62,14 +61,18 @@ const SideMenu = ({ isSearchOpen, setIsSearchOpen }: Props) => {
                   <p className="text-lg font-medium ">로그인이 필요합니다.</p>
                   <div className="flex space-x-3 text-sm font-light">
                     <p
-                      onClick={() => router.push("/login")}
+                      onClick={() => {
+                        router.push("/login");
+                      }}
                       className="cursor-pointer"
                     >
                       로그인
                     </p>
                     <p
                       className="cursor-pointer"
-                      onClick={() => router.push("/join")}
+                      onClick={() => {
+                        router.push("/join");
+                      }}
                     >
                       회원가입
                     </p>

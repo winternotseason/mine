@@ -16,8 +16,8 @@ import { MdEditNote } from "react-icons/md";
 import useKakaoLoader from "../../../_component/use-kakao-loader";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useRouter } from "next/navigation";
-import MainBanner from "../../_component/MainBanner";
 import Link from "next/link";
+import DetailPostHeader from "./DetailPostHeader";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
@@ -54,26 +54,8 @@ const DetailPost = ({ postid }: { postid: string }) => {
   if (!post) {
     return (
       <>
-        {/* 모바일 헤더 */}
-        <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0 flex justify-between bg-white md:hidden">
-          <p onClick={() => router.back()} className="cursor-pointer">
-            ᐸ
-          </p>
-          <p className="text-lg font-semibold flex-1 text-center">리뷰 상세</p>
-        </div>
-        {/* 데스크탑, 태블릿 헤더*/}
-        <div className="hidden md:block">
-          <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0  justify-between bg-white hidden md:flex items-center">
-            <p onClick={() => router.back()} className="cursor-pointer">
-              ᐸ
-            </p>
-            <p className="text-lg font-semibold flex-1 text-center">
-              리뷰 상세
-            </p>
-          </div>
-        </div>
-
-        <div className="w-full h-full flex justify-center items-center"> 
+        <DetailPostHeader />
+        <div className="w-full h-full flex justify-center items-center">
           <p>존재하지 않는 포스트입니다.</p>
         </div>
       </>
@@ -81,55 +63,38 @@ const DetailPost = ({ postid }: { postid: string }) => {
   }
   return (
     <>
-      {/* 모바일 헤더 */}
-      <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0 flex justify-between bg-white md:hidden">
-        <p onClick={() => router.back()} className="cursor-pointer">
-          ᐸ
-        </p>
-        <p className="text-lg font-semibold flex-1 text-center">리뷰 상세</p>
-      </div>
-      {/* 데스크탑, 태블릿 헤더*/}
-      <div className="hidden md:block">
-        <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0  justify-between bg-white hidden md:flex items-center">
-          <p onClick={() => router.back()} className="cursor-pointer">
-            ᐸ
-          </p>
-          <p className="text-lg font-semibold flex-1 text-center">
-            {post.title}
-          </p>
-        </div>{" "}
-        <div className="relative">
-          <Map // 지도를 표시할 Container
-            center={{
-              // 지도의 중심좌표
+      <div className="relative">
+        <Map // 지도를 표시할 Container
+          center={{
+            // 지도의 중심좌표
+            lat: parseFloat(post.address.location_y),
+            lng: parseFloat(post.address.location_x),
+          }}
+          style={{
+            // 지도의 크기
+            width: "100%",
+            height: "400px",
+          }}
+          level={2} // 지도의 확대 레벨
+        >
+          <MapMarker
+            position={{
               lat: parseFloat(post.address.location_y),
               lng: parseFloat(post.address.location_x),
             }}
-            style={{
-              // 지도의 크기
-              width: "100%",
-              height: "400px",
-            }}
-            level={2} // 지도의 확대 레벨
-          >
-            <MapMarker
-              position={{
-                lat: parseFloat(post.address.location_y),
-                lng: parseFloat(post.address.location_x),
-              }}
-            />
-          </Map>
-          <div className="z-10 absolute -bottom-3 right-0 p-4 bg-white/80">
-            <div className="flex items-center">
-              <p>{post.address.place_name}</p>
-              <p className="text-black/50 text-sm ml-2">
-                {post.address.category}
-              </p>
-            </div>
-            <p className="text-black/50">{post.address.address_name}</p>
+          />
+        </Map>
+        <div className="z-10 absolute -bottom-3 right-0 p-4 bg-white/80">
+          <div className="flex items-center">
+            <p>{post.address.place_name}</p>
+            <p className="text-black/50 text-sm ml-2">
+              {post.address.category}
+            </p>
           </div>
+          <p className="text-black/50">{post.address.address_name}</p>
         </div>
       </div>
+
       <div className="w-full h-full mt-12 md:mt-0">
         <div className="w-full py-5 px-5  flex flex-col items-center">
           <div className="bg-black/10 w-fit px-3 py-1 rounded-3xl text-black/80 flex items-center self-start">

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import SessionProviderWrapper from "@/app/(user)/_component/session-provider";
+import SessionProviderWrapper from "@/app/(user)/_component/Provider/session-provider";
 import { Montserrat, Nanum_Gothic, Noto_Sans_KR } from "next/font/google";
 
 const nanum_gothic = Nanum_Gothic({

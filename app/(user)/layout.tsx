@@ -1,5 +1,5 @@
 import React from "react";
-import RQProvider from "./_component/RQProvider";
+import RQProvider from "./_component/Provider/RQProvider";
 import Header from "../_component/Header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
