@@ -6,7 +6,7 @@ import React from "react";
 const PostHeader = () => {
   const router = useRouter();
   return (
-    <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0 flex justify-between bg-white md:hidden">
+    <div className="w-full max-w-[60rem] p-5 fixed z-30 top-0 flex justify-between bg-white md:hidden">
       <p onClick={() => router.back()} className="cursor-pointer">
         ᐸ
       </p>

@@ -56,7 +56,7 @@ const MapSearchModal = () => {
 
   return (
     <>
-      <div className="bg-black/30 absolute w-dvw h-dvh top-0 left-0 z-20" />
+      <div className="bg-black/30 absolute w-dvw h-dvh top-0 left-0 z-30" />
       <div className="absolute w-1/2 min-w-[25rem] max-w-[40rem] h-[35rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white z-30">
         <div className="p-10 flex flex-col justify-center h-full">
           <div className="flex ">
@@ -74,7 +74,7 @@ const MapSearchModal = () => {
               }}
             />
             <div
-              className="p-2 bg-black text-white px-5 ml-2 flex items-center"
+              className="p-2 bg-black text-white px-5 ml-2 flex items-center cursor-pointer"
               onClick={handleClick}
             >
               검색
@@ -99,7 +99,12 @@ const MapSearchModal = () => {
               </div>
             ))}
           </div>
-          <div onClick={closeModal}>모달 닫기</div>
+          <div
+            className="cursor-pointer w-fit p-1 bg-black/50 text-white px-3 ml-2 text-xs flex items-center self-end"
+            onClick={closeModal}
+          >
+            닫기
+          </div>
         </div>
       </div>
     </>

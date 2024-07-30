@@ -133,7 +133,7 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10">
+    <form onSubmit={handleSubmit} className="mt-14">
       {/* 이미지 업로드 */}
       <ImagePicker name="image" setImage={setImage} />
       {/* 제목 */}

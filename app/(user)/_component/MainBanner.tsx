@@ -8,7 +8,7 @@ const MainBanner = ({ title }: { title: string }) => {
   return (
     <>
       {/* 헤더 */}
-      <div className="w-full max-w-[60rem] p-5 fixed z-50 top-0  justify-between bg-white hidden md:flex items-center">
+      <div className="w-full max-w-[60rem] p-5 fixed z-30 top-0  justify-between bg-white hidden md:flex items-center">
         <p onClick={() => router.back()} className="cursor-pointer">
           ᐸ
         </p>
