@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, FormEvent, useEffect } from "react";
-import { IPost } from "../../_lib/type";
+import { IPost, Category, Region } from "../../_lib/type";
 import ImagePicker from "./ImagePicker";
 import PostFormSubmit from "./PostFormSubmit";
 import { useState } from "react";
@@ -57,14 +57,59 @@ const PostForm = () => {
         body: formData,
       });
     },
-    onSuccess: async (insertedPost) => {
+    onSuccess: async (insertedPost: IPost) => {
       if (queryClient.getQueryData(["posts"])) {
         queryClient.setQueryData(["posts"], (prevdata: any) => {
           console.log("이전데이터", prevdata);
           const shallow = { ...prevdata };
           shallow.pages[0].posts.unshift(insertedPost);
-
           //shallow.unshift(insertedPost);
+          return shallow;
+        });
+      }
+      // 카테고리 카운트 업데이트
+      if (queryClient.getQueryData(["categories"])) {
+        queryClient.setQueryData(["categories"], (prevData: Category[]) => {
+          const shallow = [...prevData];
+          const existingCategory = shallow.find(
+            (category: Category) =>
+              category.category === insertedPost.address.category
+          );
+          // {category: '간식', count:1}
+          if (existingCategory) {
+            existingCategory.count += 1;
+          } else {
+            shallow.push({ category: insertedPost.address.category, count: 1 });
+          }
+          return shallow;
+        });
+      }
+      // 지역 업데이트
+      if (queryClient.getQueryData(["region"])) {
+        queryClient.setQueryData(["region"], (prevData: Region[]) => {
+          const shallow = [...prevData];
+          // 서울, 부산.... state가 존재하는지?
+          const state = insertedPost.address.address_name.split(" ")[0]; // 서울
+          const city = insertedPost.address.address_name.split(" ")[1]; // 중구
+          const existingState = shallow.find(
+            (region) => region.state === state
+          );
+          if (existingState) {
+            // 서울이 존재
+            const existingCity = existingState.cites.find(
+              (cityObj) => cityObj.cityname === city
+            );
+            if (existingCity) {
+              // 중구도 존재
+              existingCity.count += 1;
+            } else {
+              // 서울은 있는데 중구는 없음
+              existingState.cites.push({ cityname: city, count: 1 });
+            }
+          } else {
+            // 서울조차 없음
+            shallow.push({ state, cites: [{ cityname: city, count: 1 }] });
+          }
           return shallow;
         });
       }
