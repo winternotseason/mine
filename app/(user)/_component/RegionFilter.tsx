@@ -15,8 +15,6 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
   const { data, isLoading } = useQuery<Region[], Object, Region[]>({
     queryKey: ["region"],
     queryFn: getRegion,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
   });
 
   return (
@@ -44,7 +42,10 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
               </h2>
               <div>
                 {region.cites.map((city) => (
-                  <Link key={city.cityname} href={`/region/${region.state} ${city.cityname}`}>
+                  <Link
+                    key={city.cityname}
+                    href={`/region/${region.state} ${city.cityname}`}
+                  >
                     <div className="flex space-x-1 bg-black/10 w-fit py-2 px-4 text-sm rounded-3xl items-center mb-3">
                       <div className="flex items-center space-x-1">
                         <MdPlace />
