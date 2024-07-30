@@ -28,13 +28,12 @@ const Post = ({ post }: { post: IPost }) => {
         <div className="flex flex-col flex-1 self-stretch md:mt-3 ml-5 md:ml-0">
           <div className="flex-1 flex flex-col space-y-1 justify-center">
             <div>
-              <p className="text-xl font-semibold">
-                {" "}
+              <p className="mb-2">
                 {post.title.length > 10
                   ? post.title.slice(0, 10) + "..."
                   : post.title}
               </p>
-              <div className="flex text-black/50 text-sm">
+              <div className="flex text-black/50 text-xs">
                 <p className="flex items-center text-black/80 mr-1">
                   <MdPlace />
                   {post.address.place_name}
@@ -47,7 +46,7 @@ const Post = ({ post }: { post: IPost }) => {
                 </p>
               </div>
             </div>
-            <div className="text-sm flex">
+            <div className="text-xs flex">
               <p className="flex">
                 <span className="text-yellow-400 mr-1">★</span>
                 <span>{post.rating}.0</span>

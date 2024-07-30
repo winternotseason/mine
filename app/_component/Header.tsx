@@ -29,8 +29,8 @@ const Header = () => {
               router.replace("/");
             }}
           >
-            <p className="text-green-500 font-bold">#</p>
-            <p className="font-bold">MINE</p>
+            <p className="text-green-500 font-semibold">#</p>
+            <p className="font-semibold">MINE</p>
           </div>
 
           <div className="flex flex-col space-y-1 cursor-pointer" onClick={toggleSearch}>
