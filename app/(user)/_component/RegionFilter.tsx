@@ -21,7 +21,7 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
 
   return (
     <div
-      className={`fixed z-50 top-0 -left-5 h-full bg-white  transition-transform duration-300 ease-in-out ${
+      className={`fixed z-50 top-0 -left-5 h-full bg-white  transition-transform duration-300 ease-in-out overflow-auto ${
         isRegionOpen ? "translate-x-0" : "-translate-x-full"
       }`}
       style={{ width: "100vw" }}

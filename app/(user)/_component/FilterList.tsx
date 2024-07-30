@@ -6,7 +6,7 @@ import { BiCategory } from "react-icons/bi";
 import CategoriesFilter from "./CategoriesFilter";
 import RegionFilter from "./RegionFilter";
 const style =
-  "flex items-center bg-black/10 py-2 px-3 rounded-3xl text-sm space-x-1";
+  "flex font-light items-center bg-black/10 py-2 px-3 rounded-3xl text-sm space-x-1 cursor-pointer";
 
 const FilterList = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -21,7 +21,7 @@ const FilterList = () => {
         }}
       >
         <BiCategory size={15} />
-        <p>카테고리</p>
+        <p className="-mt-[0.5px]">카테고리</p>
       </div>
       <div
         className={style}
@@ -30,7 +30,7 @@ const FilterList = () => {
         }}
       >
         <MdPlace size={15} />
-        <p>지역별</p>
+        <p className="-mt-[0.5px]">지역별</p>
       </div>
       {/* 카테고리 */}
       <CategoriesFilter

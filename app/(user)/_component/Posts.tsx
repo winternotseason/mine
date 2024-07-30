@@ -47,7 +47,7 @@ const Posts: React.FC = () => {
 
   return (
     <div className="mt-5">
-      <h1 className="font-semibold text-2xl my-5">🔥 최근순 HOT 리뷰</h1>
+      <h1 className="font-semibold text-2xl my-5">🔥 최신순 HOT 리뷰</h1>
       <div className="md:grid md:grid-cols-3 lg:grid-cols-4 gap-x-5">
         {data && data.pages && "posts" in data.pages[0] ? (
           data.pages.map((page, index) => (

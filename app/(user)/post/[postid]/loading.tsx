@@ -1,11 +1,8 @@
 import React from "react";
+import { Skeleton } from "../_components/Skeleton";
 
 const loading = () => {
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div className="w-16 h-16 border-4 border-black border-t-transparent border-solid rounded-full animate-spin" />
-    </div>
-  );
+  return <Skeleton />;
 };
 
 export default loading;

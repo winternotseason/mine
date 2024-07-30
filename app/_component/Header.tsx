@@ -22,7 +22,7 @@ const Header = () => {
     <>
       {/* 모바일 헤더 */}
       <div className="relative md:hidden ">
-        <div className="fixed z-10 w-full bg-white top-0 right-0 px-4 py-5 flex justify-between items-center backdrop-blur-sm">
+        <div className="fixed z-30 w-full bg-white top-0 right-0 px-4 py-5 flex justify-between items-center backdrop-blur-sm">
           <div
             className="relative cursor-pointer flex items-center text-2xl"
             onClick={() => {
@@ -33,7 +33,7 @@ const Header = () => {
             <p className="font-bold">MINE</p>
           </div>
 
-          <div className="flex flex-col space-y-1" onClick={toggleSearch}>
+          <div className="flex flex-col space-y-1 cursor-pointer" onClick={toggleSearch}>
             <span
               className={`${accordian} ${
                 isSearchOpen && "translate-y-2 rotate-45"
