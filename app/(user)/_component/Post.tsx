@@ -29,19 +29,21 @@ const Post = ({ post }: { post: IPost }) => {
           <div className="flex-1 flex flex-col space-y-1 justify-center">
             <div>
               <p className="mb-2">
-                {post.title.length > 10
-                  ? post.title.slice(0, 10) + "..."
+                {post.title.length > 15
+                  ? post.title.slice(0, 15) + "..."
                   : post.title}
               </p>
               <div className="flex text-black/50 text-xs">
                 <p className="flex items-center text-black/80 mr-1">
                   <MdPlace />
-                  {post.address.place_name}
+                  {post.address.place_name.length > 15
+                    ? post.address.place_name.slice(0, 15) + "..."
+                    : post.address.place_name}
                 </p>
                 |
                 <p className="ml-1">
-                  {post.content.length > 10
-                    ? post.content.slice(0, 10) + "..."
+                  {post.content.length > 7
+                    ? post.content.slice(0, 7) + "..."
                     : post.content}
                 </p>
               </div>

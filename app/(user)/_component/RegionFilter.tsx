@@ -15,6 +15,8 @@ const RegionFilter = ({ isRegionOpen, setIsRegionOpen }: Props) => {
   const { data, isLoading } = useQuery<Region[], Object, Region[]>({
     queryKey: ["region"],
     queryFn: getRegion,
+    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+    gcTime: 300 * 1000,
   });
 
   return (
