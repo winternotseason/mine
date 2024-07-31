@@ -36,7 +36,7 @@ const Posts: React.FC = () => {
   });
   const { ref, inView } = useInView({
     threshold: 0,
-    delay: 10,
+    delay: 3,
   });
 
   useEffect(() => {

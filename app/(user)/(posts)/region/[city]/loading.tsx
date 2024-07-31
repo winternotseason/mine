@@ -1,12 +1,8 @@
 import React from "react";
 import CategoryPostsLoading from "../../category/[name]/loading";
 
-const loading = () => {
-  return (
-    <>
-      <CategoryPostsLoading />
-    </>
-  );
+const RegionPostsLoading = () => {
+  return <CategoryPostsLoading />;
 };
 
-export default loading;
+export default RegionPostsLoading;

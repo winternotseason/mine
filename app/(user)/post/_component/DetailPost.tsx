@@ -63,7 +63,7 @@ const DetailPost = ({ postid }: { postid: string }) => {
   }
   return (
     <>
-      <div className="relative">
+      <div className="relative hidden md:block">
         <Map // 지도를 표시할 Container
           center={{
             // 지도의 중심좌표
