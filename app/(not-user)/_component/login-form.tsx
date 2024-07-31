@@ -32,6 +32,7 @@ const LoginForm = () => {
       } else {
         router.refresh();
         router.push("/");
+        location.reload();
       }
     } catch (err) {
       console.error(err);

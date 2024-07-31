@@ -5,10 +5,7 @@ import { redirect } from "next/navigation";
 import PostHeader from "./_component/PostHeader";
 
 const AddPostPage = async () => {
-  const session = await auth();
-  if(!session) {
-    redirect('/login')
-  }
+ 
   return (
     <div className="w-full h-full flex justify-center">
       <div className="w-full max-w-[60rem] pt-5 pb-20 px-4">
