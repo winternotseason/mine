@@ -31,27 +31,37 @@
 ![Zustand](https://img.shields.io/badge/zustand-5B4524?style=flat-square&logo=&logoColor=white)
 
 
-
-   
-## 📺 화면 구성
-
-| 화면  | 모바일 이미지                                                                                             | 데스크탑 이미지                                                                                          |
-|-----------|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| **메인단**   | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/60fe7850-2ef8-4e5c-b288-2c769ea7b359" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/85d5d57c-07bd-4a48-98eb-1a37f617f0cc" width="500"/> |
-|   **결과단**   | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/34f555f9-f923-42ef-b905-c6945592067e" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/18b28f3d-35be-4aa6-a267-12f62f5fc6e5" width="500"/> |
-| **상세단**   | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/8a4946d5-f5c5-4eee-9d40-614f3861edf7" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/668e7aca-3093-466d-8014-404064a0ee76" width="500"/> |
-| **가입단**   | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/0739aa1a-da7b-4ca0-8f5a-39b551e6b779" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/c0b8ca02-dd06-4896-89ff-2830b73ba41d" width="500"/> |
-| **로그인** | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/3c22a9b2-209c-4b9b-a948-980e37517484" width="300"/> | <img src="https://github.com/winternotseason/winternotseason/assets/157186101/7b8f28e6-686c-4de3-9b91-254de6ef1895" width="500"/> |
-
-
-
 ## 🔑 주요 기능
 
-- 🔎 **상품 탐색 기능**: 네이버 쇼핑 api를 자체 서버 API를 이용해 호출
-- ✨ **회원 기능**: Next-Auth/MongoDB를 이용해 구현, Next-Auth의 자체적인 로그인 로그아웃 기능을 이용한 안전한 쿠키 사용
-- 🎬 **광고 슬라이더 기능**: 메인 광고 배너와, 오늘의 상품 목록들을 swiper 라이브러리를 통해 구현
-- 🛒 **실제 구매 사이트 이동**: 사용자가 선택한 상품을 구매하러가기 링크를 통해 실제 구매가 가능한 사이트로 이동
+· **회원 기능**
+- Auth.js 라이브러리를 활용하여 안전한 회원 인증 로직을 구현하였습니다.
+- 회원가입, 로그인 로직 구현 : Zod 라이브러리와 React-hook-form을 활용하여 유효성 검사와 form 컴포넌트를 분리시켜 가독성 있게 구현하였습니다.
+- 글쓰기와 나의 정보 페이지는 인증이 된 회원만 접근 가능하도록 구현하였습니다.
 
+· **카카오 맵 API를 활용한 위치 정보 기반 글 작성**
+- 카카오 맵 API를 사용하여 사용자가 특정 음식점을 선택하고, 해당 위치 정보를 DB에 함께 저장하여 작성된 글을 볼 때 지도와 함께 표시되도록 구현하였습니다.
+
+· **카테고리, 지역 필터링**
+- Next.js의 동적 라우팅을 기반으로 params를 받아 API 호출을 통해 필터링된 데이터들을 불러와 사용자들이 해당 카테고리와 지역에 맞는 리뷰들을 탐색할 수 있도록 구현하였습니다.
+
+· **상호명 검색**
+
+- API Routes 내부에서 MongoDB의 $regex 함수를 사용해 상호명 검색 기능을 구현하였습니다.
+
+· **반응형 웹사이트**
+
+- Tailwind CSS를 이용하여 다양한 디바이스에서 최적화된 반응형 웹사이트를 구현하였습니다.
+
+
+## 🔑 페이지 별 기능
+**[로그인]**
+**[회원가입]**
+**[메인]**
+**[세부 리뷰]**
+**[카테고리, 지역 필터]**
+**[상호명 검색]**
+**[마이페이지]**
+**[아코디언 메뉴]**
 
    
 ## 📁 파일 구조
@@ -124,7 +134,4 @@
 외 lib, store 폴더 등
 
 
-       
-## 📄 블로그 정리
-[![블로그1](https://github.com/winternotseason/winternotseason/assets/157186101/17ab073a-a441-4b28-a4f4-01b0d55dcdbb)](https://seodevelopment.tistory.com/66)
-[![블로그2](https://github.com/winternotseason/winternotseason/assets/157186101/7a2f5b70-27c5-4b14-9cc1-51c1255b1009)](https://seodevelopment.tistory.com/67)
+
