@@ -53,17 +53,20 @@
 - Tailwind CSS를 이용하여 다양한 디바이스에서 최적화된 반응형 웹사이트를 구현하였습니다.
 
 
-## 🔑 페이지 별 기능
-**[로그인]**
-**[회원가입]**
-**[메인]**
-**[세부 리뷰]**
-**[카테고리, 지역 필터]**
-**[상호명 검색]**
-**[마이페이지]**
-**[아코디언 메뉴]**
+## 💻 Getting Started
+### Installation
+   ```
+   npm install 
+   ```
+### Develop Mode
+   ```
+   npm run dev 
+   ```
+### Production
+   ```
+   npm run build 
+   ```
 
-   
 ## 📁 파일 구조
 ```
 📦app
