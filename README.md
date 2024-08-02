@@ -1,5 +1,7 @@
 ## #MINE 
-  
+  ![mine](https://github.com/user-attachments/assets/f0d8b0a1-2b01-4956-bd73-18757d8725d3)
+- 나만 알고 싶지 않은 맛집들을 공유하기 위해, 또 남이 아는 맛집을 알기 위해 제작한 맛집 공유 커뮤니티 사이트 입니다.
+
 ## ✍️ 개요
 
 - 📄 프로젝트 명: MINE
@@ -67,74 +69,6 @@
    npm run build 
    ```
 
-## 📁 파일 구조
-```
-📦app
- ┣ 📂api
- ┃ ┣ 📂auth
- ┃ ┃ ┗ 📂[...nextauth]
- ┃ ┃ ┃ ┗ 📜route.ts
- ┃ ┣ 📂register
- ┃ ┃ ┗ 📜route.ts
- ┃ ┗ 📂search
- ┃ ┃ ┗ 📜route.ts
- ┣ 📂basket
- ┃ ┣ 📜page.module.css
- ┃ ┗ 📜page.tsx
- ┣ 📂join
- ┃ ┣ 📜page.module.css
- ┃ ┗ 📜page.tsx
- ┣ 📂login
- ┃ ┣ 📜page.module.css
- ┃ ┗ 📜page.tsx
- ┣ 📂product
- ┃ ┣ 📜page.module.css
- ┃ ┗ 📜page.tsx
- ┣ 📂search
- ┃ ┗ 📂[input]
- ┃ ┃ ┣ 📜page.module.css
- ┃ ┃ ┗ 📜page.tsx
- ┣ 📜.DS_Store
- ┣ 📜auth.ts
- ┣ 📜globals.css
- ┣ 📜layout.tsx
- ┣ 📜options.ts
- ┣ 📜page.module.css
- ┗ 📜page.tsx
-
-  📦components
- ┣ 📂fixed
- ┃ ┣ 📜main-header.module.css
- ┃ ┣ 📜main-header.tsx
- ┃ ┣ 📜main-nav.module.css
- ┃ ┣ 📜main-nav.tsx
- ┃ ┣ 📜nav-in-header.module.css
- ┃ ┗ 📜nav-in-header.tsx
- ┣ 📂slider
- ┃ ┣ 📜image-slider.module.css
- ┃ ┣ 📜image-slider.tsx
- ┃ ┣ 📜mobile-image-slider.module.css
- ┃ ┣ 📜mobile-image-slider.tsx
- ┃ ┣ 📜styles.css
- ┃ ┣ 📜today-goods-slider.module.css
- ┃ ┗ 📜today-goods-slider.tsx
- ┣ 📂user
- ┃ ┣ 📜join-form.module.css
- ┃ ┣ 📜join-form.tsx
- ┃ ┣ 📜login-form.module.css
- ┃ ┗ 📜login-form.tsx
- ┣ 📜Items-loading.module.css
- ┣ 📜Items-loading.tsx
- ┣ 📜Untitled-1.jsonc
- ┣ 📜footer.module.css
- ┣ 📜footer.tsx
- ┣ 📜mobile-search-modal.tsx
- ┣ 📜mobile-search.modal.module.css
- ┣ 📜page-counter.module.css
- ┣ 📜page-counter.tsx
- ┗ 📜session-provider.tsx
-```
-외 lib, store 폴더 등
 
 
 
