@@ -1,22 +1,17 @@
-## 🛒 나만의 쇼핑을 즐기자, MINE 
+## #MINE 
 ![MINE](https://github.com/winternotseason/mine-shopping/assets/157186101/c224b96d-836c-470e-9ce7-42966111ecb4)
-
-### **네이버 검색 쇼핑 api**를 활용한 프론트엔드 쇼핑몰 구현 프로젝트, MINE 입니다.
-#### 원하는 상품을 탐색하고, 최저가로 즐겨보세요!
-
   
 ## ✍️ 개요
 
 - 📄 프로젝트 명: MINE
-- 📅 개발 기간: 2024.06.27-2024.07.11
-- 🔨 도구: NextJS, CSS-module, MongoDB, Vercel ···
+- 🔨 도구: NextJS, Typescript, Tailwind CSS, react-query, MongoDB
 - 👩🏻‍💻 개발자: 황서연 (개인개발)
 
 
    
 ## 💾 배포 주소
 
-[https://mine-shopping.vercel.app/](https://mine-shopping.vercel.app/)
+[https://mine-community-w.vercel.app/](https://mine-community-w.vercel.app/)
 
 
    
